@@ -146,15 +146,7 @@ Chatbot Response → Store AI Log
 
 ---
 
-## 6️⃣ README (Project Documentation)
-
-### Project Name
-
-Agri-Clinic Hub
-
-### Description
-
-An AI-powered agricultural platform connecting farmers with experts for disease detection, consultation, and agricultural knowledge sharing.
+ 6️⃣ README Installation Guide
 
 ### Tech Stack
 
@@ -212,5 +204,3 @@ This structure makes Agri-Clinic Hub:
 * Production-ready
 
 ---
-
-(Next: ER Diagram, API design, or deployment guide)
