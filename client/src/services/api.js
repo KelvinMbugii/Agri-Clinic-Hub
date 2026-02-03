@@ -26,6 +26,16 @@ export async function loginRequest(payload) {
   return res.data;
 }
 
+export async function forgotPasswordRequest(email) {
+  const res = await api.post('/api/auth/forgot-password', { email });
+  return res.data;
+}
+
+export async function resetPasswordRequest(token, password) {
+  const res = await api.put(`/api/auth/reset-password/${token}`, { password });
+  return res.data;
+}
+
 // Farmer
 export async function detectDiseaseRequest(file) {
   const formData = new FormData();
