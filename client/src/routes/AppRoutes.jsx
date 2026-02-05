@@ -6,6 +6,12 @@ import ForgotPassword from '../pages/ForgotPassword.jsx';
 import ResetPassword from '../pages/ResetPassword.jsx';
 import NotFound from '../pages/NotFound.jsx';
 import FarmerDashboard from '../dashboards/FarmerDashboard.jsx';
+import WeatherAlerts from '../pages/farmer/WeatherAlerts.jsx';
+import DiseaseDetection from '../pages/farmer/DiseaseDetection.jsx';
+import AiAssistant from '../pages/farmer/AiAssistant.jsx';
+import Consultations from '../pages/farmer/Consultations.jsx';
+import ArticlesGuides from '../pages/farmer/ArticlesGuides.jsx';
+import Settings from '../pages/farmer/Settings.jsx';
 import OfficerDashboard from '../dashboards/OfficerDashboard.jsx';
 import AdminDashboard from '../dashboards/AdminDashboard.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -35,6 +41,12 @@ export default function AppRoutes() {
       {/* Farmer */}
       <Route element={<ProtectedRoute allowedRoles={['farmer']} />}>
         <Route path="/farmer/dashboard" element={<FarmerDashboard />} />
+        <Route path="/farmer/weather" element={<WeatherAlerts />} />
+        <Route path="/farmer/disease-detection" element={<DiseaseDetection />} />
+        <Route path="/farmer/ai-assistant" element={<AiAssistant />} />
+        <Route path="/farmer/consultations" element={<Consultations />} />
+        <Route path="/farmer/articles" element={<ArticlesGuides />} />
+        <Route path="/farmer/settings" element={<Settings />} />
       </Route>
 
       {/* Officer */}
@@ -51,4 +63,3 @@ export default function AppRoutes() {
     </Routes>
   );
 }
-
