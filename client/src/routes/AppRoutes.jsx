@@ -13,6 +13,9 @@ import Consultations from '../pages/farmer/Consultations.jsx';
 import ArticlesGuides from '../pages/farmer/ArticlesGuides.jsx';
 import Settings from '../pages/farmer/Settings.jsx';
 import OfficerDashboard from '../dashboards/OfficerDashboard.jsx';
+import OfficerBookings from '../pages/officer/Bookings.jsx';  
+import OfficerConsultations from '../pages/officer/Consultation.jsx';
+import OfficerArticles from '../pages/officer/Articles.jsx';
 import AdminDashboard from '../dashboards/AdminDashboard.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 
@@ -52,6 +55,10 @@ export default function AppRoutes() {
       {/* Officer */}
       <Route element={<ProtectedRoute allowedRoles={['officer']} />}>
         <Route path="/officer/dashboard" element={<OfficerDashboard />} />
+        <Route path="/officer/booking" element={<OfficerBookings />} />
+        <Route path="/officer/consultation" element={<OfficerConsultations />} />
+        <Route path="/officer/articles" element={<OfficerArticles />} />
+      
       </Route>
 
       {/* Admin */}

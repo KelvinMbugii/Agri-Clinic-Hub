@@ -3,8 +3,18 @@ import { useAuth } from '../context/AuthContext.jsx';
 
 const linksByRole = {
   farmer: [{ to: '/farmer/dashboard', label: 'Dashboard' }],
-  officer: [{ to: '/officer/dashboard', label: 'Dashboard' }],
-  admin: [{ to: '/admin/dashboard', label: 'Dashboard' }]
+  officer: [
+      { to: '/officer/dashboard', label: 'Dashboard' },
+      { to: '/officer/booking', label: 'Booking Management'},
+      { to: '/officer/consultation', label: 'Consultation Management'},
+      { to: '/officer/articles', label: 'Articles Management'},
+      { to: '/officer/settings', label: 'Settings'},
+      ],
+  admin: [{ to: '/admin/dashboard', label: 'Dashboard' },
+      { to: '/admin/officers', label: 'Officers Management'},
+      { to: '/admin/articles', label: 'Articles Management'},
+      { to: '/admin/settings', label: 'Settings'},
+      ],
 };
 
 export default function Sidebar() {

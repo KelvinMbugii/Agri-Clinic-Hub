@@ -103,3 +103,10 @@ export async function getAiLogsRequest() {
   return res.data;
 }
 
+// Weather
+export async function getWeatherRequest(location) {
+  axios.get(`/weather?location=${encodedURIComponent(location)}`);
+}
+
+export const getForecastRequest = (location) =>
+  axios.get(`/weather/forecast?location=${encodeURIComponent(location)}`);

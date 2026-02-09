@@ -18,7 +18,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
         <Link to={roleHome(role)} className="flex items-center gap-2">
           <div className="grid h-9 w-9 place-items-center rounded-xl bg-agri-700 text-sm font-semibold text-white">
