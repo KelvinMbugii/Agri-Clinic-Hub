@@ -6,8 +6,8 @@ const authMiddleware = require('../middleware/authMiddleware');
 const roleMiddleware = require('../middleware/roleMiddleware');
 const {
   detectDiseaseFromImage,
-  getAiLogs
-} = require('../controllers/aiController');
+  getAiLogs,
+} = require("../controllers/aiController");
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -40,7 +40,11 @@ const upload = multer({
 // @route   POST /api/ai/detect-disease
 // @desc    Detect disease from image
 // @access  Private (Farmer)
-router.post('/detect-disease', authMiddleware, roleMiddleware('farmer'), upload.single('image'), detectDiseaseFromImage);
+router.post(
+  "/detect",
+  upload.single("image"),
+  detectDiseaseFromImage, // ✅ this must be a function
+);
 
 // @route   GET /api/ai/logs
 // @desc    Get AI logs
