@@ -7,6 +7,7 @@ const roleMiddleware = require('../middleware/roleMiddleware');
 const {
   detectDiseaseFromImage,
   getAiLogs,
+  getAiStatus,
 } = require("../controllers/aiController");
 
 // Configure multer for file uploads
@@ -41,7 +42,9 @@ const upload = multer({
 // @desc    Detect disease from image
 // @access  Private (Farmer)
 router.post(
-  "/detect",
+  "/detect-disease",
+  authMiddleware,
+  roleMiddleware("farmer"),
   upload.single("image"),
   detectDiseaseFromImage, // ✅ this must be a function
 );
@@ -50,5 +53,6 @@ router.post(
 // @desc    Get AI logs
 // @access  Private (Admin)
 router.get('/logs', authMiddleware, roleMiddleware('admin'), getAiLogs);
+router.get('/status', authMiddleware, roleMiddleware('admin'), getAiStatus);
 
 module.exports = router;

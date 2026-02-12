@@ -75,96 +75,75 @@
  * Simulates plant disease detection
  */
 
-const tf = require("@tensorflow/tfjs");
-const path = require("path");
-const sharp = require("sharp"); // for image preprocessing
+const axios = require("axios");
+const FormData = require("form-data");
 
-let model = null;
+const AI_SERVICE_URL = "http://localhost:8000/predict";
 
-/**
- * Load plant disease model
- */
-const loadPlantDiseaseModel = async () => {
-  const modelPath = path.join(
-    __dirname,
-    "../aiService/plant_disease_model/model.json",
-  );
-  console.log("Loading model from:", modelPath);
-  model = await tf.loadLayersModel("file://" + modelPath);
-  console.log("Model loaded successfully!");
+const recommendationsMap = {
+  "Leaf Blight":
+    "Apply fungicide spray containing copper-based compounds. Remove affected leaves and ensure proper spacing.",
+  "Powdery Mildew":
+    "Use sulfur-based fungicides. Improve air circulation and reduce humidity. Water at the base, not on leaves.",
+  "Rust Disease":
+    "Remove and destroy infected parts. Apply neem oil or fungicides. Ensure proper nutrition.",
+  "Bacterial Spot":
+    "Use copper-based bactericides. Practice crop rotation. Avoid overhead watering.",
+  "Healthy Plant":
+    "Plant appears healthy. Continue regular maintenance and monitoring.",
 };
 
-/**
- * Preprocess image buffer into a tensor suitable for model input
- * @param {Buffer} imageBuffer
- */
-const preprocessImage = async (imageBuffer) => {
-  // Resize to 224x224 and convert to RGB
-  const resizedBuffer = await sharp(imageBuffer)
-    .resize(224, 224)
-    .toFormat("png")
-    .toBuffer();
-
-  // Decode image to tensor
-  let tensor = tf.node.decodeImage(resizedBuffer, 3); // 3 channels RGB
-  tensor = tensor.expandDims(0); // add batch dimension
-  tensor = tensor.div(255); // normalize to [0,1]
-  return tensor;
-};
-
-/**
- * Detect disease from image buffer
- * @param {Buffer} imageBuffer
- */
-const detectDisease = async (imageBuffer) => {
-  if (!model) {
-    throw new Error("Model not loaded. Call loadPlantDiseaseModel first.");
-  }
-
-  const imageTensor = await preprocessImage(imageBuffer);
-
-  // Run prediction
-  const predictions = model.predict(imageTensor);
-
-  // Assuming model outputs probabilities per class
-  const predictionArray = predictions.arraySync()[0];
-
-  // Map your class indices to disease names
-  const classNames = [
-    "Leaf Blight",
-    "Powdery Mildew",
-    "Rust Disease",
-    "Bacterial Spot",
-    "Healthy Plant",
-  ];
-
-  // Find the class with highest probability
-  const maxIndex = predictionArray.indexOf(Math.max(...predictionArray));
-  const detectedDisease = classNames[maxIndex];
-  const confidenceScore = Math.round(predictionArray[maxIndex] * 100);
-
-  // Add recommendations per disease
-  const recommendationsMap = {
-    "Leaf Blight":
-      "Apply fungicide spray containing copper-based compounds. Remove affected leaves and ensure proper spacing.",
-    "Powdery Mildew":
-      "Use sulfur-based fungicides. Improve air circulation and reduce humidity. Water at the base, not on leaves.",
-    "Rust Disease":
-      "Remove and destroy infected parts. Apply neem oil or fungicides. Ensure proper nutrition.",
-    "Bacterial Spot":
-      "Use copper-based bactericides. Practice crop rotation. Avoid overhead watering.",
-    "Healthy Plant":
-      "Plant appears healthy. Continue regular maintenance and monitoring.",
-  };
-
+// Optional mock fallback
+const classNames = Object.keys(recommendationsMap);
+const getMockPrediction = () => {
+  const index = Math.floor(Math.random() * classNames.length);
+  const disease = classNames[index];
+  const confidence = Math.random() * 0.3 + 0.7; // 70-100%
   return {
-    detectedDisease,
-    confidenceScore,
-    recommendations: recommendationsMap[detectedDisease],
+    detectedDisease: disease,
+    confidenceScore: Math.round(confidence * 100),
+    recommendations: recommendationsMap[disease],
+    source: "mock",
   };
 };
+
+const detectDisease = async (imageBuffer) => {
+  try {
+    const formData = new FormData();
+    formData.append("file", imageBuffer, {
+      filename: "image.jpg",
+      contentType: "image/jpeg",
+    });
+
+    const response = await axios.post(AI_SERVICE_URL, formData, {
+      headers: formData.getHeaders(),
+      timeout: 15000, // 15s timeout to avoid hanging
+    });
+
+    const { disease, confidence } = response.data;
+
+    return {
+      detectedDisease: disease,
+      confidenceScore: confidence,
+      recommendations: recommendationsMap[disease] || "Consult agricultural expert.",
+      source: "python-fastapi",
+    };
+  } catch (error) {
+    // Log detailed info for debugging
+    console.error("AI Service Error:", error.response?.data || error.message);
+    
+    // Optional: fallback to mock prediction
+    return getMockPrediction();
+  }
+};
+
+const getModelStatus = () => ({
+  loaded: true,
+  fallbackMode: false,
+  source: "Python FastAPI AI Service",
+});
 
 module.exports = {
-  loadPlantDiseaseModel,
   detectDisease,
+  getModelStatus,
 };

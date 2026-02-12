@@ -1,6 +1,5 @@
 const AiLog = require('../models/AiLog');
-const { detectDisease } = require('../services/aiService');
-const path = require('path');
+const { detectDisease, getModelStatus } = require("../services/aiService");
 const fs = require('fs');
 
 // @desc    Detect disease from image
@@ -12,10 +11,10 @@ const detectDiseaseFromImage = async (req, res) => {
       return res.status(400).json({ message: 'Please upload an image' });
     }
 
-    const imagePath = req.file.path;
+    const imageBuffer = fs.readFileSync(req.file.path);
 
     // Call AI service to detect disease
-    const aiResult = await detectDisease(imagePath);
+    const aiResult = await detectDisease(imageBuffer);
 
     // Create AI log entry
     const aiLog = await AiLog.create({
@@ -26,13 +25,17 @@ const detectDiseaseFromImage = async (req, res) => {
       recommendations: aiResult.recommendations
     });
 
+    // clean up uploaded file after successful inference
+    fs.unlinkSync(req.file.path);
+
     res.json({
       success: true,
       detection: {
         detectedDisease: aiResult.detectedDisease,
         confidenceScore: aiResult.confidenceScore,
         recommendations: aiResult.recommendations,
-        imageUrl: aiLog.imageUrl
+        imageUrl: aiLog.imageUrl,
+        source: aiResult.source || 'unknown'
       },
       logId: aiLog._id
     });
@@ -40,7 +43,7 @@ const detectDiseaseFromImage = async (req, res) => {
     console.error('AI Detection Error:', error);
     
     // Clean up uploaded file on error
-    if (req.file) {
+    if (req.file && fs.existsSync(req.file.path)) {
       fs.unlinkSync(req.file.path);
     }
     
@@ -68,9 +71,25 @@ const getAiLogs = async (req, res) => {
   }
 };
 
+// @desc Get AI model status
+// @route GET /api/ai/status
+// @access private(admin)
+const getAiStatus = async (req, res) => {
+  try{
+    res.json({
+      success: true,
+      model: getModelStatus(),
+    });
+  } catch (error){
+    console.error('Get AI Status Error:', error);
+    res.status(500).json({message: 'Server error', error:error.message});
+  }
+}
+
 module.exports = {
   detectDiseaseFromImage,
-  getAiLogs
+  getAiLogs,
+  getAiStatus,
 };
 
 
