@@ -36,6 +36,12 @@ export async function resetPasswordRequest(token, password) {
   return res.data;
 }
 
+// AI chat
+export async function chatRequest(payload) {
+  const res = await api.post('/api/ai/chat', payload);
+  return res.data;
+}
+
 // Farmer
 export async function detectDiseaseRequest(file) {
   const formData = new FormData();

@@ -1,58 +1,50 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const authMiddleware = require('../middleware/authMiddleware');
-const roleMiddleware = require('../middleware/roleMiddleware');
+const multer = require("multer");
+const path = require("path");
+const authMiddleware = require("../middleware/authMiddleware");
+const roleMiddleware = require("../middleware/roleMiddleware");
 const {
   detectDiseaseFromImage,
+  chatAi,
   getAiLogs,
   getAiStatus,
 } = require("../controllers/aiController");
 
-// Configure multer for file uploads
+// Multer setup
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, 'image-' + uniqueSuffix + path.extname(file.originalname));
-  }
+  destination: (req, file, cb) => cb(null, "uploads/"),
+  filename: (req, file, cb) =>
+    cb(
+      null,
+      `image-${Date.now()}-${Math.round(Math.random() * 1e9)}${path.extname(file.originalname)}`,
+    ),
 });
-
 const fileFilter = (req, file, cb) => {
-  // Accept only image files
-  if (file.mimetype.startsWith('image/')) {
-    cb(null, true);
-  } else {
-    cb(new Error('Only image files are allowed'), false);
-  }
+  if (file.mimetype.startsWith("image/")) cb(null, true);
+  else cb(new Error("Only image files are allowed"), false);
 };
-
 const upload = multer({
-  storage: storage,
-  fileFilter: fileFilter,
-  limits: {
-    fileSize: 5 * 1024 * 1024 // 5MB limit
-  }
+  storage,
+  fileFilter,
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-// @route   POST /api/ai/detect-disease
-// @desc    Detect disease from image
-// @access  Private (Farmer)
+// ROUTES
 router.post(
   "/detect-disease",
   authMiddleware,
   roleMiddleware("farmer"),
   upload.single("image"),
-  detectDiseaseFromImage, // ✅ this must be a function
+  detectDiseaseFromImage,
 );
-
-// @route   GET /api/ai/logs
-// @desc    Get AI logs
-// @access  Private (Admin)
-router.get('/logs', authMiddleware, roleMiddleware('admin'), getAiLogs);
-router.get('/status', authMiddleware, roleMiddleware('admin'), getAiStatus);
+router.post(
+  "/chat",
+  authMiddleware,
+  roleMiddleware("farmer", "officer", "admin"),
+  chatAi,
+);
+router.get("/logs", authMiddleware, roleMiddleware("admin"), getAiLogs);
+router.get("/status", authMiddleware, roleMiddleware("admin"), getAiStatus);
 
 module.exports = router;

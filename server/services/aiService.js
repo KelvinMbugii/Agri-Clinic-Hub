@@ -1,149 +1,136 @@
-// /**
-//  * AI Service (Mock)
-//  * In production, integrate with actual ML models or APIs
-//  */
-
-// const mockDiseases = [
-//   {
-//     name: 'Leaf Blight',
-//     confidence: 85,
-//     recommendations: 'Apply fungicide spray containing copper-based compounds. Remove affected leaves and ensure proper spacing for air circulation.'
-//   },
-//   {
-//     name: 'Powdery Mildew',
-//     confidence: 78,
-//     recommendations: 'Use sulfur-based fungicides. Improve air circulation and reduce humidity. Water plants at the base, not on leaves.'
-//   },
-//   {
-//     name: 'Rust Disease',
-//     confidence: 92,
-//     recommendations: 'Remove and destroy infected plant parts. Apply neem oil or fungicidal sprays. Ensure proper plant nutrition.'
-//   },
-//   {
-//     name: 'Bacterial Spot',
-//     confidence: 65,
-//     recommendations: 'Use copper-based bactericides. Practice crop rotation. Avoid overhead watering to prevent spread.'
-//   },
-//   {
-//     name: 'Healthy Plant',
-//     confidence: 88,
-//     recommendations: 'Plant appears healthy. Continue regular maintenance, proper watering, and monitoring for early signs of disease.'
-//   }
-// ];
-
-// /**
-//  * Mock AI disease detection
-//  * @param {String} imagePath - Path to uploaded image
-//  * @returns {Object} Detection results
-//  */
-// const detectDisease = async (imagePath) => {
-//   try {
-//     // Simulate AI processing delay
-//     await new Promise(resolve => setTimeout(resolve, 500));
-    
-//     // Randomly select a mock disease result
-//     const randomDisease = mockDiseases[Math.floor(Math.random() * mockDiseases.length)];
-    
-//     // In production, replace with actual AI/ML model:
-//     // const result = await mlModel.predict(imagePath);
-//     // return {
-//     //   detectedDisease: result.disease,
-//     //   confidenceScore: result.confidence,
-//     //   recommendations: result.recommendations
-//     // };
-    
-//     return {
-//       detectedDisease: randomDisease.name,
-//       confidenceScore: randomDisease.confidence,
-//       recommendations: randomDisease.recommendations
-//     };
-//   } catch (error) {
-//     console.error('AI Detection Error:', error);
-//     throw new Error('Failed to process image');
-//   }
-// };
-
-// module.exports = {
-//   detectDisease
-// };
-
-
-
-/**
- * AI Service (Mock)
- * Works in Node 20 with Express 5
- * Simulates plant disease detection
- */
-
 const axios = require("axios");
 const FormData = require("form-data");
+const Disease = require("../models/Diseases"); // MongoDB disease collection
 
 const AI_SERVICE_URL = "http://localhost:8000/predict";
 
-const recommendationsMap = {
-  "Leaf Blight":
-    "Apply fungicide spray containing copper-based compounds. Remove affected leaves and ensure proper spacing.",
-  "Powdery Mildew":
-    "Use sulfur-based fungicides. Improve air circulation and reduce humidity. Water at the base, not on leaves.",
-  "Rust Disease":
-    "Remove and destroy infected parts. Apply neem oil or fungicides. Ensure proper nutrition.",
-  "Bacterial Spot":
-    "Use copper-based bactericides. Practice crop rotation. Avoid overhead watering.",
-  "Healthy Plant":
-    "Plant appears healthy. Continue regular maintenance and monitoring.",
-};
-
-// Optional mock fallback
-const classNames = Object.keys(recommendationsMap);
-const getMockPrediction = () => {
-  const index = Math.floor(Math.random() * classNames.length);
-  const disease = classNames[index];
-  const confidence = Math.random() * 0.3 + 0.7; // 70-100%
-  return {
-    detectedDisease: disease,
-    confidenceScore: Math.round(confidence * 100),
-    recommendations: recommendationsMap[disease],
-    source: "mock",
-  };
-};
-
+/**
+ * Detect disease from image and fetch full info from MongoDB.
+ * Returns a structured object for controller logging/response.
+ */
 const detectDisease = async (imageBuffer) => {
   try {
     const formData = new FormData();
-    formData.append("file", imageBuffer, {
-      filename: "image.jpg",
-      contentType: "image/jpeg",
-    });
+    formData.append("file", imageBuffer, { filename: "image.jpg" });
 
     const response = await axios.post(AI_SERVICE_URL, formData, {
       headers: formData.getHeaders(),
-      timeout: 15000, // 15s timeout to avoid hanging
+      timeout: 30000,
     });
 
-    const { disease, confidence } = response.data;
+    const { disease: aiDiseaseName, confidence } = response.data || {};
+
+    if (!aiDiseaseName) {
+      return { detectedDisease: null, confidenceScore: 0, source: "fallback" };
+    }
+
+    // Query MongoDB for full disease info
+    const diseaseInfo = await Disease.findOne({ displayName: aiDiseaseName });
+
+    if (!diseaseInfo) {
+      return {
+        detectedDisease: aiDiseaseName,
+        confidenceScore: Math.round(confidence || 0),
+        source: "python-fastapi",
+      };
+    }
 
     return {
-      detectedDisease: disease,
-      confidenceScore: confidence,
-      recommendations: recommendationsMap[disease] || "Consult agricultural expert.",
+      detectedDisease: diseaseInfo.displayName,
+      confidenceScore: Math.round(confidence || 0),
+      description: diseaseInfo.description,
+      organicTreatment: diseaseInfo.treatment?.organic || [],
+      chemicalTreatment: diseaseInfo.treatment?.chemical || [],
+      prevention: diseaseInfo.prevention || [],
+      severity: diseaseInfo.severity,
       source: "python-fastapi",
     };
-  } catch (error) {
-    // Log detailed info for debugging
-    console.error("AI Service Error:", error.response?.data || error.message);
-    
-    // Optional: fallback to mock prediction
-    return getMockPrediction();
+  } catch (err) {
+    console.error("AI Detection Error:", err.response?.data || err.message);
+    return { detectedDisease: null, confidenceScore: 0, source: "fallback" };
   }
 };
 
+/**
+ * Simple AI model status for /ai/status endpoint
+ */
 const getModelStatus = () => ({
   loaded: true,
-  fallbackMode: false,
   source: "Python FastAPI AI Service",
 });
+
+/**
+ * Chat fallback helper using disease database.
+ */
+const chatWithKnowledge = async (message, lastDetection = {}) => {
+  const text = String(message || "").toLowerCase();
+  let diseaseKey = lastDetection?.detectedDisease || null;
+
+  if (!diseaseKey) {
+    const keywords = text.split(" ").filter((w) => w.length > 2);
+    for (const k of keywords) {
+      const disease = await Disease.findOne({
+        $or: [
+          { displayName: { $regex: k, $options: "i" } },
+          { description: { $regex: k, $options: "i" } },
+          { crop: { $regex: k, $options: "i" } },
+          { symptoms: { $regex: k, $options: "i" } },
+        ],
+      });
+      if (disease) {
+        diseaseKey = disease.displayName;
+        break;
+      }
+    }
+  }
+
+  if (!diseaseKey) {
+    return [
+      "I can help interpret disease scans and provide crop guidance.",
+      "You can upload a photo or ask about symptoms, pests, or crop care.",
+    ].join("\n");
+  }
+
+  const diseaseInfo = await Disease.findOne({ displayName: diseaseKey });
+  if (!diseaseInfo) return "I have limited information about this disease.";
+
+  const lines = [];
+  lines.push(`🌿 **${diseaseInfo.displayName}**`);
+  lines.push(`🟢 Crop: ${diseaseInfo.crop}`);
+  lines.push(`🧬 Type: ${diseaseInfo.type}`);
+  lines.push(`⚠ Severity: ${diseaseInfo.severity}`);
+
+  if (diseaseInfo.symptoms?.length) {
+    lines.push("🔍 Symptoms:");
+    lines.push(...diseaseInfo.symptoms.map((s) => `- ${s}`));
+  }
+  if (diseaseInfo.treatment?.cultural?.length) {
+    lines.push("💊 Cultural Treatments:");
+    lines.push(...diseaseInfo.treatment.cultural.map((t) => `- ${t}`));
+  }
+  if (diseaseInfo.treatment?.chemical?.length) {
+    lines.push("💊 Chemical Treatments:");
+    lines.push(...diseaseInfo.treatment.chemical.map((t) => `- ${t}`));
+  }
+  if (diseaseInfo.treatment?.organic?.length) {
+    lines.push("💊 Organic Treatments:");
+    lines.push(...diseaseInfo.treatment.organic.map((t) => `- ${t}`));
+  }
+  if (diseaseInfo.prevention?.length) {
+    lines.push("🛡 Prevention:");
+    lines.push(...diseaseInfo.prevention.map((p) => `- ${p}`));
+  }
+  if (diseaseInfo.source?.name) {
+    lines.push(
+      `🔗 Source: ${diseaseInfo.source.name} (${diseaseInfo.source.url || "link unavailable"})`
+    );
+  }
+
+  return lines.join("\n");
+};
 
 module.exports = {
   detectDisease,
   getModelStatus,
+  chatWithKnowledge,
 };

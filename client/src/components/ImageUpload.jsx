@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { detectDiseaseRequest } from '../services/api.js';
 
-export default function ImageUpload() {
+export default function ImageUpload({ onDetection, onAskAi }) {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -40,7 +40,11 @@ export default function ImageUpload() {
     setError('');
     try {
       const data = await detectDiseaseRequest(file);
-      setResult(data?.detection || null);
+      const detection = data?.detection || null;
+      setResult(detection);
+      if (onDetection && detection) {
+        onDetection(detection);
+      }
     } catch (err) {
       setError(err?.response?.data?.message || 'Failed to analyze image');
     } finally {
@@ -143,14 +147,25 @@ export default function ImageUpload() {
               </div>
             </div>
             <div className="rounded-2xl bg-slate-50 p-4">
-              <div className="text-xs font-medium text-slate-700">Recommended action</div>
-              <div className="mt-2 text-sm text-slate-700">{result.recommendations}</div>
-            </div>
+            <div className="text-xs font-medium text-slate-700">Recommended action</div>
+              <div className="mt-2 text-sm text-slate-700">
+                {[
+                  result.description,
+                  ...result.organicTreatment,
+                  ...result.chemicalTreatment,
+                  ...result.prevention
+                ]
+                  .filter(Boolean)
+                  .map((line, i) => <div key={i}>{line}</div>)}
+              </div>
+             </div>
+
             <button
               type="button"
+              onClick={() => onAskAi && onAskAi(result)}
               className="w-full rounded-xl bg-agri-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-agri-800"
             >
-              Ask AI about this result
+              💬 Ask AI Assistant about this result
             </button>
           </div>
         )}

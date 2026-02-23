@@ -20,10 +20,28 @@ const aiLogSchema = new mongoose.Schema({
     min: 0,
     max: 100
   },
-  recommendations: {
+
+  description: {
     type: String,
-    required: [true, 'Recommendations are required']
+    default: ''
   },
+  organicTreatment: {
+    type: [String],
+    default: []
+  },
+  chemicalTreatment: {
+    type: [String],
+    default: []
+  },
+  prevention: {
+    type: [String],
+    default: []
+  },
+  severity: {
+    type: String,
+    default: 'Unknown'
+  },
+
   createdAt: {
     type: Date,
     default: Date.now

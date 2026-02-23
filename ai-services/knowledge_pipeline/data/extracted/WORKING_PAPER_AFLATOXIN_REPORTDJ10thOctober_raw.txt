@@ -1,0 +1,2982 @@
+1
+SITUATION ANALYSIS: IMPROVING FOOD SAFETY IN THE MAIZE
+VALUE CHAIN IN KENYA
+Report prepared for FAO by
+Prof. Erastus Kang'ethe
+College of Agriculture and Veterinary Science
+University of Nairobi
+September 2011
+
+-- 1 of 89 --
+
+2
+Table of Contents
+List of Figures ................................................................................................................................................ 6
+List of Tables ................................................................................................................................................. 7
+Acronyms ...................................................................................................................................................... 8
+Executive Summary..................................................................................................................................... 11
+1: Introduction and Purpose of the Report................................................................................................. 13
+2.0 Overview of Kenya’s economy and the main GDP drivers in relation to the Maize value chain ......... 13
+2.1 Agriculture ........................................................................................................................................ 13
+2.2 Manufacturing .................................................................................................................................. 14
+2.3 Tourism ............................................................................................................................................. 14
+2.4 Whole and Retail Sectors.................................................................................................................. 14
+2.5 Information Communication ............................................................................................................ 14
+3.0 General maize information - production, imports and exports for last 10 years and projections ....... 14
+3.1 Geographical production regions ..................................................................................................... 14
+Figure 1: Map of Kenya showing crop growing regions ..................................................................... 15
+3.2 Overview of Kenyan Maize Production ............................................................................................ 16
+3.2 Kenyan Maize Importation figures ................................................................................................... 17
+3.3 Kenyan Maize Projections ................................................................................................................ 18
+4.0 Maize Food safety and Quality Issues ................................................................................................... 19
+4.1 General Food Safety and Quality requirements ............................................................................... 19
+4.2 Pesticides .......................................................................................................................................... 19
+4.3 Mycotoxins ....................................................................................................................................... 20
+
+-- 2 of 89 --
+
+3
+4.4 Maize grading standards .................................................................................................................. 22
+5.0 Mycotoxin Testing Laboratories ........................................................................................................... 23
+6.0 Maize Value Chain and Main Stakeholder’s Overview ......................................................................... 24
+6.1 Structure of the value chain ............................................................................................................. 24
+6.2 Seeds and Seed developing companies ............................................................................................ 25
+6.2.1 General information .................................................................................................................. 25
+6.2.2 Historical seed information ....................................................................................................... 26
+6.2.3 Current situation with seed companies .................................................................................... 28
+6.2.4 Government policy on maize seed ............................................................................................ 28
+6.3 Farmers ................................................................................................................................................. 29
+6.3.1 Methodology used to collect information from Farmers .............................................................. 29
+6.3.2 Agronomical practices ................................................................................................................... 29
+6.3.3 Farmers’ harvesting practices........................................................................................................ 30
+6.3.4. Farmer’s drying practices ............................................................................................................. 31
+6.3.5 Farmers sorting practices .............................................................................................................. 32
+6.3.6 Comment on Post Harvest Handling ............................................................................................. 32
+6.3.7 Farmer’s knowledge of Aflatoxins ................................................................................................. 33
+6.4 Maize traders and bulk handlers .......................................................................................................... 34
+6.5 Maize millers ......................................................................................................................................... 34
+6.6 Processing and Consumption ................................................................................................................ 35
+6.6.1 Traditional Processing ................................................................................................................... 35
+6.6.2 Posho milling ................................................................................................................................. 35
+6.6.3 Wet and dry milling ....................................................................................................................... 36
+6.6.4 Preparation and consumption ....................................................................................................... 36
+6.7 Maize marketing ................................................................................................................................... 37
+
+-- 3 of 89 --
+
+4
+6.7.1 Maize marketing agents ................................................................................................................ 37
+6.7.1.2 Assemblers ............................................................................................................................. 38
+6.7.1.3 Wholesalers ............................................................................................................................ 38
+6.7.1.4 Dis-assemblers ....................................................................................................................... 38
+6.7.1.5 Retailers.................................................................................................................................. 38
+6.7.1.6 Posho millers .......................................................................................................................... 38
+6.7.1.7 Large Scale Millers .................................................................................................................. 38
+6.7.2 Warehousing receipt system ......................................................................................................... 39
+6.7.3 Price Setting Mechanisms.............................................................................................................. 40
+6.7.4 Institutions that affect chain and price setting mechanisms ........................................................ 41
+7.0: Food Safety Institutional Framework .................................................................................................. 42
+7.1 Institutions ........................................................................................................................................ 42
+7.1.1 Ministry of Agriculture .............................................................................................................. 42
+7.1.2 Ministry of Public Health and Sanitation .................................................................................. 43
+7.1.3 Ministry of Commerce, Industry and Trade .............................................................................. 43
+7.2 National Acts and Regulations governing maize .............................................................................. 43
+7.2.1 The Agriculture Act (Cap 318) ................................................................................................... 43
+7.2.3 Crop Production and livestock act (Cap 321) ............................................................................ 44
+7.2.4 Plant Protection Act (Cap 324) .................................................................................................. 44
+7.2.5 Seed and Plant Varieties Act (Cap 326) ..................................................................................... 44
+7.2.6 Food, Drugs and Chemical Substance Act (Cap 254)................................................................. 44
+7.2.7 Public Health Act (Cap 242) ....................................................................................................... 44
+7.2.8 Trade Description Act (Cap 505) ............................................................................................... 45
+7.2.9 Weights and Measures Act (Cap 513) ....................................................................................... 45
+7.2.10 National Cereals and Produce Board Act (Cap 338) ................................................................ 45
+
+-- 4 of 89 --
+
+5
+7.3 Policies .................................................................................................................................................. 45
+7.3.1 Strategy for Revitalization of Agriculture (SRA)............................................................................. 45
+7.3.2 Economic Recovery Strategy (ERS) ................................................................................................ 46
+7.3.3 Poverty Reduction Strategy Paper (PRSP) ..................................................................................... 47
+7.3.4 The National Food Safety Policy .................................................................................................... 47
+7.3.5 Kenya Food Security and Nutrition Policy ..................................................................................... 47
+8.0 Aflatoxin food safety projects ............................................................................................................... 48
+8. 1 Aflacontrol project ........................................................................................................................... 48
+8.2 Purchasing for progress (P4P) Programme (WFP) ............................................................................ 48
+8.3 Research institutions ........................................................................................................................ 49
+8.4 The Njaa Marufuku Kenya (NMK) ..................................................................................................... 50
+8.5 National Agriculture and Livestock Extension Programme (NALEP) ................................................ 50
+8.6 Water master plan ............................................................................................................................ 51
+8.7 Private sector programmes .............................................................................................................. 52
+8.8 Initiatives to promote food safety ........................................................................................................ 52
+8.8.1 National Food safety Coordinating Committee ............................................................................. 52
+8.8.2 Commodity Exchange Market ....................................................................................................... 53
+8.9 Institutional gaps and capacities ...................................................................................................... 53
+9.0 Discussion.............................................................................................................................................. 54
+10.0 Recommendations .......................................................................................................................... 59
+11.0 References .......................................................................................................................................... 62
+Annex 1: National maize variety list (Species: Zea mays L.) ....................................................................... 65
+Annex 2: Current projects dealing with Aflatoxin in Kenya. ....................................................................... 81
+Annex 3. List of testing Laboratories with Capacity to test for Aflatoxin ................................................... 85
+Annex 4: Roles and mandates of Government Institutions ........................................................................ 87
+
+-- 5 of 89 --
+
+6
+List of Figures
+Figure 1: Map of Kenya showing crop growing regions.............................................................................. 15
+Figure 2: Production and imports of maize in Kenya 2001 – 2009 ............................................................. 14
+Figure 3: Kenyan maize value chain ............................................................................................................ 24
+Figure 4: Drying maize on stakes in the field (4a) and removing the cobs and placing them on the
+ground (4b) ................................................................................................................................................. 29
+Figure 5: Maize drying on canvas in Moi's bridge Uasin Gishu (5a) and Kibwezi 5b). ……………………………30
+Figure 7: Simplified maize marketing chain................................................................................................36
+Figure 8: Maize prices trends in major markets in 2011 (Kshs/90kg bag)................................................ 39
+Figure 9: Metal grain silos for storing maize at household level (Benjamin in Mbeere) ............................ 56
+
+-- 6 of 89 --
+
+7
+List of Tables
+Table 1: Average maize production from 2005-2009 ................................................................................. 16
+Table 2: Reported aflatoxin poisoning cases in Kenya (1960-2010). .......................................................... 20
+Table 3: Grading of Maize in the East African Community ......................................................................... 22
+Table 4: Some of the seed varieties adopted by farmers in different ecological zones ............................ 25
+Table 5: Total Seed varieties released by Seed companies (1961-2009)....................................................26
+
+-- 7 of 89 --
+
+8
+Acronyms
+CDI/VOCA Agricultural Cooperative Development Initiative
+AGOA African Growth and Opportunities Act
+AGRA Alliance for Green Revolution in Africa
+AOAC Association of Official Analytical Chemists
+ASCU Agricultural Sector coordinating Unit
+CE Commodity Exchange
+CEM Commodity Exchange Market
+CIDA Canadian International Development Agency
+CIGs Common Interest Groups
+CIYMMT International Maize and Wheat Improvement Center
+DANIDA Danish International Development Agency
+DFID Department for International Development
+EACS East African Community Standards
+EAGC Eastern African Grain Council
+EAC East African Community
+EC European Commission
+ELISA Enzyme Linked Immunosorbent Assay
+ERS Economic Recovery Strategy
+EVIRA Finnish Food Safety Authority
+FAO Food and Agricultural Organization of United Nations
+FOASTAT Food and Agricultural Organization –Statistics
+FSD Financial Sector Deepening Trust
+GDP Gross Domestic Product
+GIZ/GTZ German International Cooperation
+GOK Government of Kenya
+Ha Hectare
+
+-- 8 of 89 --
+
+9
+HPLC High Performance Liquid Chromatography
+ICTs Information Communication Technology
+IFAD International Fund for Agricultural Development
+IFPRI International Food Policy Research Institute
+IITA International Institute of Tropical Agriculture
+ISO International Standards Organization
+JICA Japan International Cooperation Agency
+KACE Kenya Agricultural Commodity Exchange
+KARI Kenya Agricultural Research Organization
+KEBS Kenya Bureau of Standard
+KEPHIS Kenya Plant Health Inspectorate Services
+KMDP Kenya Maize Development Programme
+KSC Kenya Seed Company
+KS-EAS Kenya Standard-East African Standard
+KShs Kenya Shillings
+MASL Meters above Sea Level
+MDG Millennium Development Goals
+MoA Ministry of Agriculture
+MOHS Ministry of Health and Sanitation
+MSV Maize Streak Virus
+NAEP National Development Extension Agency
+NALEP National Agricultural Extension Programme
+NCPB National Cereals and Produce Board
+NGO’s Non-Governmental Organizations
+NMK Njaa Marufuku Kenya
+NPHL National Public Health Laboratories
+OP Organophosphate
+PRSP Poverty Reduction Strategy Paper
+
+-- 9 of 89 --
+
+10
+SGS Society Generale Surveillance
+SIDA Swedish International Development Agency
+SRA Strategy for Revitalizing Agriculture
+T Tonnes
+UNCHR United Nations Commission for Human Refugees
+UON University of Nairobi
+US$ United States Dollars
+USAID United States Agency for International Development
+USAID COMPETE United States Agency for International Development Competitive Trade
+and Expansion Programme
+WFP World Food Programme
+WHO World Health Organizations
+WRS Warehouse Receipt System
+
+-- 10 of 89 --
+
+11
+Executive Summary
+Maize is a significant food source in Kenya and more than 75% of the local production is
+provided by small farmers. Unfortunately there is not enough production to satisfy the market
+demand therefore maize has to be imported. Projections show that this shortfall will only
+increase in the future. The maize prices have also been increasing in recent years.
+The government has a range of initiatives designed to increase maize production levels, but
+there is not the same amount of effort being given to manage production and trading
+conditions or establish large storage facilities.
+Mycotoxins are an identified food safety problem in Kenya and there have been a number of
+human and animal illnesses and deaths attributable to aflatoxins. To date pesticides have not
+been considered a maize food safety problem but it is just possible that this topic has not been
+well investigated.
+A number of seed companies operate in Kenya and they have bred a range of different seed
+types suitable for the diverse ecological zones in the country. Seed selection is currently done
+on the basis of potential productivity. To mitigate aflatoxin problems seed developing
+companies would also need to consider pest resistance, disease and drought tolerance, husk
+cover and flintiness of the grain.
+The FAO/University of Kenya project found that farmers are not aware of the food safety issues
+associated with mycotoxins. They are also not aware of the harvest, drying and storage
+techniques necessary to prevent mycotoxin growth.
+There are a number of different players involved in the post harvest marketing chain – small
+independent operations, posho millers, assemblers and dis-assemblers, wholesalers and
+retailers as well as the consumers. There is a need for capacity development and training for
+all of those involved in farming and the post harvest chain.
+Storage of maize is a problem, particularly for the small farmers and the householders. A
+warehouse marketing system is one way of controlling storage conditions and product stored in
+such facilities would be required to be monitored for quality and food safety factors.
+There are maize grading standards (EA2:2005 and KEAS 2:2005) which set aflatoxin limits but
+these standards are only implemented in the formal marketing channels. Most maize in Kenya
+is sold through informal marketing systems.
+
+-- 11 of 89 --
+
+12
+The lead government agency is the Ministry of Agriculture, but there are other government
+agencies with an interest in food safety/quality issues, for example, the Ministry of Health. At
+present the Kenyan government has is no specific maize policy.
+There are a number of aflatoxin research projects going on in Kenya, but it is important that
+aflatoxin research looks at ways of preventing aflatoxin contamination rather than just
+remediation of contaminated product. Consideration also needs to be given on what can be
+safely done with contaminated maize because contaminated grain fed to cows has resulted in
+elevated levels in the milk supply.
+There are currently a large number of Kenyan laboratories (more than 50) who are capable of
+undertaking aflatoxin analysis, but often they have no control over how and where the
+sampling is done. Another major problem is that there is no overarching organization
+responsible for collating the results and watching for the Kenyan aflatoxin trends.
+In summary there are a number of areas that need addressing to control the aflatoxin food
+safety issues associated with maize. These include government initiatives, effective surveillance
+systems, collaboration between the many stakeholders, research (particularly related to
+preventative measures), adequate storage facilities and capacity development and training of
+the stakeholders.
+
+-- 12 of 89 --
+
+13
+1: Introduction and Purpose of the Report
+Maize is both a significant food source in Kenya and a potential cause of food safety issues.
+This report has been commissioned to understand Kenya’s maize production, processing,
+storage and marketing practices in conjunction with the current regulatory and policy
+environment so as to determine how together these factors affect the risk of grain
+contamination.
+A full appreciation of these interrelationships will assist stakeholders to determine how and
+where food safety issues may be best addressed.
+2.0 Overview of Kenya’s economy and the main GDP drivers in relation
+to the Maize value chain
+Kenya’s economic growth has averaged around 3 percent per annum over the last couple of
+years with an estimated Gross Domestic Product (GDP) of US$ 31.4 billion in 2008. The Kenyan
+economy is heavily dependent on agriculture (24% of the GDP), but other key industry sectors
+are manufacturing, tourism, fisheries, mining, energy, telecommunications and finance.
+The following are the top four sectors are agriculture, manufacturing, tourism and information
+communication.
+2.1 Agriculture
+Agriculture plays a dominant role in Kenya’s economy despite the fact that upwards of 85
+percent of Kenya is classified as arid or semi-arid (leaving arable land at a mere 15 percent of
+the total land area) and over-dependence on rain-fed agriculture sector leaves the country
+vulnerable to the vagaries of weather. Agriculture contributes 65% of total exports (KSHS 194
+billion). Coffee and tea are the principal exports; however, flowers and horticulture are playing
+increasingly important roles as foreign exchange earners. Agriculture also accounts for 18% of
+the total formal employment of 1.8 million (Kenya Vision 2030), with 75 percent of the
+population directly or indirectly employed in this sector.
+The agricultural sector is divided into four subsectors, namely, industrial crops, food crops,
+horticulture, and livestock and fisheries. Food crops contribute to 32% of the agricultural GDP,
+with maize crops contributing 15%.
+The key players in Kenya’s agricultural production are the small farmers; those cultivating less
+than 1 hectare of land to produce food mainly for home consumption with their surplus sold for
+
+-- 13 of 89 --
+
+14
+badly needed cash. These farmers are particularly vulnerable to unpredictable rainfall and
+seasonal rivers, streams and wells. Therefore crop failure is common, leading to food shortages
+and even to famine.
+2.2 Manufacturing
+While Kenya is the industrial giant of the region manufacturing still only accounts for about 10
+percent of GDP. This underlines the enormous untapped potential of this sector in Kenya’s
+economy. At present this sector is dominated by food processing industries such as grain
+milling, sugarcane processing and beer production.
+The enactment of the African Growth and Opportunity Act (AGOA) by the US Congress helped
+stimulate exports in new areas such as textiles and as a result exports to the US alone increased
+more than six-fold from US $44 million in 2000 to US$ 800 million in 2006. The manufacturing
+sector employs 254,000 people which represent 13% of total employment. The informal sector
+employs more than 1.4 million people.
+2.3 Tourism
+At 10 percent of the country's GDP tourism is the third largest contributor to the country's GDP
+after agriculture and manufacturing. In 2007, the sector's earnings topped US$ 1 billion, making
+the sector Kenya's largest foreign exchange earner. Two million tourists came to the country in
+2007, an increase of 12.5 percent over 2006. The main tourist attractions are the country's
+world renowned national parks and beaches.
+2.4 Whole and Retail Sectors
+The wholesale and retail sectors are predominantly informal accounting for 30% to GDP.
+2.5 Information Communication
+This is a growing industry in Kenya with the main growth in mobile telecommunication which
+has 12.9 providers. At present Business Processing Outsourcing and “off shoring” is very small
+accounting for only 0.01% of the GDP.
+3.0 General maize information - production, imports and exports for last
+10 years and projections
+3.1 Geographical production regions
+According to Kenya Maize Development Programme (KMDP) maize is the primary staple food
+crop in the Kenyan diet with an annual per capita consumption rate of 98 kilograms
+contributing about 35% of the daily dietary energy consumption (FAOSTAT).
+
+-- 14 of 89 --
+
+15
+Therefore maize is grown in many Kenyan agro ecological zones starting from the coast
+lowlands (1-1250 metres above sea level (masl)) to the high potential highlands (>2100 masl).
+Figure 1 shows the main growing areas and Table 1 shows the average production of maize in
+the eight provinces of Kenya from 2005 – 2009.
+Source Grain Report by EPZ (2005+ 2009)
+Figure 1: Map of Kenya showing crop growing regions
+
+-- 15 of 89 --
+
+16
+Table 1: Average maize production from 2005-2009
+Provinces Area Under
+crop (Ha)
+Production
+(90Kg/bag)
+Yield (bags/ha) Population a
+Rift Valley 644,895 13,225,039 20.5 10,066,805
+Nyanza 262,453 3,711,215 14.1 5,442,711
+Eastern 462,401 3,903,141 8.4 5,668,123
+Western 225,302 4,163,878 18.5 4,334,282
+Coast 129,379 1,079,383 8.3 3,325,307
+Central 157,063 1,047,879 6.7 4,383,743
+North Eastern 2,525 5,520 2.2 2,310,757
+Nairobi 1,053 6,420 14.4 3,138,369
+Source: GOK Economic Review of Agriculture 2010 and a Kenya Population and Housing Census 2009
+3.2 Overview of Kenyan Maize Production
+90% of the rural households in Kenya grow maize and production is dominated by small scale
+farmers who produce 75% of the overall production. The other 25% is grown by large scale
+farmers.
+In recent years there has been an expansion of land used for maize production as evidenced by
+1.7 million hectares in 2008 and 1.8 million hectares in 2009. This was actually less than the
+2009 Ministry of Agriculture targets which aimed for 2.2 million hectares producing 36 million
+bags. The available figures showed that 2009 production reached 2.4 million tonnes.
+
+-- 16 of 89 --
+
+17
+2001
+2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+0
+1000000
+2000000
+3000000
+4000000 Area under acreage (Ha)
+Production (tons)
+Imports
+Years (2001-2009)
+Source: FAOSTAT, 2011
+Projections
+Figure 2: Production and imports of maize in Kenya 2001 – 2009
+As shown in Figure 2 Kenyan maize production has been fluctuating (increasing and decreasing)
+over the last 10 years but there has been an increasing demand due to the high rate of
+population growth in Kenya (estimated at 2.9% per annum). The national maize production
+ranges between 24 and 33 million bags per annum which does not keep pace with the domestic
+consumption levels (e.g. in 2008, the consumption was estimated over 36 million bags).
+This maize shortfall is because of the:
+i) Increase in urbanization.
+ii) High reliance on maize based diets as the staple food (evidenced by the high
+consumption figures of 98kg/capita/year).
+iii) Low per capita production and changing lifestyles.
+3.2 Kenyan Maize Importation figures
+In the last decade, the country has experienced years of heightened food insecurity,
+dependence on imports and emergency humanitarian assistance.
+The large maize deficit is met through the importation from other countries. The amount of
+maize that is imported fluctuates depending weather conditions and Figure 2 shows evidence
+
+-- 17 of 89 --
+
+18
+of this with 314,000 Tonnes imported in 2001 and 243,000 T in 2009. However, aside from the
+weather the maize importations have increased just to keep up with Kenyan consumption
+patterns, increasing from 2.9% to over 12% in the period 1970 - 1991. Figure 2 clearly shows
+that maize imports have continually been increasing.
+In 2009, Kenya imported 16.8 million bags of maize (GoK, 2011).
+3.3 Kenyan Maize Projections
+Sadly the national maize supply is expected to further decline due to a combination of crop
+failure in the predominantly short rains dependent southeastern lowlands coupled with pre-
+and post harvest losses (20-30%) in Kenya’s grain basket (Rift Valley). Food insecurity for farms
+and urban households outside these major production areas is also high due to the increase in
+prices of food stuffs and other commodities.
+Maize price increases consumers throughout the country. Already prices have nearly doubled,
+with the price of a 2 kg pack of maize flour going for 60-120 Ksh instead of the previous 50 Ksh.
+The price of maize in Kenya is among the highest in eastern and southern Africa, and the lowest
+income quartile of the Kenyan population spends 28% of its income on maize.
+With the country’s population projected to be 43.1 million by the year 2020, the demand for
+maize is then likely to be 5 million metric tonnes. This means based on the prevailing maize
+production rates, that the maize deficit will be around of 1.2 million metric tonnes in 2020.
+Increased reliance on imports implies that the foreign exchange reserves and resources
+earmarked for development will be likely diverted for the procurement of food for Kenyans.
+The inefficient maize production-marketing system has contributed to economic stagnation and
+worsening levels of poverty in Kenya. Increased productivity, more efficient markets, and
+rational government policies could dramatically alter the economic contribution of the maize
+sub-sector – from being a drag on the economy to becoming a key element in accelerated
+growth and poverty reduction.
+
+-- 18 of 89 --
+
+19
+4.0 Maize Food safety and Quality Issues
+4.1 General Food Safety and Quality requirements
+The availability of safe food improves the health of people and is a basic human right(UNHCR,
+2005). Safe food contributes to health and productivity and provides an effective platform for
+development and poverty alleviation (WHO, 2002).
+The FAO (1996) declaration states that “ food security exists when all people at all times, have
+physical and economic access to sufficient, safe and nutritious food to meet dietary needs and
+food preferences for an active and healthy life”.
+The basic food safety concept is that food will not harm the consumer so long as the intended
+user guidelines are followed when it is prepared. Conversely, food is potentially harmful
+whenever it has been exposed to hazardous agents and the intended use guidelines have not
+been followed (ISO, 2005).
+As maize is the staple food of Kenya it is important that any food safety concerns are identified
+so that appropriate control steps can be taken prevent human health hazards. To date the
+major health concerns related to maize are:
+i) Contamination with pesticide residues used to in maize production and storage.
+ii) Fungal toxins that contaminate maize during pre and post harvest periods.
+4.2 Pesticides
+In 2010 a consignment of maize imported to Kenya was found to contain high levels of
+Aluminum phosphide, a fumigant used to control fungal growth during shipping. The maize was
+rejected and reshipped back to the country of origin, but this incident did highlight the need to
+monitor maize for chemical contaminants to safeguard human health.
+The commonest storage pesticides (insecticides) applied as dusting powders are
+pirimiphosmethyl, an organophosphate (OP) compound mixed with Permethrin (a pyrethroid,
+common name Actellic). Other dusts powders include malathion (OP), permethrin (pyrethrin),
+fenitrothion (0p) and fenvalerate (pyrethrin). While these pesticides are used to prolong
+storage and control pest infestation during storage, no data is available of the residue levels of
+these pesticides.
+
+-- 19 of 89 --
+
+20
+The data available that is available on grains shows that the residue levels are highest on the
+seed testa, therefore residues could be high on whole meals and wholemeal products.
+It is possible to use most of the approved agricultural chemicals with little food safety impact,
+provided good practices are used. However there may need for some investigations to be
+undertaken to ascertain if these practices are being actively followed in the production chain.
+4.3 Mycotoxins
+The other major food safety hazard associated with maize is from the mycotoxins that are
+produced by many species of fungi which contaminate maize during pre and post harvest
+periods. Currently the primary mycotoxin fungi of concern in the Kenyan maize value chain.
+Aflatoxins are toxic metabolites produced by fungal species during their growth under favorable
+conditions of temperature and moisture. The major aflatoxin producing species are Aspergillus
+flavus and Aspergillus parasiticus. The main cereals affected are maize, sorghum, rice and
+wheat and other crops like groundnuts and cassava. The Aflatoxins produced are classified as
+B1, B2, G1 and G2. Aflatoxin B1 is the most toxic of the four. While these the toxins do not
+seem to have physiological functions for the fungus they are now recognized as potential
+carcinogens, teratogens, mutagens, immune-suppressants and have eostrogenic effects in
+humans.
+Table 2 shows the incidence of aflatoxin poisonings in Kenya during the period 1960-2010.
+Table 2: Reported aflatoxin poisoning cases in Kenya (1960-2010)
+Year Those
+affected
+Numbers
+affected
+Locality
+(Location/Distric
+t)
+Sources of the
+toxin
+Observed
+complications/
+effects
+References
+1960 Ducklings 16,000 White settler
+farmer Rift Valley
+Aflatoxin
+contaminated
+groundnut feed
+Death Peers, &
+Linsell,
+1973
+1977 Dogs/poultry Large
+numbers
+Nairobi,
+Mombasa/Eldoret
+Contaminated
+products due to
+poor storage
+Death FAO/WHO/
+UNEP, 1977
+1981 Humans 12 Machakos Contaminated
+maize
+Death Ngindu,
+et
+al., 1982
+
+-- 20 of 89 --
+
+21
+1984/85 Poultry Large
+numbers
+Poultry farms Contaminated
+imported maiize
+Death Ngindu
+et
+al., 1982
+1988 Human 3 Meru North contaminated
+maize
+Death and acute
+effects
+Autrup	
+et
+al., 1987
+2001 Humans 3
+26
+Meru North
+Maua
+Mouldy maize
+Contaminated
+maize
+Death
+16 death
+Probst, et al.,
+2007
+2002 Poultry/Dogs Large
+numbers
+Coast Contaminated feed Death Njapau
+et
+al., 2007
+2003 Humans 6 Thika Mouldy maize Death Onsongo, 2004
+2004 Humans 331 Eastern,Central
+Makueni Kitui
+Aflatoxin
+contaminated
+grains
+Acute poisoning
+125 deaths
+Lewis	
+et
+al.,
+2005
+2005 Humans 75 Machakos
+,makueni, kitui
+Aflatoxin
+contaminated
+maize
+Acute poisoning,
+75 cases with 32
+deaths
+Eduardo Azziz-
+Baumgartner et
+al., 2005
+2006 Humans 20 Makueni, Kitui,
+Machakos
+Contaminated
+maize
+Acute poisoning
+10 deaths
+Muture &
+Ogana,
+2005
+2007 Humans 4 Kibwezi, Makueni Aflatoxin
+contaminated
+maize
+2 deaths Wagacha &
+Muthomi,
+2008
+2008 Humans 5 Kibwezi, Kajiado,
+mutomo
+Contaminated
+maize
+3 hospitalized, 2
+deaths
+Muthomi et
+al., 2009
+2010 Humans 29 districts in
+Eastern Kenya
+Suspected
+contaminated
+maize
+Price spiraldown
+and grain trade
+breakdown
+unconfirmed dog
+cases.
+Muthomi et
+al., 2010
+
+-- 21 of 89 --
+
+22
+Other mycotoxins affecting maize are the fumonisins, though their health effects are less well
+documented. Preliminary data on the fumonisins suggest that they cause high esophageal
+cancer rates (Wakhisi et al 2005). Therefore further investigations are required to ascertain if
+fumonisin rates in maize are an actual public health problem in Kenya.
+4.4 Maize grading standards
+Since the acute poisoning of the 125 persons in 2004, it has been an on-going challenge to bring
+the contaminated maize problems in Kenya under control. The Government of Kenya through
+the Kenya Bureau of Standards and the East African standards harmonization process have
+established quality standards. This means that there is a mandatory maize grading system for
+the purpose of trade within the East African community (EAS2:2005) which is also implemented
+on the Kenyan domestic market by the Kenya Bureau of Standards (known as KS-EAS2:2005) .
+Table 3 below shows the characteristics that are used to determine the quality and safety for
+these standards within the East African Community.
+Table 3: Grading of Maize in the East African Community
+Defects Maximum limits*
+Grade1 Grade 2
+Foreign matter,% m/m 0.5 1.0
+Inorganic matter, % m/m 0.25 0.5
+Broken grains, %m/m 2.00 4.00
+Pest damaged grains %, m/m 1.00 3.00
+Rotten & diseased grains,%m/m 2.00 4.00
+Discloured grains, %m/m 0.50 1.00
+Moisture, %m/m 13.5 13.5
+Immature shrivelled grains, %m/m 1.00 2.00
+Filth, % m/m 0.10 0.10
+Aflatoxin (ISO 6050) Total aflatoxin 10ppb,
+5ppb B1
+Total aflatoxin 10ppb,
+
+-- 22 of 89 --
+
+23
+5ppn B1
+Total defective grains, %m/m 4.00 5.00
+*Source KS-EAS2:2005
+A section of both EAS 2:2005 and KS –EAS2:2005 relates to the sampling process. The testing
+laboratories always indicate the methodology or standards followed in their analytical
+certificates. Where the testing laboratories were not involved in the sampling they give a
+disclaimer to show that they cannot guarantee how the physical sampling process was done.
+If EAS 2:2005 or KS –EAS2:2005 were adhered to by all this would eliminate the sale of
+substandard foods that may be harmful to consumers as well as stopping false and fraudulent
+trade practices. However, unfortunately the above standard specifications are only
+implemented in the formal maize marketing channels. The bulk of maize is Kenya is sold
+through “informal channels”, where selling occurs from individual to individual or to small
+traders who do not operate such effective quality control systems.
+5.0 Mycotoxin Testing Laboratories
+There are a number of private and public testing laboratories with different capacities for
+testing maize. These laboratories serve a number of clientele who require both national and
+international requiring aflatoxin testing. There are over 50 KEBS listed laboratories for
+monitoring various food safety standards (See Annex 2). During the preparation of this report
+six private (SGs, Polucon, Intertek, Bora Biotek, Unga and Mombasa maize milers) and two
+public (Kenya Plant health Inspectorate Services (KEPHIS) and National Public health
+laboratories (NPHL)) were visited. These laboratories carried out routine aflatoxin testing using
+ELISA and fluorimetric methods.
+A number of the laboratories use Gafta methods (No. 130, 24:1) and EAS 79 as the sampling
+protocols. In other instances the clients do the sampling and bring the samples for analysis. In
+such circumstances the actual reason for sampling is not known or where and how the samples
+were taken. For these laboratories the analytical results are confidential, shared only between
+the clients and the testing laboratory. The laboratories were unwilling to share the reports with
+others, including government surveillance systems.
+The government testing laboratories visited (KEPHIS and National Public Health labs) also
+carried out testing for aflatoxin contamination. The sample for analysis were either brought by
+the clients or they did the sampling themselves. In 2010, one of the laboratories tested 130
+
+-- 23 of 89 --
+
+24
+maize samples out of which only 47 samples had aflatoxin levels less than 10ppb. The highest
+level of aflatoxin recorded in that year was 830 ppb. The volumes of maize involved in these
+testing are not known. The information from the government laboratories indicates that they
+share data between the KEBS, KEPHIS, NPHL and Ministry of Health and Sanitation.
+These findings highlight that the lack of an overarching agency to coordinate data collection
+(sampling information and analytical results) means that although data is available it does not
+help the policy makers in using science based evidence for their decision making.
+6.0 Maize Value Chain and Main Stakeholder’s Overview
+6.1 Structure of the value chain
+The Kenyan maize sector has many actors in the value chain, including farmers, input suppliers
+(seed companies, fertilizer and pesticide suppliers), traders, millers, retailers and consumers
+(Figure 3).
+
+-- 24 of 89 --
+
+25
+6.2 Seeds and Seed developing companies
+6.2.1 General information
+Seeds planted in Kenya vary from local landraces to composites and hybrids. Local landraces are
+poor yielding but have the greater advantage of being suited to the local conditions. They are
+Seed Companies
+Agrochemical
+suppliers
+Government and Private
+Research institutions
+NGO and
+Agric
+extension
+Small-scale
+transporters
+Grain retailers Posho millers	
+Millers (oil	
+& animal	
+feeds	
+Large scale	
+millers
+Grain whole sellers &
+transporters
+Regional Export
+market
+National strategic reserves, imports
+& exports
+Household
+consumption
+Local Markets
+Relief market
+(local & external)
+Relief
+organizations
+Subsistence Small-holder
+commercial
+Large-scale
+Commercial
+Processed
+Products
+
+-- 25 of 89 --
+
+26
+disease and pest resistant in addition to being more palatable to local tastes. It is also possible
+that these varieties might be more resistant to fungal attack than the improved composites and
+hybrids. Composite varieties are certainly better yielding than local landraces, for example, the
+Katumani composite from KARI which is well suited to the dryland zone. There are now many
+types of hybrids and it is now easy find types suitable for all agro-ecological zones (See Table 4).
+Table 4: Some of the seed varieties adopted by farmers in different ecological zones
+Seed Company Agroecological zones and recommended Seed Varieties
+Highland Altitude
+(1500 -2100M
+800-1500mm of rainfall)
+Medium Altitude
+(1000 -1700M and
+700-1000mm of
+rainfall)
+Lowland altitude
+(0-1250M and
+above 400mm of
+rainfall)
+Dryland (1000-
+1500M and 250-
+500mm of
+rainfall)
+Kenya Seed H6213, H6212, H6210,
+H9410, H629, H628,
+H627, H626 and H614
+H624, H623, H516,
+H515, H513 and
+H 511
+DH4, DH1, DH01,
+DH02, DH03 and
+DH04
+Katumani
+composite and
+DLC1
+Pannar/Pioneer PAN691 PAN 683 PAM
+4M-19
+PAN 67, PAN 77 and
+PAN 63
+Western Seed WH699, WH 605,
+WH602, WH 904
+WH508, H505,
+WH504, WH502.
+Wh403
+WH105, WH002,
+WS909, WS202
+WS104, WS 103
+Katumani
+Monsanto DK 8071; DK 8031,
+C5051
+DKC 80-53, DKC 80-
+73, DKC 80-33,
+6.2.2 Historical seed information
+A number of seed companies are operating in Kenya and have developed and released seed
+varieties that favor various regions as shown in Table 4. Between 1964 and 2009 about 164
+varieties were released for production by different organizations. See Table 5.
+
+-- 26 of 89 --
+
+27
+Table 5: Total Seed varieties released by Seed companies (1961-2009)
+SEED COMPANIES TOTAL SEED VARIETIES
+1. KARI/Kenya Seed Company 12
+2. Kenya Seed Company (KSC) 38
+3. Pannar Seed Company 16
+4. Pioneer Hybrid 5
+5. KARI 40
+6. Monsanto 7
+7. OCD (Fiada Seeds) 1
+8. Lagrotech Seed Company 2
+9. Western Seed Company 29
+10. Agris Seed Co Limited 3
+11. FICA Seed 1
+It is recognized that the seed companies’ research accomplishments helped to stem a serious
+outbreaks of MSV since 1964. Remarkable success has also achieved with the development
+of Striga-resistant varieties that suppress the weeds, and other pest-resistant varieties that
+were released into endemic areas of Kenya. Early, intermediate, and late maturing varieties
+have been developed with yields up to twice as much as traditional varieties. Early maturing
+varieties enabled maize production to expand into new areas where the short rainy season had
+adversely affected maize cultivation in the past. These scientific breeding efforts by the seed
+companies have certainly helped realize increased maize production.
+
+-- 27 of 89 --
+
+28
+6.2.3 Current situation with seed companies
+There are still a number of seed companies operating in Kenya. For the preparation of this
+report three companies were visited: Kenya Seed Company a government parastatal and two
+other international companies (Monsanto, Pannar/Pioneer). The discussions with these
+companies were to find out what role the seed companies might play in mitigating aflatoxins. In
+particular discussions were focused on the characteristics the companies use to select seed
+varieties for release to farmers and how this could impact on aflatoxin control.
+Currently the major breeding criterion is maize productivity per hectare. This must be above 5%
+of the benchmark seed for the new variety seed to be released. Other equally important
+attributes are pest and disease resistance, drought and low nitrogen tolerance. In addition,
+other qualities that are considered by all the by seed developing companies are:
+1) Fast dry out after physiological maturity.
+2) Stay green to enable the stovers to be used as animal feed after the cobs have dried.
+3) Multi-cobbing.
+4) Husk cover to reduce cob rot.
+5) Flintiness (hardness) to increase poundability of the grain.
+6) Standability of the plant after drying to enable the farmers (especially large scale) to
+use combined harvesting.
+The characteristics that are important in mitigating aflatoxin susceptibility are pest, disease and
+drought tolerant, husk cover and flintiness of the grains. These are attributes that the seed
+developing and bulking companies ought to consider. One drawback in breeding is that these
+qualities may not be positively related to high productivity per hectare which is currently the
+single most important criterion for release.
+6.2.4 Government policy on maize seed
+The government has no policy on maize despite its importance in the Kenyan diet. The seed
+companies are driven by a business approach that appeals to their clientele; increase in the
+number of bags harvested per hectare. This has been pushed by efforts of various government
+policy papers (ERS) that considers having food security as important in development of Kenya.
+In this regard, the seed companies have concentrated their efforts on high yielding varieties
+which meet a partial goal of food security – quantity but have compromised on the safety.
+However, considering that aflatoxin outbreaks have occurred in the country since 1960 with the
+highest epidemic levels in 2004, the priority should now be for the development of seed
+
+-- 28 of 89 --
+
+29
+varieties that are less susceptible to fungal attack and aflatoxin accumulation, especially for the
+Eastern aflatoxin susceptible belt.
+It is very likely farmers will be willing to pay for new strains that are resistant to aflatoxin
+contamination, given the success the seed companies had with selling seed varieties resistant
+to maize streak virus and Striga.
+6.3 Farmers
+6.3.1 Methodology used to collect information from Farmers
+To gather information for this report two farmer groups were visited and focus group
+discussions held on why they were formed and to ascertain their knowledge and practices on
+mitigating the aflatoxin menace in maize. The discussions were not structured with a check list
+to allow coding of responses as it would be if a proper focus group discussion was planned.
+Instead the interviewer engaged them in discussions to determine their agronomical practices
+and knowledge on aflatoxins. The groups were represented by their committee members.
+The farmer groups visited were Growel Farmers Group in Kiplombe and Kipchamu in Eldoret.
+Kiplombe group consisted of 40 members who had leased 135 Ha of land and were planting
+maize as a group on 9 Ha and the rest of land allocated to members to grow maize on individual
+basis. Kipchamu on the other hand was a community based organization bringing together 14
+groups engaged in different activities but members are growing maize on individual basis. Both
+groups were formed in order to utilize their group strengths in mobilizing maize stocks in order
+to get an advantage in market price bargaining as they marketed their produce. As group, they
+are also able to access credit facility in procurement of seeds and other inputs.
+6.3.2 Agronomical practices
+The two groups interviewed for this report sought advice from government extension officers
+and other non-governmental organizations in the region (EAGC) on agronomical practices. They
+procured their seeds and agrochemicals from reputable seed and agrochemical companies who
+also offered extension services. The groups used agrochemicals to control weeds as hand
+weeding is not practical on large acreage where maize is growing.
+Use of these agrochemicals helped the maize plant grow healthy and therefore resistant to
+fungal infestation at the pre-harvest period. It is known that plants can be stressed due to weed
+
+-- 29 of 89 --
+
+30
+infestation and adverse weather conditions and that this stress predisposes the plants to fungal
+infestation.
+There is a need though to undertake further scientific projects to investigate how other
+agronomic practices, for example those related to drought management, can increase or
+decrease fungal contamination.
+6.3.3 Farmers’ harvesting practices
+During harvesting the farmers cut the maize and make stakes in the field Figure 4 (a) below. The
+maize was left to dry and the cobs removed later. During this period, the maize cobs are thrown
+on the ground (Figure 4b) as they remove the cobs from the husks and later picked up for
+storage before shelling. This practice exposes the maize cobs to fungal spores in the soil and
+this increases the risk of aflatoxin contamination in later steps in the maize of processing.
+Figure 4: Drying maize on stakes in the field (4a) and removing the cobs and placing
+them on the ground (4b)
+Timing of the harvesting for when the maize is mature and dry is critical in helping reduce the
+moisture levels and therefore the fungal growth and aflatoxin production rates, yet it was
+identified that the farmers interviewed did not have any idea on when it is best to harvest.
+
+-- 30 of 89 --
+
+31
+6.3.4. Farmer’s drying practices
+Maize drying is another critical step in reducing the moisture content, thus preventing fungal
+growth, aflatoxin production and consequent contamination.
+The farmers maintained that maize is dried in the field before cobs are removed. It is further
+dried while in store before shelling with the use of tractor propelled shelling machines. If the
+shelling machine is not calibrated for the maize varieties and type (flint or dent maize), it may
+result in-broken grains that increase the chances of fungal mycelia penetrating the maize grains
+and grow and producing the aflatoxin. The calibration of these machines is critical if farmers
+want to further mitigate fungal infestation and aflatoxin contamination.
+Maize is further dried before it is bagged for sale especially to markets which have grading
+systems to check the moisture content. In these circumstances, maize is dried on the ground
+on canvas thus preventing contact with the soil. In many instances, such maize is dried along
+the road sides or in open fields where soil is easily brown onto the drying maize on canvas. See
+Figure 5 and note the passing vehicles and pedestrians. Dust laden with fungal spores from
+passing vehicles can easily be deposited on the maize drying canvas.
+Figure 5: Maize drying on canvas in Moi's bridge Uasin Gishu (5a) and Kibwezi (5b).
+
+-- 31 of 89 --
+
+32
+6.3.5 Farmers sorting practices
+During the interviews, the farmers indicated that they rarely sort and select maize after
+shelling. Sorting and selection is done in the field when cobs are being removed from the maize
+stakes. This selection is not adequate as many cobs rotten to various levels may be passed
+depending on the judgment of those harvesting. The clean maize is usually found to contain
+rotten and mouldy grains which are not sorted and selected later. The assumption is that the
+level of rotten grains allowable by the grading system will not be exceeded. The criterion (See
+Table 3) of 2 and 4% rotten grains for Grades one and two maize respectively should be made
+stricter to make sure that no rotten maize is allowed at this point, thus reducing the risk of
+fungal growth and aflatoxin contamination of maize during further storage.
+The very rotten cobs are separated from the good cobs and later shelled separately and the
+grain used for making animal feeds. The practice is to mix one bag of clean maize with two bags
+of rotten maize, mill and use these as animal feeds. This practice of dilution does not reduce
+drastically the amount of aflatoxin in animal feeds. It is important to note that milk from areas
+surrounding the maize growing areas (Eldoret Municipality) was found to contain Aflatoxin M1
+and feeds having high levels of total aflatoxin exceeding the allowable limits by FA0/WHO
+(Kang’ethe and Langat 2010).
+6.3.6 Comment on Post Harvest Handling
+In the 2004-2006 outbreak, poor post harvest handling especially storage at household level
+was blamed for the outbreak. While this may have been the case, no tangible progress has
+been achieved in improving storage facilities at household level. Farmers have constructed cribs
+(Figure 8) and whether these have had impact in reducing aflatoxin accumulation in maize at
+household level has yet to be evaluated. The Aflacontrol project samples maize pre harvest and
+follows the maize during three months of storage at farmer’s stores. Provisional results from
+Aflacontrol project (ACDI/VOCA, 2009) indicate that aflatoxin positive samples with more than
+10 ppb increased during the three months of storage (Mahuku, 2011). This is an indication that
+storage practices are still inadequate at the household level.
+
+-- 32 of 89 --
+
+33
+Figure 6: Farmers crib for storing maize in Kaunguni, Makindu, Eastern Province
+With maize drying being a critical step in the control of aflatoxin, adequate strategies should be
+developed to ensure that maize is properly dried during storage. With the current vagaries of
+weather the government should either establish mobile maize drying units or construct driers
+in specific areas where farmers can access these to have their maize dried at a fee.
+6.3.7 Farmer’s knowledge of Aflatoxins
+Farmers, especially in the Kipcham group did not know what caused aflatoxin, the health effects
+in humans and livestock and how to mitigate these. This clearly points to the need for greater
+awareness in the maize growing areas in order to ensure the production, storage and marketing
+of aflatoxin clean maize.
+It is the current government policy that the supply of extension services be demand driven,
+requiring that farmers must request the services they want from the government officers. This
+is as a result of very few extension officers manning the divisions. The farmers in the Eldoret
+area interviewed in this report may have not asked the extension channels to educate them on
+aflatoxin control strategies. This explains their apparent ignorance. They also are far removed
+from the aflatoxin prone belt of the eastern region and therefore the devastating effects of
+acute aflatoxin poisoning experienced in the eastern are also not well appreciated by them.
+In summary, although the knowledge of the effects of aflatoxin exists with the extensionist
+channels (public and private), the current human resource capacity is not adequate to
+effectively educate all the farmers on this issue.
+
+-- 33 of 89 --
+
+34
+6.4 Maize traders and bulk handlers
+There are small and large scale maize traders in the value chain.
+The small traders buy maize directly from smallholder farmers and assemble in bulk to deliver
+to small market retail traders, large trading companies or maize millers. The small traders may
+not have a very good understanding on the implications of aflatoxin testing because of the
+volumes they handle and the clients may not require the assurance that the maize meets the
+standards on aflatoxin.
+The large trading companies sell to National Cereals and Produce Board (NCPB), national or
+international relief organizations or millers. Export Trading Company Limited, a medium maize
+trader situated in Eldoret was visited to gather data related to maize traders and bulk handlers.
+The company carries out manual quality grading checks on any deliveries. After bagging, the
+stacked bagged maize is fumigated using Aluminium Phosphide every three months.
+In order to access the NCPB and the large maize millers’ markets the maize trading companies
+clean, bag, fumigate, grade, test for moisture content and aflatoxin and store the grain until
+appropriate market conditions are reached for sale
+Because traders store maize for long periods before release, quality and safety parameters are
+essential for a product that meets aflatoxin standards at the time of sale. Some clients who buy
+from bulk handlers send specialized laboratories to sample the maize in the store, analyze and
+give a report as to whether it meets the client’s specifications. The bulk handlers may not know
+the reasoning behind the sampling protocols for aflatoxin but they comply with the testing
+laboratories demands. Laboratories doing these analyses are conversant with the sampling
+protocol for aflatoxins. They consistently quote the standard they use which specifies the
+sampling method and results interpretation.
+6.5 Maize millers
+The Government has identified 8 millers with substantial milling capacities to mill on contract in
+Nairobi and Thika because there are insufficient maize quantities at other NCPB depots in the
+country. The millers are Unga Ltd, Uzuri Foods Ltd, Mombasa Maize Millers (Nrb), Pembe Flour
+Mills, Kabansora Millers, Nairobi Flour Mills, Chania Flour Mills and Capwell Industries. The
+millers are paid Kshs 1750 per 90kg bag for contract milling. Cost of milling 58,631 bags for the
+Government would be approximately 11.8 million shillings.
+
+-- 34 of 89 --
+
+35
+Two maize millers (Unga Ltd and Mombasa Maize millers) were visited. Both companies deal
+with maize processing for human consumption and animal feeds. The two companies have
+laboratories that sample and determine the quality of the raw materials before processing and
+also monitor the quality of products during processing. They also refer their samples to private
+laboratories for second opinions. Quality of the final product is important because at this step
+the milled maize is ready for local or regional market. Poor quality and hazardous foods are a
+liability for the company. These companies said that they rarely have contaminated maize for
+processing for human food because they have a network of field officers and traders who
+source maize for them and they understand the quality concerns of the companies. If a
+consignment does not meet the standards, it is mainly mixed with clean maize and used for
+animal feed manufacture.
+6.6 Processing and Consumption
+6.6.1 Traditional Processing
+Traditionally, maize is processed by dehulling or pounding using either a stone quern or mortar
+and pestle. The aim is to remove the outer covering to soften the maize for cooking. Drying
+milling was also traditionally carried out using water mills. The processed maize is used to make
+a variety of traditional products such as ugali (thick slurry) and porridge (thin slurries) which is
+the main staple for most households in Kenya. Traditional processing methods such as
+dehulling, soaking and cooking maize have been reported to reduce the levels of aflatoxins by
+46.6%, 28-72% and 80-93% in maize containing 10.7-270 ng/g of aflatoxin levels in Kenya
+(Mutungi et al., 2008). The findings of this study indicate that exposure to acute aflatoxin levels
+is minimized during food processing and preparation. Generally, these processing techniques
+have been traditionally used for increasing the palatability of different food recipes but can also
+be promoted as strategies capable of reducing aflatoxin contamination of grains.
+6.6.2 Posho milling
+The most common type of maize flour processing for human consumption is carried out by
+small-scale posho millers to produce whole grain maize meal. Posho milling is practiced both in
+the urban and rural centers and accounts for 60% of the maize meal processing in Kenya. The
+majority of the posho millers use a simple hammer mill for processing the maize into flour, after
+cleaning and dusting of the maize. The posho millers depend on the maize brought to mills by
+the farmers themselves, and therefore require low capital input. This type of milling is
+considered inefficient and underutilized. However, a number of posho millers are investing in
+new and modern equipment and technologies to enhance their extraction rates and efficiency
+
+-- 35 of 89 --
+
+36
+of the system. Adoption of improved maize milling technologies by these posho millers would
+result better marketing opportunities for their products through branding. This would also
+result in greater chances for maize value addition, fortification of flour and packaging to
+capture the niche markets. Currently, there has been an increasing number of small- and
+medium-scale milling enterprises that are involved in maize value addition through blending
+and fortification in the flour milling process using different cereals and legumes. The millers are
+blending the maize flour with flours from other cereals (sorghum, millet, rice etc) and
+legume/pulses (beans, peas etc) to obtain more nutritious products. There has been an
+increased market demand for such products with the rising awareness of the health promoting
+properties of the composite flours by consumers.
+6.6.3 Wet and dry milling
+The main commercial processing of maize in Kenya involves wet and dry milling to produce
+maize flour, starch, syrups, oil, animal feeds and other by-products. In wet milling maize is
+softened by soaking in water for 40 hours. The soft grain is milled to break the kernel and
+release the oil bearing germ and bran. The germ is dried and processed into oil while bran is
+usually separated and used for animal feeds. The bran is also used in making gluten and starch.
+The Corn Products Limited situated in Eldoret is the main industry involved in the wet milling of
+maize. In dry milling, the cleaned maize is soaked in water for 3 hours for conditioning, the
+germ is separated from the maize and the germ free portion is then ground and sifted to make
+different types of maize flours. Most of the large-scale millers are involved in the dry milling
+process.
+6.6.4 Preparation and consumption
+The most common staples in Kenya are mostly maize-based and are prepared using whole
+maize meal or whole grain. The whole grain is usually mixed with legumes or pulses (beans,
+pigeon peas, cowpeas, etc) and vegetables to make ‘githeri’ and ‘irio’ in most rural
+communities. The maize meal and flour are used to prepare ‘ugali’ or porridges either as a
+single cereal or combined with other cereals or legumes/pulses. The maize flour is also used to
+prepare a variety of traditional products using simple processing technologies such as
+fermentation, drying, roasting, malting and cooking. These foods and products from maize are
+usually consumed either as daily staple meals or culturally used during festivities. Research has
+shown that certain traditional household processing and preparation methods such as
+dehulling, soaking in magadi soda, fermentation, malting, cooking in magadi soda and roasting
+can significantly reduce the levels of aflatoxins in maize ( Fandohan et al., 2005; Mutugi et al.,
+2008).
+
+-- 36 of 89 --
+
+37
+6.7 Maize marketing
+6.7.1 Maize marketing agents
+There are over six categories of marketing agents in the maize marketing chain. These are
+assemblers, wholesalers, retailers, and dis–assemblers, posho millers and large-scale millers
+(See Figure 7). In addition, a smaller category of traders using bicycles purchase and bulk maize
+at the farm level and deliver to the assemblers, retailers, or posho millers.
+Figure 7: Simplified maize marketing chain
+Bicyclists
+Assemblers
+Wholesalers
+Large-scale traders
+Dis-Assemblers
+Retailers
+Consumers
+Farmer/Producer
+Posho millers
+Imports
+
+-- 37 of 89 --
+
+38
+6.7.1.2 Assemblers
+Assemblers are usually the first commercial purchasers of maize in the marketing chain. They
+usually begin as farmers who graduate to the next stage in the system, i.e. bulking up surpluses
+of neighboring farmers to capture scale economies in transport to local market. Those that are
+farmers raise their working capital from the sale of their own maize immediately after the
+harvest.
+6.7.1.3 Wholesalers
+These are traders who buy maize from surplus districts (usually from assemblers) and transport
+the grain to deficit areas where they sell to dis-assemblers, retailers or millers. Most
+wholesalers are also vertically integrated into assembly, as most of the volumes they purchase
+in the post-harvest months are direct from farmers.
+6.7.1.4 Dis-assemblers
+This is a category of maize traders who buy maize mainly from large wholesalers in the deficit
+areas, and break-down the volumes for resale to smaller-scale retailers and final consumers.
+Dis-assemblers are usually local traders who raise their initial capital from either salaried
+employment or from their involvement in other business activities.
+6.7.1.5 Retailers
+This category of market agents consist of those traders who buy and sell in small quantities and
+were directly selling to consumer for home consumption. Retailers are found in the deficit
+regions with a few of them in the urban areas. The retailers in the surplus regions are over
+shadowed in business by the assemblers who take to disassembling and retailing activities
+during the slack periods.
+6.7.1.6 Posho millers
+The posho millers are a category of traders involved in the processing of maize grain into maize
+meal. Posho millers employ a simple hammer milling technology where the germ and the bran
+of the maize grain are milled together with the kernel into flour. Small-scale millers are
+specialized in custom milling whereby the customer provides the grain. Some posho millers
+have invested in dehullers to produce a more refined product.
+6.7.1.7 Large Scale Millers
+These are processors who deal with large volumes of maize and do their own packaging. These
+millers are characterized by large-scale, capital intensive, roller-milling technology. Most of the
+large-scale millers are concentrated in maize deficit areas with a few of them in the surplus
+
+-- 38 of 89 --
+
+39
+regions of Kitale, Eldoret and Nakuru. Most millers acquire maize from wholesalers, farmers,
+and the NCPB stores depending on the season. In order to cope with the inter-seasonal
+variations of maize availability or supplies millers hire storage facilities, including silos in the
+maize surplus areas where maize is stored.
+6.7.2 Warehousing receipt system
+This is a marketing mechanism used to address seasonality, supply and quality constituency of
+grains. This is being championed by Eastern African Grain Council (EAGC). Under this system,
+suitable warehouses will be graded and certified by the EAGC who will be able to receive grains,
+handle and store grains at fee and issue a warehouse receipt. This system emphasis safety as
+grains will be graded and tested before acceptance into and out of the warehouses. This system
+also offers good grain storage facilities. This warehouse receipting system is being introduced in
+Kenya with support from Financial Sector Deepening Trust (FSD), USAID-COMPETE, Kenya
+Maize Development Programme (KMDP) and Alliance for Green Revolution in Africa (AGRA).
+While the warehousing receipt system is being carried out it is not yet very popular as many
+smallholder farmers are not aware of its value. It would be one of the best mechanisms
+available to maize producers. This may be achieved if maize producers formed farmer groups in
+order to attain the bulk size (minimum of 10 metric tonnes) required touse the warehousing
+receipt system. If they adopted this approach, they would be able to have a better bargaining
+power when selling their produce. They would also be able to sell their produce when the
+market prizes are good in order to make maximum profits. At the moment very few small scale
+farmers are able to use this facility.
+
+-- 39 of 89 --
+
+40
+6.7.3 Price Setting Mechanisms
+The maize price trend for the year 2010 in major towns of Kenya is shown in Figure 8.
+Nairobi
+	Eldoret
+	Kisumu
+Mombasa
+	Machakos
+Karatina
+Kakamega
+Garissa
+0
+1
+2
+3
+4
+Major maize markets
+Source: Ministry of Aagriculture report, 2010
+Maize prices (Ksh/90kg bag)
+Figure 8: Maize prices trends in major markets in 2011 (Kshs/90kg bag)
+The domestic maize prices in the major markets of Nairobi, Mombasa, Nakuru, Eldoret and
+Kisumu have been on an upward trend since 2002, with sharp increases from 2008. However,
+between January and August 2009, prices in other markets were increasing while those in
+Mombasa and Kisumu were generally declining, a situation that may be attributed to a price
+moderating effect of imports from Uganda and Tanzania.
+A comparison of local and import prices in Nairobi over the 2000-2010 period indicates that
+imported maize was more expensive than domestically produced maize up to February/March
+2009, the only time when there would have been an incentive to import maize. Indeed, the
+waiver granted in January 2009 has restrained the increase in grain prices, with the gap
+between local and parity prices reducing. The proportion of imports in the stocks held by
+traders has increased in most markets, being about 80% in Nakuru.
+
+-- 40 of 89 --
+
+41
+Maize grain and flour prices have shown similar trends between 2000 and 2010. However,
+beginning late 2008, grain prices have been declining while flour prices have been increasing.
+This may be attributed to other factors besides grain price, such as poor road and rail
+infrastructure, high energy costs, and uncertainties in the grain markets in terms of policy.
+However, retail maize meal prices and marketing margins between maize grain and maize meal
+have fallen as the year has progressed. This decline may be due to increasingly greater access of
+imported maize to informal maize trading and processing systems, which are less costly than
+the industrial milling sector and which compete effectively against it for low and middle income
+consumers. This is important given that posho mills account for 40% of maize milled in rural
+areas.
+As long as grain is circulating in informal markets, consumers can buy and mill it at neighboring
+posho mills, ensuring that the less expensive products are available to most low-income
+consumers.
+There is need for strategies that will adequately deal with the evolving food security situation.
+In the short term, the government needs to expand relief efforts, maintain duty waiver on
+maize and introduce waivers on wheat and rice, ensure access of imported maize to informal
+traders and posho millers, and to ensure clearly-defined and transparent rules for triggering
+government intervention to reduce market uncertainty. Further, there is need to raise
+awareness and sensitization on diversifying food consumption and to establish regular periodic
+government-private sector consultations to coordinate decision making on stocks and imports.
+Ultimately, there is need to emphasize strategies that reduce cost of producing and distributing
+maize locally such as the improvement of roads and railway infrastructure.
+6.7.4 Institutions that affect chain and price setting mechanisms
+A historical perspective of maize marketing in Kenya is important in understanding the price
+setting mechanisms. Maize marketing in Kenya for many years had been under the Maize
+Produce and Marketing Board and later under the NCPB which was formed to cater for all the
+product marketing boards. Before liberalization of the sector in 1993, NCPB set the price of
+maize in the country. Despite the liberalization, NCPB still plays a major role in price setting as it
+buys maize on behalf of the government for country’s strategic grain reserves. NCPB is the
+single major buyer of maize with a capacity of over 4 million (90kg /bag) bags. The price that
+NCPB sets scales down to other marketing channels. This price is also influenced by imports
+from neighboring countries.
+
+-- 41 of 89 --
+
+42
+A farmer sells maize to a consumer directly. The price setting here is dictated by the reason
+why the farmer wants to sell the maize. If it is for an urgent cause (pay hospital bills, school fees
+etc) the farmer may be forced to accept what the consumer is offering though low, because
+other channels may not offer cash at the time of need. For instance, most of the large maize
+traders pay by cheque and the processing may take few days. Therefore, the farmer may not
+opt for this client because he needs to obtain the required liquid cash immediately. A producer
+also sells maize to a middleman who assembles small quantities from different producers and
+sells in bulk to millers or NCPB after sorting and grading. The middlemen capitalize on their
+market intelligence to pay a lower prize to farmers in order to make profits.
+Farmers form cooperatives or farmer groups where they consolidate their produce together
+and achieve the bulk required to sell directly to millers, NCPB or large scale traders at better
+bargained prizes thus challenging the position of the middlemen (two farmer groups visited fall
+in this category). This mode also helps to spread the costs of marketing allowing the producer
+to get a better pay for the produce. Another mode available to the producer, but not very
+popular, is producing under contract for a certain client. This is more for seed companies who
+need seed bulking and contract specific farmers for this.
+There is need for strategies that reduce the cost of producing and distributing maize locally
+such as subsidizing farm inputs (seeds and fertilizers), improvement in roads and railway
+infrastructure. These incentives would indirectly ensure that farmers’ produce have market
+access and compete fairly with imported maize. This will encourage the farmers to adopt
+strategies that ensure their produce meets the safety standards of aflatoxin. If there were price
+differentials based on quality and safety this would reduce the scourge of aflatoxin maize
+contamination.
+7.0: Food Safety Institutional Framework
+Annex four summarizes the mandates and roles of the various ministries involved in the maize
+value chain.
+7.1 Institutions
+7.1.1 Ministry of Agriculture
+The Ministry of Agriculture (MoA) has the overarching responsibility for maize production,
+quality and marketing. This stems from its mandate entrenched in the various Acts of
+Parliament (Agriculture Act Cap 318; Plant Protection Act Cap 324; Seed and Variety Act Cap
+
+-- 42 of 89 --
+
+43
+326; National Cereals and Produce Board Act Cap 338) that give it the authority to implement
+the policies and disseminate information on maize growing, storage and marketing. MoA also
+oversees the Kenya Agricultural Research Institute (KARI) that is empowered to carry out
+relevant agriculture research in the country of which maize production, quality and marketing is
+under their mandate. It also oversees the Kenya Plant Health Inspectorate Services mandated
+to regulate the control of plant diseases and pests, and also inspect and certify seeds for
+release to the farmers under the Seed and Plant Variety Act. The Ministry also oversees the
+functioning of Kenya seed Company (KSC) mandated to develop appropriate seed varieties in
+Kenya.
+7.1.2 Ministry of Public Health and Sanitation
+This Ministry is mandated to maintain and secure health through implementation of the Public
+Health Act Cap 242. Its role in the maize value chain is that of seizure and confiscation of any
+food items that are deemed unfit for human consumption. This is also exemplified under drug
+and chemical and substance Act Cap 254 and it is under this cap that any crop with chemical
+residues, the Directors of medical Services and Agriculture could authorize for analysis and
+possible confiscation and replacement.
+7.1.3 Ministry of Commerce, Industry and Trade
+This Ministry is mainly mandated to provide food standards under the Standards act Cap 496
+which establishes Kenya Bureau of Standards as a statutory agency of the government. In
+regard to maize, the ministry regulates labeling and weights for the final products of maize
+under the Weights and Measure Act Cap 513 and Trade Description Act Cap 505.
+7.2 National Acts and Regulations governing maize
+The maize subsector is governed by a number of acts of parliament and the Ministry of
+Agriculture has over-arching authority on the implementation of these laws.
+7.2.1 The Agriculture Act (Cap 318) empowers the Minister to declare the maize as a
+scheduled crop (of which it is one of the scheduled crops), to establish crop marketing boards
+(Maize marketing and produce board was amalgamated to form the National Cereals and
+Produce board in 1967), set the prices of scheduled crops for efficient agricultural production
+and control the importation of maize into the country through subsidiary registration. This
+affects maize growing because it’s an important crop for national food security and also
+controls marketing and price setting mechanisms for maize and maize products. It also has an
+impact on the control of maize importations into the country.
+
+-- 43 of 89 --
+
+44
+7.2.3 Crop Production and livestock act (Cap 321) was established to make provision, control
+and improve crop production and livestock, and the marketing and processing of thereof. It
+empowers the Minister to improve the conditions of crops through the methods of production,
+prevention and destruction. He also has authority to declare the destruction of the crop
+without any compensation. He can make special subsidiary registration for any crop. This is
+important for food security since the minister may declare certain individuals to plant maize
+specifically for the government to national grain strategic reserves.
+7.2.4 Plant Protection Act (Cap 324) makes better provision for the prevention of the
+introduction and spread of disease destructive to plants. The Minister can make rules to
+prevent and control attack or spread of pests or diseases, in particular and without prejudice to
+the generality of the foregoing power. This is important for control of pest and diseases that
+affect maize production, therefore proper strategies can be implemented to curb specific
+diseases or pest affecting maize.
+7.2.5 Seed and Plant Varieties Act (Cap 326) confer power to regulate transactions in seeds
+including provisions for testing and certification of seeds, empower the imposition of restriction
+on introduction of new varieties, control of importation of seeds, among other roles. This act is
+important because it empowers the Minister to regulate the type of seed varieties suitable for
+specific regions to be developed and released for adoption by the maize farmers. In this regard
+need to develop maize seed varieties that are tolerant to fungal infection and aflatoxin
+accumulation could be affected through this act.
+7.2.6 Food, Drugs and Chemical Substance Act (Cap 254) is under the authority of Ministry of
+Health and it makes provision for prevention of adulteration of food and drugs and chemical
+substances. It allows for establishment of food standards to prevent deception of consumers
+and also empowers the Minister to establish a board to enforce regulations under this act.
+Under special registration it also enforces food hygiene. This act has empowered two
+authorized officers, the Director of Medical Services and Director of Agriculture to have articles
+analyzed in relation to any matter appearing to him that affect the general interest of
+consumers and affects the general interest of agriculture in Kenya. This act enforces
+appropriate standard in regard to sale of high quality and safe maize to consumers. In addition,
+it important in controlling chemical residues in maize of which aflatoxin is a major concern in
+Kenya.
+7.2.7 Public Health Act (Cap 242) makes provision for securing and maintaining health. It
+empowers the Public Health officer to prohibit importation of any article of food which is not
+clean, wholesome or sound and free from any disease or infection or contamination and the
+seizure and disposal by destruction or otherwise of any other such articles imported. It also
+
+-- 44 of 89 --
+
+45
+empowers him to inspect and examine and supervise the preparation, storage, keeping and
+transmission of article of food intended for sale or export and contains an ingredient which is
+diseased or unsound or unfit for human consumption or which has been exposed to any
+infection or contamination. This act allows for seizure and compensation of contaminated
+foods. It is under these powers the Ministry of Health proposed for seizure and replacement of
+aflatoxin contaminated maize.
+7.2.8 Trade Description Act (Cap 505) prohibits mis-descriptions of goods, services,
+accommodation and facilities provided in the course of trade to prohibit falls or misleading
+indications as to the price of goods and to confer powers to require information, instructions
+relating to goods to be marked on or to accompany the good or to be included in advertisement
+and for purposes incidental to and connected with the above. This act is under the Ministry of
+Commerce.
+7.2.9 Weights and Measures Act (Cap 513) consolidates the law relating to the use,
+manufacture and sale of weights and measures and to provide for introduction of international
+systems of use and for connected purposes. These two Acts would apply to sifted maize from
+millers in regard to their correct weights and labeling for efficient marketing.
+7.2.10 National Cereals and Produce Board Act (Cap 338) regulates and control the marketing
+and processing of maize, wheat and scheduled agricultural produce and to establish a National
+Cereals and Produce Board. The board may direct that maize be sold or bartered by producers
+in such quantities and prices subject to such conditions. This act empowers the Minister for
+Agriculture in consultation with the board to fix the prices of the agricultural produce. It
+displays the prices of maize. The Minister is empowered to export or authorize the exportation
+of maize. This act is preserves and procures maize for the government strategic grain reserve in
+order to sustain food security and national relief programmes.
+7.3 Policies
+7.3.1 Strategy for Revitalization of Agriculture (SRA) is a policy that was launched in
+2004 by the government and is intended to transform agriculture into a more competitive
+sector capable of attracting investment and providing higher incomes and employments. In
+order to achieve this, an inter-ministerial policy unit, the Agricultural Sector Coordination Unit
+was formed to ensure activities of the sector ministries (MoA, Livestock Development,
+Cooperative Development & Marketing, Ministry of fisheries development, Ministry of Water
+and Irrigation, Ministry of Lands, Ministry of Environment and Mineral Resources, Ministry of
+
+-- 45 of 89 --
+
+46
+Regional Development Authority, Ministry of Forestry and Wildlife, Ministry of Special
+Development of Northern Kenya and other Arid Lands) were SRA compliant. The policy has
+received funding from DFID, DANIDA, CIDA, GTZ, USAID African Development Bank, EC, Finland,
+FAO, IFAD, JICA, Netherlands, WFP and World Bank. The following six fast track interventions
+have been chosen to hasten implementation of SRA:
+ Review and harmonize the legal regulatory and institutional framework
+ Restructure and privatize non-core functions of parastatals and ministries
+ Improve access to quality inputs and financial services
+ Improve delivery of research, extension and advisory support
+ Improve access to both domestic and external markets
+ Formulate food security and programs
+ASCU in the 2009/10 financial year spent KShs 142million on various activities designed to
+operationalize the unit.
+The maize subsector has benefited from this policy by improved access to research and
+extension, quality input and financial services which have led to increased maize yields and
+acreage under the maize crop.
+7.3.2 Economic Recovery Strategy (ERS) for health and employment creation was
+launched in 2003 under the Ministry of Planning and Development. The central focus for this
+strategy is job creation through sound micro-economic policies, efficient public service delivery
+and an enabling environment for private sector to do business and public policies that reduce
+cost of doing business. It’s main aim is to ensure effective implementation, monitoring and
+evaluation framework. It also aims at facilitating the active participation of private sector, civil
+society and communities. Some of the strategies that the government has put into place to
+reverse the declining agricultural performance include enactment of the Tea Act, Sugar Act,
+Cotton Act and review of Coffee Act. The interventions under this strategy for the agricultural
+sector will witness consolidation of over 60 statutes governing the agricultural sector into a
+single registration therefore, promoting efficiency, health and self governance. It will also
+improve extension to provide cooperative extension services with other extension service
+providers. In addition, it will raise productivity of farmers through access to affordable credit
+and the government will revitalize irrigation schemes to facilitate participation of farmers
+irrigation development. The effects of this have been increased milk and maize production. The
+core poverty programmes have received KShs 153,729 million from the exchequer.
+
+-- 46 of 89 --
+
+47
+7.3.3 Poverty Reduction Strategy Paper (PRSP) is a government paper in
+collaboration with World Bank and was launched in 2005. Its aim is to reverse the declining
+agricultural output by promoting productivity, growth and lower the cost of agricultural inputs
+particularly in small holders and subsistence farmers who contribute 70% of marketed
+agricultural production. The strategy aims at improving agricultural research and extension, and
+access to credit and insurance. In lowering agricultural inputs the government is targeting
+reforms to improve competition in input distribution and marketing. In this regard, subsidies in
+fertilizers and seed supplies to farmers have been implemented by the government. This has
+led to increase in farmer yields. Due to this strategy, in the year 2006- 2007, the country
+achieved more than 3,000,000 MT of maize production and also the highest area acreage of
+1,800,000 Ha in 2009
+7.3.4 The National Food Safety Policy
+Kenya has not had a national food safety policy; however a draft national policy on food safety
+has now been developed and is expected to be enacted soon. The draft policy attempts to
+harmonize and coordinate food quality inspectorate activities by the various regulatory
+authorities. Some of the goals are: -
+a) Building capacity for the food control system.
+b) Identifying food safety challenges.
+c) Creating awareness to the general public and other stakeholders on food safety.
+With regards to aflatoxin, this draft policy specifically identifies aflatoxin poisoning as a major
+challenge which needs to be addressed in order to guarantee safety and food security.
+7.3.5 Kenya Food Security and Nutrition Policy
+The purpose of this strategy is to specify measures and actions to be implemented so as to
+ensure food security and nutrition which affirms access to nutritionally adequate and safe food
+as a right of each individual living in Kenya. This calls for a comprehensive multisector approach
+that integrates the economy, agriculture and other related sectors.
+One of the programme areas under this draft policy is food safety/ quality control. Under this
+section a number of issues related to food safety have been addressed. These include storage.
+Kenya loses 30-40% maize, 50% fruits and 7% milk due to poor storage. The paper calls for
+building capacity for development and management of appropriate storage facilities,
+implementing measures that facilitate renting or disposal of underutilized public storage
+facilities. This is aimed at reducing post harvest losses and contamination (aflatoxin) which has
+caused health risks in the past. This six year project started in 2008 is expected to spend KShs
+249,250 million by 2014. The budget has been factored in the government expenditure.
+
+-- 47 of 89 --
+
+48
+8.0 Aflatoxin food safety projects
+Annex two summarizes the international and international research projects in Kenya currently
+focusing on Mycotoxins. The following sections summarize the major products:
+8. 1 Aflacontrol project
+The project aims at reducing the spread of aflatoxin in maize and groundnut value chains and is
+led by IFPRI. It also seeks to increase the understanding of the economic and health impacts of
+aflatoxin contamination, identify and promote cost effective methods and technologies
+available to reduce contamination of food and feed. The project has partners form
+International Maize and Wheat Improvement Center (CIYMMT), University of Pennsylvania,
+USA, United States Uniformed Health Services, Kenya Agricultural Research Institute (KARI) and
+Agricultural Cooperative Development Initiative (ACDI-VOCA). The project is funded by Bill and
+Melinda Gates Foundation. The sampling is being done in Mbere (Embu), Makueni, Homabay,
+Kisii and Rongo at the household level using ELISA kits for analysis. The data available indicates
+that 52% out of 341 samples were contaminated with aflatoxin with 24% having aflatoxin levels
+above 20ppb. Maize from farmers’ stalls in Kisii and Rongo had low aflatoxin level compared to
+similar samples obtained from Makueni and Mbere. Some samples exceeded 9,000 ppb.
+Aflacontrol has sent out policy briefs and held inception and one year national workshops to
+disseminate the information. Mostly this was aimed at the Ministries of Agriculture and Public
+Health who are the key institutions involved in mitigating aflatoxin in the country.
+8.2 Purchasing for progress (P4P) Programme (WFP)
+The WFP is a United Nations humanitarian organization involved in the distribution of relief
+food locally during emergency situations. WFP buys food from Kenyan farmers and part of this
+is also exported to other countries. The WFP purchasing for progess programme enables WFP
+to buy maize from small-scale farmers giving them access to fairer prices hence putting more
+money into small-scale farmers and improves their livelihood. Although WFP tries to purchase
+its grain supply locally, it normally relies on commercial farmers and traders who can supply the
+large quantities needed. Before any purchase WFP checks the aflatoxin level in the grains
+before procurement. Data available shows that WFP purchased nearly 700 T and out of this
+some had high levels of aflatoxin reaching 890 ppb. Those consignments with high aflatoxin
+levels were rejected as tests are carried out before purchases are done. However, in the
+majority of the procurement aflatoxin levels reached 2-9 ppb. The limit for acceptable is 10
+ppb. Most of these tests were analyzed using the ELISA technique in a number of laboratories.
+The main purpose of analysis for WFP is mainly to ensure food safety of the relief food they are
+distributing. Adherence on standards required by the programme ensures that the farmers
+
+-- 48 of 89 --
+
+49
+enforce safety regulations if their produce is to get into this market. This testing programme
+has enabled the Marenyo cereal bank and Transmara farmers to access to high paying markets
+for their produce.
+8.3 Research institutions
+Aflatoxin prevention and control research is focusing on genetic characterization, development
+of biocontrol technologies and effective agricultural management. The Kenya Agricultural
+Research Institute (KARI) is currently carrying out research on a local non-toxic form of fungus
+that could be biologically used to control maize contamination in collaboration with USDA and
+IITA. The project is funded by multi donor funding and the remedy is expected to save Kenya
+from food insecurity and avert maize farmers losses worth million of shillings as experienced in
+the past.
+A biocontrol agent has been developed to eradicate the aflatoxin contamination of maize.
+Scientists at the International Institute of Tropical Agriculture (IITA) have found that non-toxic
+producing (atoxigenic) strains of Aspergillus can be used to radically reduce aflatoxin producing
+Aspergillus species thus reduce pre and post harvest contamination of maize. Eight strains have
+been identified from thousands of strains collected from mouldy maize stored by farmers in
+Nigeria that could reduce aflatoxin contamination by as much as 99.8% in field trials. A large
+scale testing in multiple sites in Kenya is being conducted to test the efficacy of the multiple
+strains as biocontrol agent. The project at its initiation stage and no data is available.
+A project on capacity building on food and feed safety focusing on health risks associated with
+biological contaminants between the University of Nairobi and MTT-Agrifood Research, Finland
+with collaborations from Egerton University, KARI (Kenya) and EVIRA in Finland is ongoing. The
+main aim of this project is to assess the levels of exposure to aflatoxin and fumonisins at
+household level, agronomic practices that predispose households to aflatoxin poisonings and
+the characterization of the fungal species found in maize and soils from two sites from the Rift
+valley and Eastern regions of Kenya. Toxigenicity of these species will be done using ELISA HPLC
+and molecular typing. The project has completed sample collection fromm two bench mark
+sites (Nandi and Makueni) and has embarked on laboratory analysis. Aflatoxin and fumonisin
+analysis involves screening with ELISA kits and confirmation with HPLC. Fungal isolation involves
+use of standard microbiological methods. Results from the study will be disseminated to
+farmers, extension officers, policy decision makers at county, national and also involve
+parliamentary committees on agriculture and health. No results are available from this project
+yet.
+
+-- 49 of 89 --
+
+50
+Postharvest researchers have developed effective and simple machines and tools that reduce
+processing time and labor as well as production losses. Recently, the research to enhance the
+nutrient content of maize to combat malnutrition and diseases caused by micro-nutrient
+deficiency has been carried out in the University of Nairobi. The University researchers are
+developing mycotoxin-resistant varieties in collaboration with advanced laboratories to
+minimize the health hazards of these toxins. Extension services offered by the researchers
+include insect control in fields and stores, timely harvest, avoiding grain damage during
+threshing by using hand shellers, rapid grain drying to safe moisture levels, good storage
+structure (cribs) to avoid water and insects and sorting to remove contaminated grains. (See
+Annex three for a summary of the objectives of each of the above projects).
+Most of the projects carried out by the international and national research centers are in
+conjunction with the sector ministries’ departments. The reason is that once results are
+available the government will upscale these to the farmers through its extensive extension arm.
+However, the relationship between government ministries and scientists is still embryonic.
+When Ministry staff are confronted with an issue they only consult the research centers under
+their Ministry’s mandate - rarely do they consult scientists at universities and international
+centers. What is missing is a public – private “think tank” or forum that could be called upon to
+offer advice when situations arise.
+8.4 The Njaa Marufuku Kenya (NMK)
+The programme was started in 2005 by Agriculture Sector Ministries with support from FAO
+and the MDG center to provide an overall strategic framework for a 10-year action plan for
+hunger eradication in Kenya. It was formulated to fast track the fulfillment of MDG 1 – reduce
+by half the number of extremely poor and hungry people in the country by the year 2015. The
+Ministry of Agriculture is the focal point in implementing this programme. One of their core
+projects is dealing with smallholder and community services development where farmers
+receive extension services and training to diversify their household incomes. Food insecurity is
+being addressed by introduction of drought resistant crops varieties and trainings on post
+harvest handling facilities.
+The programme is in its third phase and will have spent about $ 8.5 billion by 2015.
+8.5 National Agriculture and Livestock Extension Programme (NALEP)
+NALEP is a national programme funded by SIDA and operating in no less than 43 Districts,
+located in 5 Provinces. The NALEP approach is in line with the Kenya Government policy on
+decentralization as well as on agriculture as documented in the Strategy for Revitalization
+Agriculture (SRA) and the National Agricultural Extension Policy (NEAP). Relevant opportunities
+are identified and Common Interest Groups (CIGs) are formed based on farmers´ choices. These
+
+-- 50 of 89 --
+
+51
+CIGs are the foundation for NALEP extension service provision. Basically this programme is
+involved in dissemination technologies to farmers which aims at reaching 1/2 million farmers
+per year. Most farmer groups have managed to improve their production and food security
+considerably. About 72% of the farmers have experienced an increase in their agriculture
+production and 80% have been offered new opportunities in agriculture.
+The NALEP GoK and NALEP SIDA offer support to farmers organized in CIGs in the region of KShs
+120- 150,000 and 350- 400,000 KShs respectively. The agricultural areas that have received this
+support include sunflower and fruit trees projects.
+8.6 Water master plan
+Out of the total land area in Kenya, about 11.65 M Ha receive medium to high rainfall. About 7
+million Ha of the land is useful for agricultural production. In 2003 the area under irrigation was
+105,800 Ha which accounted for 1.5% of the total area under production. Horticultural crops
+take up 65% of land under irrigation while other crops including maize take up 35% of the
+irrigated land.
+The Water Master Plan aim is to improve land utilization through irrigation and strengthening
+institutions involved in the implementation of the Water Master Plan. This will lead to achieving
+goals in self sufficiency in food production, wealth creation, income generation and foreign
+exchange earnings. One of the off shoots of the plan is the revival of the Bura Irrigation Scheme
+in Tana River district. An additional 40,000 hectares were irrigated to produce 370,000 bags of
+maize and 600,000 bags of rice. The programme has increased opportunities in production,
+processing and marketing of maize and rice produce thus reducing the dependence on huge
+food imports that squander valuable foreign exchange.
+While this scheme resulted in increased maize production with a bumper harvest there were no
+adequate storage facilities. Therefore, approximately 238 bags of maize produced in the Bura
+Irrigation and Settlement Scheme were found to contain toxin levels of aflatoxin between 890
+and 3,800 ppb resulting to a total loss of more than Sh12 million in the deal with WFP from 90
+farmers in October, 2009.
+Because the government is concerned about food security it has put in place mechanisms
+(strategies, policies and programmes) that are geared to increasing maize productivity, but it is
+still lacking a clear policy which would further guide production, storage, processing and trade.
+Increasing productivity without simultaneously addressing storage and processing capacities is
+potentially a significant problem. The Government and the maize sector need to learn from the
+
+-- 51 of 89 --
+
+52
+milk sector when production was increased resulting in milk being thrown away because there
+was no capacity to process it.
+8.7 Private sector programmes
+Most private sector farmers rarely test their maize for aflatoxin contamination unless it is
+demanded by the buyers. Most of the maize traders also do not test for aflatoxin, but they do
+often carry out thorough manual quality checks of the deliveries to ascertain that they meet the
+quality criteria for maize grading. Again testing is only carried out when the buyer demands
+aflatoxin tests and then the maize sampling is done by private laboratories appointed by the
+buyer.
+Millers have their own laboratories where all raw material deliveries and final product testing is
+done. The two maize millers (UNGA limited and Mombasa Millers Limited) visited stated that
+they rarely have raw material samples exceeding the 10 ppb limit. This is as a result of careful
+and strict field quality officers who select maize for purchase. If a batch exceeds 10ppb it is
+channeled for animal feeds processing.
+The millers use Kenya Bureau of Standards (KBS) and the East African Community Standards
+(EAS 79) for sampling maize for aflatoxin while analysis is done using ELISA method and VICAM
+fluorimeter (AOAC 991.31). Analytical data obtained by the millers is not shared with anybody
+but is only for the company use.
+8.8 Initiatives to promote food safety
+8.8.1 National Food safety Coordinating Committee
+This is a multi-sectoral committee charged with the responsibility of addressing food safety
+issues in the country. The majority of past issues handled by this group were those raised on
+exported produce through the alert system. The committee has developed the draft food
+safety policy, which awaits enactment. The Ministry of Agriculture through the Agricultural
+Secretary chairs the committee while the Ministry of Public Health and Sanitation hosts the
+secretariat. Others members include Ministry of Livestock development, Kenya Dairy Board, the
+Public Health laboratories, Kenya Plant Health Inspectorate, Kenya Bureau of Standards,
+universities among others. The body has not been entrenched through an act of parliament
+therefore it does not have an overarching responsibility to collect, collate, analyze and
+disseminate information in respect to aflatoxin. This will only be possible if this entity is
+transformed into a national food safety agency through an act of parliament.
+
+-- 52 of 89 --
+
+53
+8.8.2 Commodity Exchange Market
+Commodity Exchange (CE) is a marketing system that:
+ Links sellers and buyers of agricultural commodities
+ Provides relevant and timely marketing information and intelligence
+ Provides a transparent and competitive market price discovery mechanism
+ Harnesses and applies information and communication technologies (ICTs) for rural
+value addition and empowerment.
+For trade to take place under the commodity market, the buyer must be assured of safety and
+quality. A food safety and quality assurance mechanism is necessary in order to transact
+business under this marketing system. Products procured and sold using a warehouse receipt,
+would then be assured of quality and safety. This ensures that sellers in the market understand
+and implement food safety procedures in order for the produce to be acceptable to trade in
+this market. This system targets the bulk handlers. The system is being promoted by Eastern
+Africa Grain Council but is out of the reach for small holder farmers at the moment that cannot
+provide the volumes of grains required to participate. Community cereal storage banks would
+offer alternative storage for smallholder farmers where standards could be observed and
+safety assured not only for subsistence during seasons with poor harvest but also act as a
+market access avenues during bumper harvest seasons where surpluses could be offered for
+sale. Safety aspects enforced during the participation in such community storage banks would
+trickle down to the village and household level where food safety is of major concern,
+especially with aflatoxin.
+Parallel to the establishment of warehouse receipting, the Ministry of Finance is trying to set
+up a commodity stock exchange to make the commodity exchange market more professional.
+Kenya Agricultural Commodity Exchange Limited (KACE) is operating a commodity exchange at
+rural market level targeting individual farmers using ICT technologies. However, at present
+there are no food safety considerations, nor any sampling and testing undertaken by KACE.
+8.9 Institutional gaps and capacities
+Most of the mechanisms for implementing registration and programmes targeting maize are
+under the Ministry of Agriculture. There is not much inter-ministerial overlapping with regard
+to maize regulation and policies. Most of the programmes under the MoA have been targeting
+increased maize productivity.
+
+-- 53 of 89 --
+
+54
+However, there have not been similar efforts to address issues concerning safety and quality
+emanating from increased productivity. A case in point is the Bura Irrigation Scheme where
+farmers experienced huge losses of maize worth Kshs12 million due to aflatoxin contamination.
+This could have been averted if extension messages and farmer training on proper postharvest
+maize handling had been implemented.
+Food safety can be achieved through continuous monitoring and surveillance which requires
+heavy investment in terms of testing facilities and trained personnel. However, this capacity is
+lacking in the ministries due to insufficient budgetary allocation but there is capacity within the
+private sector and research institutions so this could be harnessed to ensure that monitoring is
+done. Although private capacity exists, sustained monitoring and surveillance for food safety is
+a public good and is the responsibility of the Government therefore there is a need for
+public/private partnerships.
+Despite the formation of the National Food Safety Committee the lack of national Food Safety
+Authority means that they is no overarching authority responsible for collecting and collating all
+information on aflatoxin prevalence, control and management.
+9.0 Discussion
+Due to the evolving food security situation in Kenya there will be the need for the Government
+to devise strategies that deal with the situation. Therefore, in the short term, the government
+needs to expand relief efforts, maintain duty waiver on maize, introduce waivers on wheat and
+rice, ensure access of imported maize to informal traders and posho millers, and follow clearly-
+defined and transparent rules for triggering government intervention to reduce market
+uncertainty. Further, there is need to raise awareness and sensitization on diversifying food
+consumption and to establish regular periodic government-private sector consultations to
+coordinate decision making on stocks and imports. Ultimately, there is need to emphasize
+strategies that will reduce the cost of producing and distributing maize locally such as the
+improvement of roads and railway infrastructure
+Increasing maize market prices are condemning vulnerable groups to food insecurity with the
+potential to start eating unsafe maize. The current government price setting mechanisms while
+procuring grains for the strategic reserve should not be higher than that of imported maize. The
+
+-- 54 of 89 --
+
+55
+low prices of imported maize should stabilize the market prices so that the informal marketing
+sector that deals with the bulk maize can continue to offer safe foods.
+While the government has put in place food security mechanisms (strategies, policies and
+programmes) that are geared to increasing productivity in the maize sector the maize subsector
+is still lacking a clear policy which would guides production, storage processing and trade.
+Government programmes cannot just focus on productivity without giving consideration to
+addressing other key factors, such as adequate storage and processing facilities.
+Despite the aflatoxin problem being recognized for many years, including the loss of lives, the
+Government has not put in place any official aflatoxin surveillance and monitoring programmes.
+It is necessary that a Food Safety Authority or government ministry is mandated to carry out
+monitoring and surveillance and inform on the alfatoxin status in Kenya. Currently a
+reorganization of NFSCC would be necessary to give it the legal teeth and budget to carry out
+the necessary surveillance and monitoring.
+For the aflatoxin surveillance and monitoring to succeed there is the need for laboratories to
+test and analyze samples. It is not necessary to establish new capacities (laboratories) as there
+are many public and private laboratories available to handle aflatoxin analysis. What is needed
+is identification of such laboratories which have the competences to provide the services amd
+recognition that these laboratories are also stakeholders in this value chain. NFSCC could in
+conjunction with KEBS register these laboratories them while assessing their capacities and
+competences and provide a list to all stakeholders of those deemed competent to undertake
+aflatoxin analyses.
+It is also important that both the private and public laboratories are harnessed to provide
+analytical information which could inform decision makers on aflatoxin satusthe situation and
+allow for risk management steps when necessary. This information is currently held
+confidentially in laboratories so there is a need to establish a data base where all the certified
+testing laboratories can input their data to help government decision making.
+To date most of Kenya’s strategies have been to curb aflatoxin once it has been detected in the
+food chain. These efforts come when it is too late. There is a need for a proper preventative
+programme to address the aflatoxin problem in Kenya which would lead to reduction in
+aflatoxin in maize at the beginning of production, not focusing on treatment at the end.
+Seed developing companies do not currently seem to know they could play a role in mitigating
+aflatoxins. They should refocus their endeavors to developing seed varieties that have
+characteristics that mitigate fungal attack and aflatoxin accumulation. This would provide
+another tool in the farmer’s arsenal to mitigate aflatoxin problems.
+
+-- 55 of 89 --
+
+56
+In the past aflatoxin outbreaks, poor handling practices and storage facilities have been singled
+out as the main causes of the maize contamination. At most households, maize threshing is by
+beating the maize. This practice causes damage to the grains making it easy for fungal mycelia
+to penetrate the grains and grow and eventually produce aflatoxins. Creating awareness and
+promoting the use of affordable, cost effective hand shelling machines which reduce the rate of
+damaged grains should form part of the activities in the training proposed in the farmer field
+schools.
+With maize drying being a critical step in the control of aflatoxin, adequate strategies should be
+developed to ensure that maize is properly dried during storage. The government should either
+establish mobile maize drying units or construct driers in specific areas where farmers can
+access these to have their maize dried at a fee. The cost of using cheaper drying and green
+technology should be researched.
+Dry storage is critical. Maize storage in polypropylene bags causes moisture build up thus
+increasing the risk of aflatoxin accumulation, so storing maize in sisal and jute bags should be
+promoted. Though these are more expensive than polypropylene bags by a factor of five (KSHS
+20:100), the advantage of reducing the risk of aflatoxin is worth the investment. Another
+technology available at household level is use of metal grain silos for storing maize (Figure 9
+below). These are available in different sizes to meet the needs of small scale farmers.
+Figure 9: Metal grain silos for small scale storage
+
+-- 56 of 89 --
+
+57
+The government should come up with simple storage structures that are affordable by farmers
+and householder for storing maize. Community grain storage banks could be established at
+community level where farmers will be taught to practice proper handling practices. Similar
+models intended for the communities to gain market and credit access have been established in
+Transmara under the USAID-Competitive and trade expansion programme (USAID COMPETE)
+programme and in Yala, the Marenyo cereal bank. These bring small scale farmers together to
+bulk their maize, store and sell at higher prizes. In order to achieve this, they must do proper
+sorting, cleaning and drying to make sure the maize meets the EAS2:2005 set standards. This
+approach could be used for storage purposes where communities come together to bulk their
+maize for proper storage and later access it later for subsistence use at home. During the
+aflatoxin outbreak in 2005, the Ministry of Agriculture through National Cereals and Produce
+Board tried this approach. All that is needed is to cascade this downwards to village level.
+Practices learnt and infused here would definitely percolate to household level leading to
+improved food safety.
+The “warehousing receipting system” is available for large scale farmers with bulk supplies to
+store. If small householder farmers were able to bulk their produce they could enter the
+market. This, together with the commodity exchange market, might allow many players into
+the maize marketing chain. Trading under these systems would ensure safety standards are met
+with a fixed control point for sampling and testing.
+Efforts have been made to educate and train farmers on proper handling practices but much of
+this training has been done after the detection of the aflatoxin contamination. This does not
+help to prevent the contamination. Future endeavors should be targeted at proper timing
+during throughout the whole maize growing cycle.
+The current government policy on demand driven services is hurting farmers who have little or
+no knowledge of aflatoxin. These farmers cannot request for services if they do not know their
+problems exist. Aflatoxin issue should be given same priority that was afforded Avian Influenza
+and Rift Valley Disease in creating awareness and surveillance. This will give everyone an
+opportunity to hear messages targeting aflatoxin and the recommended mitigation strategies.
+Kipcham farmers were not knowledgeable on aflatoxin despite having over 5,000 90kg/bags of
+maize ready for sale kept in different farmer households.
+Training of farmers and other actors in the maize value chain in aflatoxin management could be
+done through the Farmer Field Schools (FFS). Farmer Field Schools are platforms for improving
+decision-making capacity of farming communities and stimulating local innovation for
+
+-- 57 of 89 --
+
+58
+sustainable agriculture though community-based, non-formal education to groups of 20-25
+farmers through self-discovery and participatory learning principles. FFS provides opportunities
+for learning-by-doing. Government extension officers, subject matter specialists or trained
+farmers can facilitate the learning process, encouraging farmers to discover key agro-ecological
+concepts practiced in the field. The emphasis of farmer field schools is on empowering farmers
+to implement their own decisions in their own fields based on a scientific understanding of the
+aflatoxin contamination of maize. This would develop farmer’s capability in preventing
+aflatoxin problems as well as assist farmers develop critical and informed decisions on maize
+policies and regulation.
+A few studies have been done that have demonstrated the importance of traditional food
+preparation technologies in reducing aflatoxin levels in contaminated maize. While more
+studies are required to evaluate these findings, these technologies could be promoted as
+mitigation strategies that would reduce exposure. A curriculum in the FFS on these technologies
+would promote safety at household level.
+Future endeavors to manage the aflatoxin issue in Kenya should adopt a stakeholder approach.
+Aflatoxin contamination has been shown to occur at all stages of the maize value chain
+necessitating active involvement of all the concerned stakeholders. In addition, strategies
+should be developed to facilitate sharing of data generated from different key points in the
+value chain to allow an integrated approach in the detection of maize contamination nationally.
+This will also assist in the efficient formulation of sustainable working maize policies both in the
+public and private maize sectors. Consequently, there is an urgent need for a national workshop
+to bring together these stakeholders to develop the strategies that would inform on policy.
+The fact that there is no forum for public and private sector to converge to offer solutions
+during aflatoxin outbreaks means that expertise that exists in the private sector and among
+other stakeholders is not harnessed. During the Rift valley fever disease outbreak and the avian
+flu scare, there was seen a rare formation of district disease surveillance reporting forum that
+brought together experts from all sectors to address the outbreak and anticipated scare.
+Aflatoxin problem currently requires such concerted effort to address how to mitigate the
+problem. Such an approach would require political will to invest resources to collectively search
+for solutions to aflatoxin problem.
+While the 2004 and 2010 aflatoxin crises have raised attention on the maize aflatoxin
+contamination it should not be forgotten that other hazards can affect the maize value chain
+and are for the moment very badly documented. All the three dusting compounds used to
+preserve maize contain organophosphorous and pyrethrins. There is no data on the prevalence
+of pesticide residues in maize food products due to these dusting compounds despite their
+
+-- 58 of 89 --
+
+59
+widespread use. Although it is known that some have no human toxicity at levels
+recommended for use and are easily degraded, studies documenting prevalent residue levels of
+these compounds are important in order to offer advice to consumers on handling and
+processing of maize dusted with the compounds.
+Although 40 years ago, maize was always part of agronomic associations (cultivated together
+with a mix of peas, beans, sweet potatoes and other cereals), the rapid urbanization and
+changing life patterns have induced a simplification of meals, based on one staple: maize.
+Nowadays, Kenya is highly dependent on maize as a staple food. This is exemplified by the fact
+that maize contributes about 36% of energy consumption per capita food intake per day. Maize
+growing is mainly dependent on reliable rainfall or well coordinated irrigation schemes. Low
+self-sufficiency is attributed to a wide array of causes including lack of productivity enhancing
+technologies, high incidence of pests and diseases, erratic climatic conditions and difficulties in
+accessing credit. Kenya is food insecure whenever maize crop fails leading to massive maize
+imports and relief food distribution making majority of the population vulnerable to
+consumption of unsafe maize contaminated with aflatoxin. There is need to create awareness
+and promote alternative crops that are adapted to various agro-ecological zones which are
+drought tolerant to reduce reliance on one crop.
+10.0 Recommendations
+1) Government issues – it is recognized that the Government must deal with Kenyan’s food
+security issues. However, the following are options to be discussed and considered:
+a) Maintaining a duty waiver for imported maize.
+b) Ensuring that all informal traders and posho millers have access to imported
+maize.
+c) That the cost of local grain is not higher than imported products to stabilize the
+price.
+d) Transparency around the rules for government interventions to reduce
+uncertainty.
+
+-- 59 of 89 --
+
+60
+e) Work could be undertaken on the country infrastructure, for example, roads to
+better distribute maize.
+f) A government policy on maize which guides production, processing and trade.
+g) That policies focus on aflatoxin preventative policies rather than simply
+treatment systems for aflatoxin contaminated products.
+2) Surveillance and Monitoring systems – there is a need for a national Food Safety Authority or
+similar to monitor mycotoxin compliance issues and make timely reports to appropriate
+stakeholders.
+Such surveillance could integrate a laboratory notification system.
+3) Laboratories – there is a need to keep an up to date list of accredited laboratories that have
+the capacity to undertake aflatoxin analyses.
+4) Data sharing – there needs to be a system of sharing appropriate information between the
+stakeholders to ensure an understanding of Kenya’s mycotoxin status along with appropriate
+management tools.
+5) Capacity Development and Training
+a) There is a need to help farmers understand the techniques which will prevent
+initial aflatoxin contamination. An option for such an education programme is through
+the Farmers Field Schools.
+b) All other appropriate stakeholders throughout the maize chain should be
+educated on mycotoxins and mitigation strategies.
+c) Consideration should be given to a national stakeholder’s meeting to raise
+awareness.
+6) Seed production - there is a need to sensitize seed developing companies on the importance
+of developing seed varieties that have characteristics which mitigate fungal attack and aflatoxin
+accumulation.
+7) Technology and Research
+a) Need for aflatoxin resistant seed production suitable for all areas of Kenya.
+
+-- 60 of 89 --
+
+61
+b) There is a need for development and the use of affordable, cost effective hand
+shelling machines which will reduce the rate of damaged maize.
+c) Need for strategies and systems for the cost effective drying of grain, particularly for
+the small scale farmer.
+d) It is important that research focuses on aflatoxin preventative strategies and not just
+treatment options to deal with contaminated maize products.
+8) Storage
+a) There needs to be simple, inexpensive storage facilities available for local household
+use.
+b) The option of community grain storage facilities need to be explored.
+c) There should be the promotion of suitable storage materials e.g. sisal and just bags as
+opposed to unsuitable polypropylene bags.
+d) Encouragement should be given to large scale farming operations to use the
+warehouse receipt system. It is possible that if local co-operatives were made up of
+small scale farmers they could also use the warehouse receipt system. The use of a
+warehouse receipt system would enable the establishment of a food safety critical
+control point, at which point the maize could be assessed for mycotoxin
+contamination.
+9) Diet diversification - there is a need to encourage the diversification of the diet of Kenyans.
+This will reduce both the reliance on maize and the exposure to levels of contamination.
+10) Further analysis of the food safety issues associated with maize – there is a need to further
+investigate all the potential food safety issues associated with maize, for example, the use of
+pesticides and the contamination with fumonisins.
+
+-- 61 of 89 --
+
+62
+11.0 References
+Autrup, H., Seremet, T., Wakhisi, J., Wasunna, A. (1987). Aflatoxin Exposure Measured by
+Urinary Excretion of Aflatoxin B1-Guanine Adduct and Hepatitis B Virus Infection in Areas with
+Different Liver Cancer Incidence in Kenya. Cancer Research, 47:3430-3437.
+Eduardo Azziz-Baumgartner, Kimberly Lindblade, Karen Gieseker, Helen Schurz Rogers,
+Stephanie Kieszak, Henry Njapau, Rosemary Schleicher, Leslie F. McCoy, Ambrose Misore,
+Kevin DeCock, Carol Rubin, Laurence Slutsker (2005). Case control study of acute Aflatoxicosis
+outbreak, Kenya 2004; Environmental health perspective volume 113 number 12 December
+2005.
+Fandohan ,P., Zoumenou, D.; Hounhouigan, D.J. ; Marasas, W.F.O.; Wingfield, M.J. and K. Hell
+(2005) . Fate of aflatoxins and fumonisins during the processing of maize into food products in
+Benin. International Journal of Food Microbiology 98: 249-259
+FAO 1996- Rome declaration on Food security and safety.
+FAO/WHO/UNEP (1977). Conference on Mycotoxins, Nairobi Kenya, pp. 19
+Government of Kenya (2007). A globally competitive and Prosperous Kenya. Vision 2030.
+ISO 22000- 2005 Plain English dictionary . Available at:
+http://www.praxiom.com/iso-22000-definitions.htm Assessed 21st february 2011 [Accessed 20
+February 2011].
+
+-- 62 of 89 --
+
+63
+Kang’ethe, E. K and Lang’at, A.K. (2010) An investigation of Aflatoxin B1 and M1contamination
+of animal feeds and milk from urban centers in Kenya.. African Health Sciences; 9(4): 218-226
+Lewis L, Onsongo M, Njapau H, Schurz-Rogers H, Luber G, Kieszak S, Nyamongo J, Backer L,
+Dahiye AM, Misore A, DeCock K, Rubin C (2005). Aflatoxin contamination of commercial maize
+products during an outbreak of acute aflatoxicosis in Eastern and central Kenya. Environ Health
+Perspect., 113(12):1763-7.
+Mahuku, G and & Nzioki H. S. (2011). Prevalence of aflatoxin along the maize value chain in
+Kenya – preliminary findings. IFPRI, CIYMMT and KARI dissemination workshop, Southern Sun
+Hotel, Nairobi, 13th January 2011.
+Ministry of Agriculture 2011. A report on Food Security situation as at 31st December 2010.
+Muthomi J.W., Mureithi, B.K., Chemining, G.N., Gathumbi, J.K., Mutitu, E.W. (2010). Aspergillus
+and Aflatoxin B1 contamination of Maize and Maize Products from Eastern and North Rift
+Regions of Kenya. Proceedings of the 12th KARI Biennial Conference, 8th November 2010,
+Nairobi, Kenya pp. 344-352
+Muthomi, J.W., Njenga, L.N., Gathumbi, J.K. and Chemining’wa, G.N. (2009). The occurrence of
+Aflatoxins in maize and distribution of mycotoxin-producing fungi in Eastern Kenya. Plant
+Pathology Journal, 8 (3): 113-119.
+Mutungi, C., Lamuka, P., Arimi, S., Gathumbi, J., and Onyango, C. (2008). The fate of aflatoxins
+during processing of maize into muthokoi – A traditional Kenyan food. Food Control, 19: 714 -
+721
+Muture, B.N. & Ogana, G. (2005). Aflatoxin levels in maize and maize products during the 2004
+food poisoning outbreak in Eastern province of Kenya. East African Medical Journal , 82, (6):
+275-279
+
+-- 63 of 89 --
+
+64
+Ngindu, A., Kenya, P.R., Ocheng, D.M., Omondi, T.N., Ngare, W., Gatei, D., Bruce, K., Ngira,
+J.A., Nandwa, H., Jansen, A.J., Kaviti, J.N., Siongok, T.A. (1982). Outbreak of acute hepatitis
+caused by aflatoxin poisoning in Kenya. Lancet, 319: 1346 – 1348
+Njapau, H., Probst, P.J.C. (2007). Outbreak of an Acute Aflatoxicosis in Kenya in 2004:
+Identification of the Causal Agent. Appl Environ Microbiol, 73(8): 2762–2764.
+Onsongo, J. 2004. Outbreak of aflatoxin poisoning in Kenya. EPI/IDS Bull 5:3–4. Available:
+http://www.afro.who.int/csr/ids/bulletins/eastern/jun2004.pdf
+Peers, F.G., & Linsell, C. A. (1973). Dietary aflatoxins and liver cancer--a population based study
+in Kenya. British Journal of cancer, 27 (6): 473-484
+Probst, C., Njapau. N., and Cotty, P. J., (2007). Outbreaks of an acute aflatoxicosis in Kenya in
+2004: Identification of the causal agent. Applied and Environmental Microbiology 73 (8): 2762-
+2764.
+Sheppard G.S., (2006) Aflatoxin and safety: African Perspective in Aflatoxin and Safety edited by
+Abbas H.K; Published by CRC Press, pp 13-28.
+UNHCHR (2005) High Commission for Human Rights. Right to food: human rights resolution
+2005_18.
+Wagacha JM, Muthomi JW (2008); Mycotoxin problem in Africa: current status, implications to
+food safety and health and possible management strategies. International Journal Food
+Microbiology, 124(1):1-12.
+Wakhisi, J., Patel, K., Buziba,N., Rotich J., 2005. Esophageal cancer in north rift valley of
+western Kenya. Afr Health Sci. 2005 June; 5(2): 157–163
+WHO, (2002) World Health Organization. WHO global strategy for food safety : safer food for
+better health.
+
+-- 64 of 89 --
+
+65
+Annex 1: National maize variety list (Species: Zea mays L.)
+Variety
+name/code
+Year of
+release
+Owner (s) Maintainer & seed
+source
+Optimal
+production
+altitude range
+(Masl)
+Duratio
+n to
+Maturit
+y
+(month
+s)
+Grain yield
+(t ha-¹)
+Special attributes
+1 H632 1964 KARI/Kenya seed
+co.
+KARI/Kenya seed
+co
+1200-1700 5-7 6-8 Large Kernel dent
+2 H622 1965 Kenya seed co./
+KARI
+Kenya seed co./
+KARI
+1200-1700 5-7 6-8 Large Kernel dent
+3 H511 1967 Kenya seed co./
+KARI
+Kenya seed co./
+KARI
+1000-1500 4-5 4-6 Medium maturity
+4 KAT CB 1967 Kenya seed co./
+KARI
+Kenya seed co./
+KARI
+900-1350 3-4 3-5 Early maturing
+5 H512 1970 Kenya seed co./
+KARI
+Kenya seed co./
+KARI
+1200-1600 4-5 5-7 Large kernels
+6 CCM 1974 Kenya seed co./
+KARI
+Kenya seed co. Ltd 1-1200 4-5 5-7 Heat tolerant
+7 H625 1981 KARI/Kenya seed
+co
+Kenya seed co./
+KARI
+1500-2100 6-8 8-10 Prolific Good husk cover
+
+-- 65 of 89 --
+
+66
+8 H614D 1986 Kenya seed co./
+KARI
+Kenya seed co./
+KARI
+1200-1500 6-9 8-10 Stable over locations and seasons
+Semi flint
+9 H611D 1986 KARI/Kenya seed
+co
+KARI/Kenya seed
+co
+1700-2400 6-9 7-8 Frost tolerant
+10 H612D 1986 KARI/Kenya seed
+co
+KARI/Kenya seed
+co
+1500-2100 6-8 7-9 Semi flint
+11 H613D 1986 KARI/Kenya seed
+co
+KARI/Kenya seed
+co
+1500-2100 6-8 8-10 Semi-flint
+12 H626 1989 Kenya seed co./
+KARI
+Kenya seed co./
+KARI
+1500-2100 6-8 8-10 Flint
+13 PH1
+(Pwani)
+1989 Kenya seed co. Kenya seed co. 1-1200 3-4 5-7 Tolerant to lodging/strong stalks
+Drought tolerant
+14 DLC1 1989 Kenya Seed Co/
+KARI
+Kenya Seed Co/
+KARI
+800-1200 2-3 2-4 Flint very early
+15 PAN 5195 1995 Pannar Pannar Seed Co. 1000-1800 4-5 5-6.3 Prolific Tolerant to maize streak virus
+16 H627 1995 KSC/KARI KSC/KARI 1500-2100 6-8 9-12 Semi-flint
+17. DH01 1995 Kenya Seed Co. Kenya Seed Co. 9900-1400 3-4 4-6 green Early, stays green Co.
+18 DH02 1995 Kenya Seed Co. Kenya Seed Co. 1200-1600 4-5 6-8 Good standability
+19 DH02 2000 Kenya Seed Co. Kenya Seed Co. 900-1500 3-4 5-6 Stays green ,, Good standability
+
+-- 66 of 89 --
+
+67
+20 CG4141 2000 Monsanto Monsanto (K) 900-1700 4-5 4-7 Tolerant to Striga
+21 C5051 2000 Monsanto Monsanto (K) 1000-1800 4-5 5-8 Moderately tolerant to maize streak
+virus, easy to shell
+22 H623 1999 Kenya seed Co. Kenya seed Co. 1200-1700 5-7 7-9 Prolific, large dent kernels
+23 H 628 1999 Kenya seed Co. Kenya seed Co. 1500-2100 6-8 9-12 Flint
+24 KH600-
+11D
+2000 KARI KARI 1500-1800 6-9 7-8 Good standability stable performance
+25 KSTP 94 2000 KARI KARI Kakamega 1350-1800 4-4 4-6 Tolerant to striga
+26 CG4141 2000 Mosanto Mosanto K. 900-1700 4-5 4-7 Earliness Fast dry down
+27 H629 2000 Kenya Seed co. Kenya seed Co. 1500-2100 6-8 9-11 Semi dent
+28 DH03 2000 Kenya seed Co. Kenya seed Co. 900-1500 3-4 5-6 Stays green Good Standability
+29 C5051 2000 Monsanto Monsanto K.Ltd 1000-1800 4-5
+months
+5-8 Moderately tolerant to maize streak
+virus Easy to Shell
+30 PAN5355 2000 Pannar Seed Pannar Seed K.Ltd 1000-1800 4-5 5-5-9 Moderate MSV resistance
+31 H515 2000 Kenya Seed Co. Kenya Seed Co. 1200-1500 4-5 6-8 Lodge resistant
+32 H6211 2011 Kenya Seed Co. Kenya Seed Co. 1500-2100 6-8 9-14 Early,Short semi flint
+33 H6212 2001 Kenya Seed Co. Kenya Seed Co. 1500-2100 6-8 10-15 Short,Semi flint Resistant to ear rot
+34 FS6500 2001 OCD (Faida
+Seeds)
+OCD(Faida Seeds) 1500-2200 5-7 8-9 Tolerant to maize streak virus Good
+yielder Flint Kernels
+
+-- 67 of 89 --
+
+68
+35 KH634A 2001 KARI KARI Kakamega 1400-1800 3-5 5-6 Resistant to blight,Grey leaf spot
+36 KH600-
+15A
+2001 KARI KARI-Kitale 1800-2500 6-8 7-8 Good stand ability
+37 KH600-
+16A
+2001 KARI-Kitale KARI-Kitale 1800-2500 6-8 7-8 Stable Good Standability
+38 PAN99 2001 Pannar Seed Co. Pannar Seed(K) 1000-2000 5-6 7-8 Grey leaf spot tolerant Drought
+tolerant
+39 PAN5243 2001 Pannar seed
+company(S.A)
+Pannar Seed(K)Ltd 800-1800 4-5 7-8 Tolerant to grey leaf spot and
+northern leaf blight prolific
+40 PAN67 2001 Pannar Seed
+company (S.A)
+Pannar Seed (K)Ltd 800-1600 4-5 5-6 Resistant to maize streak virus
+Tolerant to low soil nitrogen
+41 H516 2001 Kenya Seed Co. Kenya Seed Co. 1200-1500 4-5 7-9 Resistant to blight,rust and lodging
+42 43.DH04 2001 Kenya Seed Co. Kenya Seed Co. 900-1500 3-4 5-6 Short stature
+43 44.DH05 2001 Kenya seed Co. Kenya Seed Co. 900-1500 3-4 5-7 High yielding and early maturing
+44 45.PAN69
+1
+2001 Pannar Seed Co. Pannar Seed (K)Ltd 1700-2400 6-9 7-8 Grey leaf spot tolerant Good
+standability Low ear placement
+45 46.Maseno
+Double
+Cobber
+2002 Lagrotech Seed
+Co.
+Lagrotech Seed Co. 1000-1600 3-4 4-6-8 Prolific-frequency of 30%-80%) flint
+kernels
+
+-- 68 of 89 --
+
+69
+46 PHB30H83 2002 Pioneer Hibred
+Zimbabwe
+Pioneer Hibred
+Zimbabwe
+1000-2000 5-6 8-11 Grey leaf spot tolerant Ear rot
+resistance
+47 H6213 2002 Kenya Seed Co. Kenya Seed Co. 1600-2200 6-8 10-15 High yield Drought tolerant
+48 WH699 2002 Western Seed Co. Western Seed Co. 1700-2200 6-8 7-9 Tolerant to smut
+49 WH 904 2002 Western Seed Co. Western Seed Co. 1000-1700 5-6 6-9 Tolerate to streak virus
+50 WS 909 2002 Western Seed Co. Western Seed Co. 0-1500 4-5 6-9 Tolerant to striga
+51 H6213 2002 Kenya Seed Co. Kenya Seed Co. 1600-2200 6-8 9-14.5 Semi-flint
+52 H518 2002 Kenya Seed Co. Kenya Seed Co. 1400-1700 4-5 7-9 Resistant to GLS, Rust, Blight
+53 KH 600-
+17A
+2002 KARI KARI 1600-2300 5-6 7-11 Good standability
+54 KH 600-
+18A
+2002 KARI KARI 1600-2300 5-6 8-12 Good disease tolerant
+55 PAN 683 2003 Pannar Seed Co. Pannar Seed Co. 2000 6-7 6.9 Late maturity excellence standability
+excellence tip cover, resistant to grey
+leaf spot
+56 PAN 33 2003 Pannar Seed Co. Pannar Seed Co. 800-1800 5-6 5.3 High yielding
+57 WH 501 2003 Western Seed Co. Western Seed Co. 1300-1700 5-6 7-9 Suitable for low input production,
+Tolerant to grey leafspot, maize
+streak virus & northern leafblight
+
+-- 69 of 89 --
+
+70
+58 WH502 2003 Western Seed Co. Western Seed Co. 1000-1700 4-5 6-9 Very tolerant to maize streak virus,
+tolerant to grey leafspot, northern
+leafblight, striga, drought and low soil
+nitrogen tolerant
+59 WH504 2003 Western Seed Co. Western Seed Co. 1000-2000 4.5-5.5 6-9 Tolerant to maze steak virus, grey
+leafspot & northern leaf blight green
+stem, at harvest suitable for fodder,
+tolerant to drought & low soil nitrogen
+60 WH505 2003 Western Seed Co. Western Seed Co. 500-2100 4.5-5.5 6-9 Tolerant to maze steak virus, grey
+leafspot & northern leaf blight green
+stem, at harvest suitable for animal
+fodder, tolerant to low soil nitrogen
+61 WH509 2003 Western Seed Co. Western Seed Co. 1000-1700 5-6 6-9 Tolerant to maize steak virus, grey
+leafspot & northern leaf blight,
+tolerant to drought
+62 WH403 2003 Western Seed Co. Western Seed Co. 1000-1500 4.5 5-8 Tolerant to leaf diseases, green stems
+at harvest suitable for animal fodder
+63 WS102 2003 Western Seed Co. Western Seed Co. 0-1200 3-3.8 2-3 Tolerant to maize steak virus, drought
+& low soil nitrogen
+64 S103 2003 Western Seed Co. Western Seed Co. 0-1500 3-4 3-4 Tolerant to maize steak virus, grey
+leafspot & northern leaf blight,
+drought & low soil nitrogen
+
+-- 70 of 89 --
+
+71
+65 H519 2003 Kenya Seed Co. Kenya Seed Co. 1200-1700 4-5 6.5 Prolific resistant to ear rots, rust, grey
+leaf spot, northern leaf blight, stem &
+root lodging compared to H513;
+semi-dent
+66 H520 2003 Kenya Seed Co. Kenya Seed Co. 1400-1700 4-5 4.5 Better resistant to northern blight,
+rust, ear rot, stem & root lodging,
+semi-flint. Good husk cover
+67 H521 2003 Kenya Seed Co. Kenya Seed Co. 1000-1600 4-5.5 4.5 More tolerant to grey leaf spot.
+Resistant to ear rot, root & stalk
+lodging than H513; semi-dent
+68 H522 2003 Kenya Seed Co. Kenya Seed Co. 1200-1600 4-5 6.3 Tolerant to grey leaf spot, resistant to
+ear rot, root & stalk lodging; semi-
+dent
+69 H523 2003 Kenya Seed Co. Kenya Seed Co. 1200-1600 4-5 6.6 Better yielding than H623, tolerant to
+grey leaf spot , resistance to root &
+stalk lodging; semi-dent
+70 DH 8 2003 Kenya Seed Co. Kenya Seed Co. 900-1500 3-4 4.9 Good performance in low yielding
+environments, resistant to ear rot,
+tolerant to maize streak virus, good
+grain quality, best for mid-altitudes
+71 PHB
+30G97
+2003 Pioneer Hibred
+Zimbabwe
+Pioneer Hibred
+Zimbabwe
+1200-2000 4-5 6-9 Resistant grey leaf spot, ear rots,
+tolerant to MSV, good grain quality,
+best for mid altitudes
+
+-- 71 of 89 --
+
+72
+72 Lagrotech
+early
+2003 Lagrotech Seed
+Co.
+Lagrotech Seed Co. Below 1500 2.7-3.5 2.3 Good ear cover, early maturing, striga
+tolerant, drought escaping
+73 Simba 61 2003 AgriSeed Co. Ltd SEEDCO Zambia 1800 4.5 7-10 Tolerant to MSV and GLS
+74 DK 8071 2003 Monsanto Monsanto 1500-1700 5 6-9 Flint grain
+75 DK 8031 2003 Monsanto Monsanto 900-1700 4-4.7 6-8 GLS tolerant
+76 KSH6214 2003 Kenya Seed Co. Kenya Seed Co. 1600-2100 6-7 9-12 Tolerance to GSL, leaf blight, lodging
+resistant. early maturing
+77 KSH624 2004 Kenya Seed Co Kenya Seed Co 1500-1800 5-6 8-11 Tolerance to GSL, leaf blight, rust.
+High yielding
+78 DH10 2004 Kenya Seed Co Kenya Seed Co 800-1400 3-4 5-6 Resistant rust, ear rots, and lodging,
+good husk cover, short stature
+79 DH09 2004 Kenya Seed Co Kenya Seed Co 1000-1500 3-4 3-5 Resistant to root & stalk, lodging;
+good husk cover high yielding
+80 PAN 15 2004 Pannar Seed Co. Pannar Seed Co. 800-1800 4-5 4-6 Resistant to blight, rust, ear rot, MSV,
+GLS. Good husk cover & standability
+81 SC Duma
+41
+2004 AgriSeed Co. Ltd SEEDCO Zambia 800-1800 4-5 6-7 Resistant to ear rot, rust, MSV, mottle
+virus, drought & early maturity
+82 SC Duma
+43
+2004 AgriSeed Co. Ltd SEEDCO Zambia 800-1800 4-5 6-7 Resistant to ear rot, rust, MSV, mottle
+virus, drought & early maturity
+
+-- 72 of 89 --
+
+73
+83 FICA 4 2004 FICA Seeds FICA Seeds 800-1800 4-5 6-7 Resistant to rust, MSV, GLS, blight,
+good husk cover, drought, striga
+tolerant
+84 DKC 80-
+53
+2004 Monsanto (K) Ltd Monsanto (K) Ltd 900-1700 4-5 5-8 Tolerant to MSV, GLS. Good
+standability, wide adaptability&
+prolific
+85 DKC 80-
+73
+2004 Monsanto (K) Ltd Monsanto (K) Ltd 1500-1700 5-6 7-10 Tolerant to MSVt, GLS. Diplodia &
+Good husk cover
+86 DKC 80-
+33
+2004 Monsanto (K) Ltd Monsanto (K) Ltd 900-1700 5-6 6-8 Resistant to GLS, good standability
+87 WS 202 2004 Western Seed Co. Western Seed Co. 0-1500 3-4 3-5 Resistant to MSV, drought, low soil
+nitrogen
+88 KH500-
+21A
+2004 KARI KARI Muguga 1600-2000 5-6 7-8 Good standability, husk cover,
+Resistant to MSV, head smut, early
+maturing
+89 KH500-
+31A
+2004 KARI KARI Muguga 1800-2100 6-7 6-7 Resistant to rust, MSV, blight, stays
+green (for fodder)
+90 KH500-
+32A
+2004 KARI KARI Muguga 1300-1800 5-6 6-8 Resistant to blight, rust, MSV
+91 KH500-
+33A
+2004 KARI KARI Muguga 1400-1800 5-6 7 Resistant to blight
+
+-- 73 of 89 --
+
+74
+92 KH500-
+34A
+2004 KARI KARI Muguga 1300-1800 5-6 6-8 Early maturing, Resistant to blight,
+rust, MSV
+93 KK SYN-1 2004 KARI KARI 1500-1800 3-4 4-5 Wide adaptability, Responsive to low
+input environment, Resistant to MSV
+94 KK SYN-2 2004 KARI KARI 1500-1800 3-4 5-6 Wide adaptability, Responsive to low
+input environment, Resistant to MSV
+95 KH 631Q 2004 KARI KARI 1000-1500 4-5 5-7 Quality protein maize, good husk
+cover, Resistant to GLS, ear rot, rust,
+blight
+96 EMB 204 2004 KARI KARI 1000-1500 5-6 7-8 Quality protein maize, good husk
+cover, Resistant to GLS, ear rot, rust,
+blight
+97 Ua
+Kayongo 1
+2004 KARI Western Seed 1200-1600 4-5 4 Resistant to striga
+98 KH 600-
+20A
+2005 KARI KARI Kitale 1800-2300 5-6 8-9 Good standability, good resistance to
+blight
+99 PAN 4M-
+21
+2005 Pannar Seed (PTY)
+Ltd
+Pannar Seed (PTY)
+Ltd
+1000-1500 4-5 4-5 Drought tolerant, flint grain, good
+husk cover, double cobber
+100 SC Punda
+Milia 53
+2005 AgriSeed Co. Ltd SEEDCO Zambia 1800-1900 5-6 8-13 Good standability, tolerant to grey
+leaf spot & MSV
+101 SC Simba
+63
+2005 AgriSeed Co. Ltd SEEDCO Zambia 1200-1800 3-4 5-10 Drought tolerant, tolerant to grey leaf
+spot, MSV, blight & ear rot
+
+-- 74 of 89 --
+
+75
+102 PHB
+30G19
+2006 Pioneer Hi-Bred
+Seeds
+Pioneer Hi-Bred
+Seeds
+1000-1800 5-6 8-10 Tolerant to grey leaf spot, low ear
+replacement, Good husk cover &
+standability, lodging resistant
+103 PBH
+30V53
+2006 Pioneer Hi-Bred
+Seeds
+Pioneer Hi-Bred
+Seeds
+1200-2000 5-6 8-11 Resistant to grey leaf spot, tolerant to
+MSV, low ear replacement, good husk
+cover
+104 SC Tembo
+73
+2006 AgriSeed Co. Ltd SEEDCO Zambia 1800-1900 5-6 8-12 Good standability, tolerant to grey
+leaf spot & MSV
+105 SC Tembo
+71
+2006 AgriSeed Co. Ltd SEEDCO Zambia 1800-1900 5-5.5 8-13 Tolerant to MSV & GLS. Good
+standability
+106 SC Punda
+Milia 51
+2006 AgriSeed Co. Ltd SEEDCO Zambia 800-1600 4-4.5 6-8 Tolerant to MSV & GLS. Good
+standability, wide adaptability
+107 WH 602 2006 Western Seed Co. Western Seed Co.
+108 WH 101 2006 Western Seed Co. Western Seed Co.
+109 WH401 2006 Western Seed Co. Western Seed Co.
+110 WH 402 2006 Western Seed Co. Western Seed Co.
+111 WH 507 2006 Western Seed Co. Western Seed Co.
+112 WH 508 2006 Western Seed Co. Western Seed Co.
+113 DH 06 2007 Kenya Seed Co Kenya Seed Co 900-1500 3-4 4-6.5 Good standability, Good husk cover
+114 DH 11 2007 4-6.5
+
+-- 75 of 89 --
+
+76
+115 DH 12 2007 Kenya Seed Co Kenya Seed Co 900-1400 3-4 4-6 Tolerant to blight & rust, resistant to
+stalk lodge
+116 Ua
+Kayongo
+24-5
+2007 KARI KARI Embu 1000-1500 4-5 4-2 Tolerant to herbicide for striga
+control, GLS & MSV, drought tolerant,
+good ear replacement
+117 Ua
+Kayongo 3
+2007 KARI KARI Embu 1000-1500 4-5 4.3 Tolerant to herbicide for striga
+control, GLS & MSV, root & stalk
+lodging
+118 EV 04271 2007 KARI KARI 1500-2100 4-5 4-5 Resistant to rust, good standability
+119 PH 5 2007 Kenya Seed Co Kenya Seed Co 0-1250 4-5 6-5 Resistant to lodging, ear rot, rust,
+good husk cover, good standability
+120 WS303 2007 Western Seed Co. Western Seed Co.
+121 PAN 4M-
+19
+2008 Pannar Seed (PTY)
+Ltd
+Pannar Seed (PTY)
+Ltd
+900-1500 3-4 4-6 Flint, drought tolerant, early maturing,
+fast dry down, good standablility
+122 PAN 4M-
+17
+2008 Pannar Seed (PTY)
+Ltd
+Pannar Seed (PTY)
+Ltd
+900-1500 3-4 4-6 Flint, drought tolerant, early maturing,
+123 PAN 69 2008 Pannar Seed (PTY)
+Ltd
+Pannar Seed (PTY)
+Ltd
+1200-1700 4-5 7-10 High yielding wide adaptability, good
+standablility, tolerant to leaf diseases
+124 PAN 57 2008 Pannar Seed (PTY)
+Ltd
+Pannar Seed (PTY)
+Ltd
+1200-1700 4-5 6-8 Flint, tolerant to leaf diseases
+
+-- 76 of 89 --
+
+77
+125 PAN 7M-
+97
+2008 Pannar Seed (PTY)
+Ltd
+Pannar Seed (PTY)
+Ltd
+1400-1700 4-5 7-10 High yielding, good standablility,
+prolific
+126 PAN 8M-
+91
+2008 Pannar Seed (PTY)
+Ltd
+Pannar Seed (PTY)
+Ltd
+1400-2000 5-6 8-10 Excellent GLS & rust tolerance, good
+for silage, prolific
+127 PAN 7M-
+89
+2008 Pannar Seed (PTY)
+Ltd
+Pannar Seed (PTY)
+Ltd
+1400-2000 5-6 8-10 High yielding, tolerant to leaf diseases
+128 KH500-
+35E
+2008 KARI KARI 1200-1600 4-5 7 Resistant to GLS, MSV, rust & blight,
+stay green, good stalk for animal feed
+129 KH500-
+36E
+2008 KARI KARI 1200-1800 4-5 7 Resistant to MSV, rust & blight, flint
+130 KH500-
+37E
+2008 KARI KARI 1200-1800 4-5 8 Resistant to MSV, rust & blight
+131 KH500-
+39E
+2008 KARI KARI 1200-1800 4-5 8-9 Resistant to GLS & blight
+132 KEMBU
+214
+2008 KARI KARI 1200-1600 4-5 7 Tolerant to stem borer
+133 KH500-
+40E
+2008 KARI KARI 1200-1800 4-5 7 Resistant to insects, tolerant to
+drought & low N
+134 KH500-
+44E
+2008 KARI KARI 1500-2100 4-5 6.95 Tolerant to MSV, early
+
+-- 77 of 89 --
+
+78
+135 KH500-
+22A
+2008 KARI KARI 1200-2100 4-5 6.9 Tolerant to MSV, early
+136 KH500-
+43A
+2008 KARI KARI 1200-2100 4-5 6.5 Tolerant to MSV, double cobber, high
+foliage (dual purpose)
+137 KK BS-04 2008 KARI KARI All striga
+infested
+regions
+4-5 5-5.5 Tolerant to striga, drought & low N,
+resistant to rust 7 GLS, Good
+standability
+138 KDH4 SBR 2008 KARI KARI 5.15 Resistant to stem borer, tolerant to
+drought & low N
+139 KDH5 SBR 2008 KARI KARI 4.77 Resistant to stem borer, tolerant to
+drought & low N
+140 KDH6 SBR 2008 KARI KARI 5.06 Resistant to stem borer, tolerant to
+drought & low N
+141 KDH414-
+01 SBR
+2008 KARI KARI 5.15 Resistant to stem borer, tolerant to
+drought & low N
+142 KDH414-
+02 SBR
+2008 KARI KARI 4.77 Resistant to stem borer, tolerant to
+drought & low N
+143 KDH414-
+03 SBR
+2008 KARI KARI 5.06 Resistant to stem borer, tolerant to
+drought & low N
+144 KH600-
+23A
+2008 KARI KARI 1800-2500 5-6 8.6-14.8 Resistant to GLS, rust & blight, less
+lodging
+
+-- 78 of 89 --
+
+79
+145 KH600-
+24A
+2008 KARI KARI 1800-2500 5-6 8.6-14.8 Resistant to GLS, rust & blight, less
+lodging
+146 KH600-
+24A
+2008 KARI KARI 1800-2500 5-6 8.7-14.9 Resistant to GLS, rust & blight, less
+lodging
+147 KS-DH14 2008 Kenya Seed Co Kenya Seed Co 800-1300 3.5-4.5 5.0-6.5 Drought tolerant, lodging resistant,
+stays green
+148 KS-H6216 2008 Kenya Seed Co Kenya Seed Co 1500-2100 6-7 8.0-9.5 Lodging resistant, flint kernels
+149 KS-H524 2008 Kenya Seed Co Kenya Seed Co 1200-1500 4-5 7.5-8.5 Resistant to GLS, rust & ear rot
+150 KS-H6217 2008 Kenya Seed Co Kenya Seed Co 1500-2100 6-7 8.5-10 Lodging resistant, flint kernels
+151 KH-DH13 2008 Kenya Seed Co Kenya Seed Co 800-1800 3.5-4.5 4.5-7.6 Good husk cover, drought tolerant,
+resistant to ear rot, GLS, blight & rust
+152 KS-H6502 2008 Kenya Seed Co Kenya Seed Co 1300-1800 5-6 7.5-9.0 Resistant to rust, lodging resistant &
+tolerant to GLS & blight
+153 KS-H6503 2008 Kenya Seed Co Kenya Seed Co 1300-1800 5-6 7.5-9.0 Resistant to rust, lodging resistant,
+tolerant to GLS & blight
+154 PHB
+30D79
+2008 Pioneer Hi-Bred
+Seeds
+Pioneer Hi-Bred
+Seeds
+1000-18000 5-6 7-11 Good tolerance to blight & MSV,
+resistant to GLS, strong stalks
+155 WH002 2008 Western Seed Co. Western Seed Co.
+156 WS105 2008 Western Seed Co. Western Seed Co.
+157 WS202 2008 Western Seed Co. Western Seed Co.
+
+-- 79 of 89 --
+
+80
+158 WH404 2008 Western Seed Co. Western Seed Co.
+159 WH301 2008 Western Seed Co. Western Seed Co.
+160 WH302 2008 Western Seed Co. Western Seed Co.
+161 WH405 2008 Western Seed Co. Western Seed Co.
+162 WH605 2008 Western Seed Co. Western Seed Co.
+163 WH601 2009 Western Seed Co. Western Seed Co. 1500-2100 5-6 6-9 Tolerant to GLS & blight, lodging
+resistant, good husk cover
+164 WS204 2009 Western Seed Co. Western Seed Co. 800-1400 3-4 3-4 Tolerant to GLS, MSV, blight, drought,
+low N, striga resistant
+
+-- 80 of 89 --
+
+81
+Annex 2: Current projects dealing with Aflatoxin in Kenya.
+Project Objectives Geographic
+al area of
+coverage
+Tim
+efra
+me
+Actors Donor
+Funding
+AFLASAFE - Develop pesticides to control aflatoxin On station
+testing
+trials -
+Kiboko
+On
+trial
+IITA, USDA, KARI USAID
+AFLACONTROL
+(Employing the
+scope of cost-
+effective afaltoxin
+risk reductioon
+startegies in maize
+and groundnut
+value chains to
+improve market
+access and health
+of the poor in
+Africa)
+- Economic cost-effectiveness analysis
+(loss on health, income and trade)
+- Perceptions on aflatoxin and
+willingness to pay by consumers
+- Identify level of aflatoxin along the
+value chain
+- Develop cost effective technologies for
+aflatoxin control
+- Communication and advocacy for
+dissemination of results
+Nyanza
+(Kisii and
+Homabay)
+Eastern
+(Mbeere,
+Embu,
+Makueni
+and
+Machakos)
+? IFRI, KARI, ACDI/VOCA,
+CIMMYT, ICRISAT, EAGC,
+Univesity of Pittsburg, insitut
+d’ Economie Rurale,
+Uniformed Health Serrvices,
+University of the Health
+Services
+Bill and
+Melinda
+Gates
+Foundation
+SAFE-FOOD, SAFE
+DAIRY (Building
+capacity to
+improve safety in
+the feed-dairy
+- Assess the levels of exposure to
+aflatoxin and fumonisins at household
+level,
+- assess agronomic practices that
+predispose households to
+Makueni,
+Kibwezi,
+Nandi
+(North,
+Cenral,
+3½
+year
+s
+UON (Kenya)
+MTT-Agrifood research
+(Finland)
+Ministry of
+Foreign
+Affairs
+(Finland)
+
+-- 81 of 89 --
+
+82
+chain with special
+focus on health
+risk associated
+with biological
+contaminants)
+aflatoxin/fumonisin poisonings
+- Characterize the fungal species found
+in maize and soils
+- To strengthen institutional capacities
+to improve safety through training and
+infrastructure to test for mycotoxins
+South) KARI (Kenya)
+EVIRA (Finland)
+Egerton University (Kenya)
+Aflatoxin survey of
+Kenyan maize and
+development of
+novel diagonistics
+- Conduct a small-scale survey of
+aflatoxin in maize in food supply of
+small-holder farmer
+- Develop novel, diagonistics techniques
+- Build aflatoxin testing capacity at the
+Hub (BECA)
+? ? Cornell and Maryland
+University
+Sygenta
+Cornell
+Centre for
+Sustainable
+future
+(US$ 16,500)
+KAPP Project, 2011
+(Mitigating
+mycotoxin hazards
+in maize and
+maize products)
+- Determine areas of food continuum
+and regions prone to mycotoxin
+contamination
+- Develop tools for recognition and
+detection of mycotoxin
+- Develop and validate mycotoxin
+management strategies
+- Package and disseminate appropriate
+information and technologies for
+management of mycotoxins
+? 2
+year
+s
+CAVS (Lead institution)
+NPHLS (MoH)
+NARL (KARI)
+ACDI-VOCA (KMDP)
+Plant Protection Services
+Subdivision (MoA)
+Kenya
+Agricultural
+Productivity
+Project
+(Ksh,
+7,622,900)
+
+-- 82 of 89 --
+
+83
+contamination by extension
+Aflatoxin
+contamination
+management along
+the maize value
+chain in Kenya.
+-Create awareness of aflatoxin
+contamination of maize along the value
+chain
+-Formulate strategies for control of
+aflatoxin along the maize value chain
+Eastern
+Kenya and
+North rift
+Valley
+1yea
+r
+KARI. Kenya National
+federation of Agricultural
+Producers [KENFAP],
+University of Nairobi and MTT
+Agrifood Research Finland
+PAEPARD
+€ 30,000
+Improving food
+safety in East and
+West Africa through
+capacity building in
+research and
+information
+dissemination
+-Improved methods for reducing risk for
+mycotoxin (including aflatoxin)
+contamination in staple crops identified and
+disseminated
+Eastern and
+Western
+Kenya
+4
+year
+s
+ILRI, MTT, university of
+Nairobi
+Ministry of
+foreign
+Affairs
+Finland
+Strategies to
+reduce Aflatoxin
+levels in Maize
+To assess the effect of plant and
+Trichoderma extracts on growth of
+Aspergillus flavus and A. parasiticus on
+maize kernels
+Laboratory
+based study
+2
+year
+s
+University of Nairobi National
+council of
+Science and
+Technology
+
+-- 83 of 89 --
+
+84
+during storage
+To assess the effect of plant and
+Trichoderma extracts on aflatoxin
+production in maize kernels.
+To determine the application dose of the
+plant extract and biocontrol agent required
+to control fungal growth
+Kenya. $
+2,500.00
+
+-- 84 of 89 --
+
+85
+Annex 3. List of testing Laboratories with Capacity to test for Aflatoxin
+Testing Lab Scope
+1. Kenya Bureau of Standards
+(KEBS) – Testing laboratories
+Materials, Chemical and microbiology analysis
+2 Kenya Plant Health Inspectorate
+Service(KEPHIS)
+Analytical chemistry laboratory
+3 Kenya Medical Research Institute ( KEMRI) Biomedical research
+4 National Public Health Laboratories Services Chemical and microbiology analysis
+5 Kenya Agricultural Research Institute (KARI) Food, horticulture and livestock
+6 Kenya Revenue Authority - NAIROBI Chemical and microbiology
+7 Tusker Brewery Laboratory - NAIROBI Microbiology
+8 GlaxoSmithkline - NAIROBI Chemicals (organic & inorganic) Microbiology, Food
+9 Mumias Sugar Factory Laboratory -
+MUMIAS
+Food
+10 Homegrown Microbiology Labs JKIA -
+NAIROBI
+Microbiological analysis
+
+-- 85 of 89 --
+
+86
+11 Cadbury Kenya Ltd - NAIROBI Microbiology, Food
+12 Nestle Food Kenya- NAIROBI Microbiology, Food
+13 SGS Kenya Ltd – MOMBASA & NAIROBI Chemicals (organic & inorganic),Agricultural, Microbiology,
+Food, Petroleum, Environmental
+14 Dawa Pharmaceuticals Ltd. – NAIROBI Microbiology
+15 Government Chemist Department –
+MOMBASA
+Microbiology, Food, water, forensic Science Labs
+16 CAMRC- KEMRI/ Wellcome Trust Research
+Unit – KILIFI
+Microbiology, Medical, Clinic
+17 Analabs Ltd. – KANGEMI, NAIROBI Agricultural, Microbiology
+18 Government Chemist Department –
+NAIROBI
+Chemicals(organic & Inorganic), Agricultural, Food, Petroleum,
+chemical Toxicology
+19 Intertek Caleb Brett – MOMBASA Petroleum analysis, Chemical(inorganic) Foods
+20 Polucon Services (K) Ltd – MOMBASA Microbiology, Food, Petroleum products
+21 Karlsmarts Laboratory Services- NAIROBI Microbiology
+22 Quest Laboratories Food and chemical
+23 Prolab Limited Food and chemical
+24 Jomo Kenyatta University of Agriculture and Food, materials, environment
+
+-- 86 of 89 --
+
+87
+Technology
+25 Coca cola Industries(BSK Kenya Ltd) Food
+26 University of Nairobi Chemical, microbiology, veterinary services
+27 ABS TCM Ltd. Animal feed analyis
+28 Bora Biotech Ltd. Food Testing Lab
+29 NAS Airport Services Ltd. Microbiological analysis
+Annex 4: Roles and mandates of Government Institutions
+Ministry Legislation Mandate
+Ministry of Agriculture Agricultural Act - Cap 318 - Scheduling of crops
+- Setting prices for scheduled crops
+
+-- 87 of 89 --
+
+88
+- Control of maize importation
+Crop Production & Livestock
+Act – Cap 321
+- Improvement of maize & livestock production,
+marketing and processing
+- Allows destruction of crops without compensation
+Plant Protection Act – Cap
+324
+- Prevention of introduction and spread of plant
+diseases
+Seed & Plant Varieties Act –
+Cap 326
+- Regulates transactions in seeds
+- Testing and certification of seeds
+- Restriction of importation of new varieties
+National Cereals & produce
+Board Act – Cap 338
+- Regulates and controls produce and marketing of
+maize
+- Sets price marketing mechanisms
+- Preserves and procures national grain strategic
+reserves for the Government
+Ministry of Public Health &
+Sanitation
+Food Drugs & Chemical
+Substance Act – Cap 254
+- Prevention of adulteration of food & drugs and
+chemical substances
+- Enforces food hygiene
+- Allows for analysis of agricultural produce that
+
+-- 88 of 89 --
+
+89
+affects consumers
+- Control chemical residues in foods
+Public Health Act – Cap 242 - Prohibits importation of unwholesome food
+- Seizure and disposal of unwholesome foods
+- Seizure and compensation of contaminated foods
+- Empowers minister to enter, inspect and seize of
+storage facilities
+Ministry of Trade Trade & Description Act –
+Cap 305
+- Labeling of products
+Weights & Measures Act –
+Cap 513
+- Use, manufacture and sale of weights and measures
+
+-- 89 of 89 --
+

@@ -1,0 +1,36 @@
+{
+  "modelName": "aflatoxin_contamination",
+  "displayName": "Aflatoxin Contamination",
+  "crop": "Maize",
+  "description": "Aflatoxin is a fungal toxin contaminating stored grains like maize and groundnuts, caused by Aspergillus flavus and Aspergillus parasiticus.",
+  "symptoms": [
+    "Mold growth on stored grains",
+    "Discoloration of kernels",
+    "Shriveled grains"
+  ],
+  "type": "fungal",
+  "severity": "high",
+  "spreadRisk": "high",
+  "treatment": {
+    "chemical": [],
+    "organic": [],
+    "cultural": [
+      "Sort and discard contaminated grains",
+      "Use approved biocontrol agents"
+    ]
+  },
+  "prevention": [
+    "Dry grains to safe moisture level",
+    "Use hermetic storage bags",
+    "Timely harvesting"
+  ],
+  "yieldImpactPercentage": 20,
+  "recommendedFertilizers": [],
+  "recoveryTimeDays": 30,
+  "confidenceThreshold": 70,
+  "source": {
+    "name": "FAO",
+    "url": "https://www.fao.org",
+    "verified": true
+  }
+}
