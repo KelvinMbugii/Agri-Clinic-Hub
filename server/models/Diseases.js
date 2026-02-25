@@ -93,8 +93,23 @@ const diseaseSchema = new mongoose.Schema(
       url: String,
       verified: Boolean,
     },
-  },
+  },  
+
   { timestamps: true },
 );
 
-module.exports = mongoose.model("Disease", diseaseSchema);
+
+(diseaseSchema.index({
+  displayName: "text",
+  modelName: "text",
+  crop: "text",
+  type: "text",
+  symptoms: "text",
+  description: "text",
+  "treatment.cultural": "text",
+  "treatment.chemical": "text",
+  "treatment.organic": "text",
+  prevention: "text",
+}),
+
+  (module.exports = mongoose.model("Disease", diseaseSchema)));

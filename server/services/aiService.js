@@ -4,6 +4,41 @@ const Disease = require("../models/Diseases"); // MongoDB disease collection
 
 const AI_SERVICE_URL = "http://localhost:8000/predict";
 
+
+const normalizeDiseaseKey = (value = "") =>
+  String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ");
+
+const findDiseaseRecord = async (diseaseName) => {
+  if (!diseaseName) return null;
+
+  const normalizedName = normalizeDiseaseKey(diseaseName);
+  const compactModelName = normalizedName.replace(/\s+/g, "_"); 
+
+  return Disease.findOne({
+    $or: [
+      { modelName: diseaseName },
+      { displayName: diseaseName },
+      { modelName: compactModelName },
+      { displayName: { $regex: `^${normalizedName}$`, $options: "i" } },
+      { modelName: { $regex: `^${compactModelName}$`, $options: "i" } },
+      {
+        displayName: {
+          $regex: normalizedName
+            .split(" ")
+            .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+            .join("[_\\s-]*"),
+          $options: "i",
+        },
+      },
+    ],
+  });
+};
+
+
 /**
  * Detect disease from image and fetch full info from MongoDB.
  * Returns a structured object for controller logging/response.
@@ -25,7 +60,7 @@ const detectDisease = async (imageBuffer) => {
     }
 
     // Query MongoDB for full disease info
-    const diseaseInfo = await Disease.findOne({ displayName: aiDiseaseName });
+    const diseaseInfo = await findDiseaseRecord(aiDiseaseName);
 
     if (!diseaseInfo) {
       return {
@@ -62,39 +97,35 @@ const getModelStatus = () => ({
 /**
  * Chat fallback helper using disease database.
  */
-const chatWithKnowledge = async (message, lastDetection = {}) => {
-  const text = String(message || "").toLowerCase();
-  let diseaseKey = lastDetection?.detectedDisease || null;
+const findDiseaseByTextSearch = async (message) => {
+  const results = await Disease.find(
+    { $text: { $search: message }},
+    { score: { $meta: "textScore"}}
+  )
+    .sort({ score: { $meta: "textScore"}})
+    .limit(1);
 
-  if (!diseaseKey) {
-    const keywords = text.split(" ").filter((w) => w.length > 2);
-    for (const k of keywords) {
-      const disease = await Disease.findOne({
-        $or: [
-          { displayName: { $regex: k, $options: "i" } },
-          { description: { $regex: k, $options: "i" } },
-          { crop: { $regex: k, $options: "i" } },
-          { symptoms: { $regex: k, $options: "i" } },
-        ],
-      });
-      if (disease) {
-        diseaseKey = disease.displayName;
-        break;
-      }
-    }
+
+  return results [0] || null;
+
+};
+
+const chatWithKnowledge = async (message, lastDetection = {}) => {
+  let diseaseInfo = await findDiseaseByTextSearch(message);
+
+  if (!diseaseInfo && lastDetection?.detectedDisease) {
+    diseaseInfo = await findDiseaseRecord(lastDetection.detectedDisease);
   }
 
-  if (!diseaseKey) {
+  if (!diseaseInfo) {
     return [
-      "I can help interpret disease scans and provide crop guidance.",
-      "You can upload a photo or ask about symptoms, pests, or crop care.",
+      "I could not confidently match that to a known disease",
+      "Please include crop name and key symptoms, or upload a new image.",
     ].join("\n");
   }
 
-  const diseaseInfo = await Disease.findOne({ displayName: diseaseKey });
-  if (!diseaseInfo) return "I have limited information about this disease.";
-
   const lines = [];
+
   lines.push(`🌿 **${diseaseInfo.displayName}**`);
   lines.push(`🟢 Crop: ${diseaseInfo.crop}`);
   lines.push(`🧬 Type: ${diseaseInfo.type}`);
@@ -104,26 +135,25 @@ const chatWithKnowledge = async (message, lastDetection = {}) => {
     lines.push("🔍 Symptoms:");
     lines.push(...diseaseInfo.symptoms.map((s) => `- ${s}`));
   }
+
   if (diseaseInfo.treatment?.cultural?.length) {
     lines.push("💊 Cultural Treatments:");
     lines.push(...diseaseInfo.treatment.cultural.map((t) => `- ${t}`));
   }
+
   if (diseaseInfo.treatment?.chemical?.length) {
     lines.push("💊 Chemical Treatments:");
     lines.push(...diseaseInfo.treatment.chemical.map((t) => `- ${t}`));
   }
+
   if (diseaseInfo.treatment?.organic?.length) {
     lines.push("💊 Organic Treatments:");
     lines.push(...diseaseInfo.treatment.organic.map((t) => `- ${t}`));
   }
+
   if (diseaseInfo.prevention?.length) {
     lines.push("🛡 Prevention:");
     lines.push(...diseaseInfo.prevention.map((p) => `- ${p}`));
-  }
-  if (diseaseInfo.source?.name) {
-    lines.push(
-      `🔗 Source: ${diseaseInfo.source.name} (${diseaseInfo.source.url || "link unavailable"})`
-    );
   }
 
   return lines.join("\n");

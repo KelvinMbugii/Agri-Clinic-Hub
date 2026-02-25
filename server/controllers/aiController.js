@@ -1,6 +1,7 @@
 const fs = require("fs");
 const AiLog = require("../models/AiLog");
 const { detectDisease, getModelStatus, chatWithKnowledge } = require("../services/aiService");
+const { detectIntent } = require("../services/intentService");
 
 // IMAGE DISEASE DETECTION
 const detectDiseaseFromImage = async (req, res) => {
@@ -42,8 +43,30 @@ const chatAi = async (req, res) => {
     const { message, lastDetection } = req.body || {};
     if (!message || typeof message !== "string") return res.status(400).json({ message: "Please provide a message" });
 
-    const reply = await chatWithKnowledge(message, lastDetection);
-    res.json({ success: true, reply });
+    //const intent = detectIntent(message);
+    console.log("Incoming message:", message);
+    const intent = detectIntent(message);
+    console.log("Detected intent:", intent);
+
+   let reply;
+
+   switch (intent){
+    case "disease":
+      reply = await chatWithKnowledge(message, lastDetection);
+      break;
+
+    case "weather":
+      reply = "Weather advisory feature coming next phase";
+      break;
+    case "booking":
+      reply = "To book an agricultural officer, go to the bookings section.";
+      break;
+
+    default:
+      reply = await chatWithKnowledge(message, lastDetection);
+   }
+
+   res.json({ success:true, intent, reply});
   } catch (error) {
     console.error("AI Chat Error:", error);
     res.status(500).json({ message: "Failed to process chat message", error: error.message });
