@@ -12,11 +12,17 @@ export default function WeatherAlerts() {
   const [forecast, setForecast] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchForecast = async () => {
       try {
-        const { data } = await getForecastRequest(farmer.location);
+        if(!farmer?.location?.trim()){
+          setError('Location is required');
+          return;
+        }
+        const data = await getForecastRequest(farmer.location);
+        console.log(data);
 
         // OpenWeather gives 3-hour intervals → convert to daily
         const daily = data.list.filter((_, i) => i % 8 === 0);
@@ -24,7 +30,8 @@ export default function WeatherAlerts() {
         setForecast(daily);
         setAlerts(generateAlerts(daily));
       } catch (err) {
-        console.error(err);
+        const message = err?.response?.data?.message || 'Failed to fetch weather data';
+        setError(message);
       } finally {
         setLoading(false);
       }
@@ -40,6 +47,8 @@ export default function WeatherAlerts() {
     >
       {loading ? (
         <p className="text-sm text-slate-500">Loading weather…</p>
+      ) : error ? (
+        <p className="text-sm text-red-500">{error}</p>
       ) : (
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Forecast */}

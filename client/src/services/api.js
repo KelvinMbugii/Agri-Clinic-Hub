@@ -121,8 +121,25 @@ export async function getAiLogsRequest() {
 
 // Weather
 export async function getWeatherRequest(location) {
-  axios.get(`/weather?location=${encodedURIComponent(location)}`);
+  const normalizedLocation = location.trim().replace(/ /g, '+');
+
+  if(!normalizedLocation){
+    throw new Error('Location is required');
+  }
+ const res = await api.get('/api/weather', {
+    params: { location: normalizedLocation }
+  });
+  return res.data;
 }
 
-export const getForecastRequest = (location) =>
-  axios.get(`/weather/forecast?location=${encodeURIComponent(location)}`);
+export async function getForecastRequest(location){
+  const normalizedLocation = location?.trim();
+  if(!normalizedLocation){
+    throw new Error('Location is required');
+  }
+
+  const res = await api.get('/api/weather/forecast', {
+    params: { location:normalizedLocation }
+  });
+  return res.data;
+}
