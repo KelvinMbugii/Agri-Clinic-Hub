@@ -58,6 +58,24 @@ export default function ImageUpload({ onDetection, onAskAi }) {
     setError('');
   };
 
+const toLines = (value) => {
+    if (Array.isArray(value)) return value;
+    if (typeof value === 'string') {
+      return value
+        .split(/\r?\n|•|;|,/)
+        .map((item) => item.trim())
+        .filter(Boolean);
+    }
+    return [];
+  };
+
+  const recommendedLines = [
+    result?.description,
+    ...toLines(result?.organicTreatment),
+    ...toLines(result?.chemicalTreatment),
+    ...toLines(result?.prevention)
+  ].filter(Boolean);
+
   return (
     <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
@@ -149,14 +167,8 @@ export default function ImageUpload({ onDetection, onAskAi }) {
             <div className="rounded-2xl bg-slate-50 p-4">
             <div className="text-xs font-medium text-slate-700">Recommended action</div>
               <div className="mt-2 text-sm text-slate-700">
-                {[
-                  result.description,
-                  ...result.organicTreatment,
-                  ...result.chemicalTreatment,
-                  ...result.prevention
-                ]
-                  .filter(Boolean)
-                  .map((line, i) => <div key={i}>{line}</div>)}
+               {recommendedLines.map((line, i) => <div key={i}>{line}
+                </div>)}
               </div>
              </div>
 

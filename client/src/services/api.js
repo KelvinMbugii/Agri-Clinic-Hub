@@ -42,6 +42,16 @@ export async function chatRequest(payload) {
   return res.data;
 }
 
+export async function getChatHistoryRequest() {
+  const res = await api.get('/api/ai/chat/history');
+  return res.data;
+}
+
+export async function clearChatHistoryRequest() {
+  const res = await api.delete('/api/ai/chat/history');
+  return res.data;
+}
+
 // Farmer
 export async function detectDiseaseRequest(file) {
   const formData = new FormData();

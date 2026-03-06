@@ -1,5 +1,6 @@
 const fs = require("fs");
 const AiLog = require("../models/AiLog");
+const AiChat = require("../models/AiChat");
 const { detectDisease, getModelStatus, chatWithKnowledge } = require("../services/aiService");
 const { detectIntent } = require("../services/intentService");
 
@@ -37,6 +38,21 @@ const detectDiseaseFromImage = async (req, res) => {
   }
 };
 
+const DEFAULT_WELCOME_MESSAGE = "Hi! I am your Agri-Clinic AI assistant. Ask me about crop diseases, fertilizers, weather timing, or farm practices.";
+
+const getOrCreateChat = async (userId) => {
+  let chat = await AiChat.findOne({ user: userId });
+
+  if (!chat) {
+    chat = await AiChat.create({
+      user: userId,
+      messages: [{ sender: "system", text: DEFAULT_WELCOME_MESSAGE, timestamp: new Date() }],
+    });
+  }
+
+  return chat;
+};
+
 // CHAT (text)
 const chatAi = async (req, res) => {
   try {
@@ -44,32 +60,80 @@ const chatAi = async (req, res) => {
     if (!message || typeof message !== "string") return res.status(400).json({ message: "Please provide a message" });
 
     //const intent = detectIntent(message);
-    console.log("Incoming message:", message);
-    const intent = detectIntent(message);
-    console.log("Detected intent:", intent);
+     const trimmedMessage = message.trim();
+    if (!trimmedMessage) return res.status(400).json({ message: "Please provide a message" });
 
-   let reply;
+    const intent = detectIntent(trimmedMessage);
 
-   switch (intent){
-    case "disease":
-      reply = await chatWithKnowledge(message, lastDetection);
-      break;
+    let reply;
 
-    case "weather":
-      reply = "Weather advisory feature coming next phase";
-      break;
-    case "booking":
-      reply = "To book an agricultural officer, go to the bookings section.";
-      break;
+    switch (intent) {
+      case "disease":
+        reply = await chatWithKnowledge(trimmedMessage, lastDetection);
+        break;
+
+      case "weather":
+        reply = "Weather advisory feature coming next phase";
+        break;
+
+      case "booking":
+        reply = "To book an agricultural officer, go to the bookings section.";
+        break;
 
     default:
-      reply = await chatWithKnowledge(message, lastDetection);
-   }
+        reply = await chatWithKnowledge(trimmedMessage, lastDetection);
+    }
+
+    const chat = await getOrCreateChat(req.user._id);
+    chat.messages.push({ sender: "user", text: trimmedMessage, intent, timestamp: new Date() });
+    chat.messages.push({ sender: "bot", text: reply, intent, timestamp: new Date() });
+
+    if (chat.messages.length > 200) {
+        chat.messages = chat.messages.slice(-200);
+      }
+    await chat.save();
 
    res.json({ success:true, intent, reply});
   } catch (error) {
     console.error("AI Chat Error:", error);
     res.status(500).json({ message: "Failed to process chat message", error: error.message });
+  }
+};
+
+const getChatHistory = async (req, res) => {
+  try {
+    const chat = await getOrCreateChat(req.user._id);
+    const messages = chat.messages
+      .slice(-100)
+      .map((message, index) => ({
+        id: `${chat._id}-${index}-${new Date(message.timestamp).getTime()}`,
+        from: message.sender === "user" ? "user" : "bot",
+        text: message.text,
+        ts: new Date(message.timestamp).getTime(),
+      }));
+
+    res.json({ success: true, messages });
+  } catch (error) {
+    console.error("Get Chat History Error:", error);
+    res.status(500).json({ message: "Failed to load chat history", error: error.message });
+  }
+};
+
+const clearChatHistory = async (req, res) => {
+  try {
+    await AiChat.findOneAndUpdate(
+      { user: req.user._id },
+      {
+        user: req.user._id,
+        messages: [{ sender: "system", text: DEFAULT_WELCOME_MESSAGE, timestamp: new Date() }],
+      },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
+
+    res.json({ success: true, message: "Chat history cleared" });
+  } catch (error) {
+    console.error("Clear Chat History Error:", error);
+    res.status(500).json({ message: "Failed to clear chat history", error: error.message });
   }
 };
 
@@ -96,6 +160,8 @@ const getAiStatus = async (req, res) => {
 module.exports = {
   detectDiseaseFromImage,
   chatAi,
+  getChatHistory,
+  clearChatHistory,
   getAiLogs,
   getAiStatus,
 };

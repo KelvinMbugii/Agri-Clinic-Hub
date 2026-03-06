@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import FarmerLayout from '../../components/FarmerLayout.jsx';
-import { chatRequest } from '../../services/api.js';
+import { chatRequest, clearChatHistoryRequest, getChatHistoryRequest } from '../../services/api.js';
 
 function makeId() {
   return `m_${Math.random().toString(16).slice(2)}_${Date.now()}`;
@@ -19,7 +19,25 @@ export default function AiAssistant() {
   ]);
   const [input, setInput] = useState('');
   const [sending, setSending] = useState(false);
+  const [loadingHistory, setLoadingHistory] = useState(true);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const loadHistory = async () => {
+      try {
+        const data = await getChatHistoryRequest();
+        if (Array.isArray(data?.messages) && data.messages.length > 0) {
+          setMessages(data.messages);
+        }
+      } catch (err) {
+        console.error('Failed to load chat history', err);
+      } finally {
+        setLoadingHistory(false);
+      }
+    };
+
+    loadHistory();
+  }, []);
 
   // Load detection from localStorage or location state when coming from Disease Detection
   useEffect(() => {
@@ -108,6 +126,21 @@ export default function AiAssistant() {
     await sendMessage(input);
   };
 
+  const clearChat = async () => {
+    try {
+      await clearChatHistoryRequest();
+      setMessages([
+        {
+          id: 'm1',
+          from: 'bot',
+          text: 'Hi! I am your Agri-Clinic AI assistant. Ask me about crop diseases, fertilizers, weather timing, or farm practices.',
+        },
+      ]);
+    } catch (err) {
+      console.error('Failed to clear chat history', err);
+    }
+  };
+
   return (
     <FarmerLayout
       title="AI Assistant"
@@ -171,10 +204,22 @@ export default function AiAssistant() {
                 )}
               </p>
             </div>
+            <button
+              type="button"
+              onClick={clearChat}
+              className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+            >
+              Clear chat
+            </button>
           </div>
 
           <div className="mt-4 flex-1 rounded-2xl border border-slate-100 bg-slate-50 p-3">
             <div className="max-h-[400px] space-y-3 overflow-auto pr-1 text-sm">
+               {loadingHistory ? (
+                <div className="rounded-xl bg-white px-3 py-2 text-xs text-slate-600 shadow-sm">
+                  Loading previous chats...
+                </div>
+              ) : null}
               {messages.map((m) => (
                 <div
                   key={m.id}

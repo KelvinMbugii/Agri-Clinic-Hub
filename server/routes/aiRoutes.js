@@ -7,6 +7,8 @@ const roleMiddleware = require("../middleware/roleMiddleware");
 const {
   detectDiseaseFromImage,
   chatAi,
+  getChatHistory,
+  clearChatHistory,
   getAiLogs,
   getAiStatus,
 } = require("../controllers/aiController");
@@ -31,20 +33,13 @@ const upload = multer({
 });
 
 // ROUTES
-router.post(
-  "/detect-disease",
-  authMiddleware,
-  roleMiddleware("farmer"),
-  upload.single("image"),
-  detectDiseaseFromImage,
-);
-router.post(
-  "/chat",
-  authMiddleware,
-  roleMiddleware("farmer", "officer", "admin"),
-  chatAi,
-);
-router.get("/logs", authMiddleware, roleMiddleware("admin"), getAiLogs);
-router.get("/status", authMiddleware, roleMiddleware("admin"), getAiStatus);
+router.post( "/detect-disease", authMiddleware, roleMiddleware("farmer"), upload.single("image"), detectDiseaseFromImage);
+router.post( "/chat", authMiddleware, roleMiddleware("farmer", "officer", "admin"), chatAi);
+
+router.get( "/chat/history", authMiddleware, roleMiddleware("farmer", "officer", "admin"), getChatHistory);
+router.delete( "/chat/history", authMiddleware, roleMiddleware("farmer", "officer", "admin"), clearChatHistory);
+
+router.get( "/logs", authMiddleware, roleMiddleware("admin"), getAiLogs);
+router.get( "/status", authMiddleware, roleMiddleware("admin"), getAiStatus);
 
 module.exports = router;
