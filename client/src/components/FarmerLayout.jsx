@@ -60,7 +60,7 @@ export default function FarmerLayout({ title, subtitle, children }) {
           role="presentation"
         />
         <aside
-          className={`absolute left-0 top-0 h-full w-72 bg-white p-5 shadow-xl transition-transform ${
+          className={`absolute left-0 top-0 h-full w-[85vw] max-w-72 bg-white p-5 shadow-xl transition-transform ${
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
@@ -116,7 +116,7 @@ export default function FarmerLayout({ title, subtitle, children }) {
 
         <div className="flex min-h-dvh flex-1 flex-col">
           <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/80 backdrop-blur">
-            <div className="flex items-center justify-between gap-4 px-4 py-4 lg:px-8">
+            <div className="flex items-center justify-between gap-3 px-4 py-3 lg:px-8 lg:py-4">
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setIsMenuOpen(true)}
@@ -126,7 +126,7 @@ export default function FarmerLayout({ title, subtitle, children }) {
                   ☰
                 </button>
                 <div>
-                  <div className="text-lg font-semibold text-slate-900">{title}</div>
+                  <div className="text-base font-semibold text-slate-900 sm:text-lg">{title}</div>
                   {subtitle ? <div className="text-xs text-slate-500">{subtitle}</div> : null}
                 </div>
               </div>

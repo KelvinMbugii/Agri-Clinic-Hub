@@ -22,26 +22,42 @@ export default function Sidebar() {
   const links = linksByRole[role] || [];
 
   return (
-    <aside className="hidden w-64 shrink-0 border-r border-slate-200 bg-white lg:block">
-      <div className="p-4">
-        <div className="rounded-2xl bg-agri-50 p-4">
-          <div className="text-xs font-medium text-agri-800">Navigation</div>
-          <div className="mt-1 text-sm text-slate-700 capitalize">{role || 'user'}</div>
-        </div>
-
-        <nav className="mt-4 space-y-1">
+    <>
+      <div className="mb-4 overflow-x-auto lg:hidden">
+        <nav className="flex w-max min-w-full gap-2 rounded-2xl border border-slate-200 bg-white p-2">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              className="whitespace-nowrap rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
             >
               {l.label}
             </Link>
           ))}
         </nav>
       </div>
-    </aside>
+
+      <aside className="hidden w-64 shrink-0 border-r border-slate-200 bg-white lg:block">
+        <div className="p-4">
+          <div className="rounded-2xl bg-agri-50 p-4">
+            <div className="text-xs font-medium text-agri-800">Navigation</div>
+            <div className="mt-1 text-sm text-slate-700 capitalize">{role || 'user'}</div>
+          </div>
+
+          <nav className="mt-4 space-y-1">
+            {links.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </aside>
+  </>
   );
 }
 

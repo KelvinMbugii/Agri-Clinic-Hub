@@ -72,9 +72,122 @@ export default function OfficerBookings() {
           ) : bookingItems.length === 0 ? (
             <div className="text-sm text-slate-500">No assigned bookings.</div>
           ) : (
-            <table className="w-full text-sm">
-              {/* table body unchanged */}
-            </table>
+            <>
+              <div className="space-y-3 md:hidden">
+                {bookingItems.map((b) => (
+                  <article
+                    key={b._id}
+                    className="rounded-xl border border-slate-200 p-4"
+                  >
+                    <div className="font-semibold text-slate-900">
+                      {b.farmer?.name || "—"}
+                    </div>
+                    <div className="text-xs text-slate-500">
+                      {b.farmer?.email || ""}
+                    </div>
+                    <div className="mt-2 text-sm text-slate-700">
+                      {new Date(b.date).toLocaleDateString()} • {b.time}
+                    </div>
+                    <div className="mt-1 text-sm capitalize text-slate-700">
+                      {b.consultationType}
+                    </div>
+                    <div className="mt-2">
+                      <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-medium capitalize text-amber-900">
+                        {b.status}
+                      </span>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <button
+                        onClick={() => setStatus(b._id, "approved")}
+                        disabled={loading.saving}
+                        className="rounded-lg bg-agri-700 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-agri-800 disabled:opacity-60"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        onClick={() => setStatus(b._id, "rejected")}
+                        disabled={loading.saving}
+                        className="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium hover:bg-slate-50 disabled:opacity-60"
+                      >
+                        Reject
+                      </button>
+                      <button
+                        onClick={() => setStatus(b._id, "completed")}
+                        disabled={loading.saving}
+                        className="rounded-lg bg-earth-700 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-earth-800 disabled:opacity-60"
+                      >
+                        Complete
+                      </button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              <div className="hidden overflow-x-auto md:block">
+                <table className="w-full min-w-[720px] text-left text-sm">
+                  <thead className="text-xs uppercase text-slate-500">
+                    <tr>
+                      <th className="py-2">Farmer</th>
+                      <th className="py-2">When</th>
+                      <th className="py-2">Type</th>
+                      <th className="py-2">Status</th>
+                      <th className="py-2">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200">
+                    {bookingItems.map((b) => (
+                      <tr key={b._id} className="align-top">
+                        <td className="py-3">
+                          <div className="font-medium text-slate-900">
+                            {b.farmer?.name || "—"}
+                          </div>
+                          <div className="text-xs text-slate-500">
+                            {b.farmer?.email || ""}
+                          </div>
+                        </td>
+                        <td className="py-3 text-slate-700">
+                          {new Date(b.date).toLocaleDateString()}{" "}
+                          <span className="text-slate-400">•</span> {b.time}
+                        </td>
+                        <td className="py-3 capitalize text-slate-700">
+                          {b.consultationType}
+                        </td>
+                        <td className="py-3">
+                          <span className="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-medium text-amber-900 capitalize">
+                            {b.status}
+                          </span>
+                        </td>
+                        <td className="py-3">
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              onClick={() => setStatus(b._id, "approved")}
+                              disabled={loading.saving}
+                              className="rounded-lg bg-agri-700 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-agri-800 disabled:opacity-60"
+                            >
+                              Approve
+                            </button>
+                            <button
+                              onClick={() => setStatus(b._id, "rejected")}
+                              disabled={loading.saving}
+                              className="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium hover:bg-slate-50 disabled:opacity-60"
+                            >
+                              Reject
+                            </button>
+                            <button
+                              onClick={() => setStatus(b._id, "completed")}
+                              disabled={loading.saving}
+                              className="rounded-lg bg-earth-700 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-earth-800 disabled:opacity-60"
+                            >
+                              Complete
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
           )}
         </div>
       </main>
