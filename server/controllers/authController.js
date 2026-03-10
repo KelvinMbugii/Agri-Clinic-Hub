@@ -15,10 +15,10 @@ const generateToken = (id) => {
 // @access  Public
 const signup = async (req, res) => {
   try {
-    const { name, email, phone, password, role } = req.body;
+    const { name, email, phone, password, role, Location } = req.body;
 
     // Validation
-    if (!name || !email || !phone || !password || !role) {
+    if (!name || !email || !phone || !password || !role ||!Location) {
       return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
@@ -39,6 +39,7 @@ const signup = async (req, res) => {
       phone: phone?.trim(),
       password: String(password).trim(),
       role,
+      Location: Location?.trim(),
       isVerified: role === 'admin' ? true : false // Admin is auto-verified
     });
 
@@ -53,6 +54,7 @@ const signup = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        location: user.Location,
         isVerified: user.isVerified
       }
     });
