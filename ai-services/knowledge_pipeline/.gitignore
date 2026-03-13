@@ -21,5 +21,7 @@ Thumbs.db
 .idea/
 
 # AI knowledge pipeline generated data
-ai-services/knowledge_pipeline/data/extracted/
-ai-services/knowledge_pipeline/data/structured/
+data/extracted/
+data/structured/
+data/raw/
+data/reports/
