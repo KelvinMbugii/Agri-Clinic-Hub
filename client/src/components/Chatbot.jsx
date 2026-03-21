@@ -1,5 +1,9 @@
-import { useMemo, useState } from "react";
-import { chatRequest } from "../services/api";
+import { useEffect, useMemo, useState } from "react";
+import {
+  chatRequest,
+  clearChatHistoryRequest,
+  getChatHistoryRequest,
+} from "../services/api";
 
 function makeId() {
   try {
@@ -8,18 +12,37 @@ function makeId() {
   return `m_${Math.random().toString(16).slice(2)}_${Date.now()}`;
 }
 
-export default function Chatbot() {
-  const [messages, setMessages] = useState([
-    {
-      id: "m1",
-      from: "bot",
-      text:
-        "Hi! I can help with crop diseases, prevention, treatments, and best farming practices. What are you experiencing?",
-    },
-  ]);
+const defaultMessage = {
+  id: "m1",
+  from: "bot",
+  text:
+    "Hi! I can help with crop diseases, prevention, treatments, and best farming practices. What are you experiencing?",
+};
 
+export default function Chatbot() {
+  const [messages, setMessages] = useState([defaultMessage]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loadingHistory, setLoadingHistory] = useState(true);
+
+
+  useEffect(() => {
+    const loadHistory = async () => {
+      try {
+        const res = await getChatHistoryRequest();
+        if (Array.isArray(res?.messages) && res.messages.length > 0) {
+          setMessages(res.messages);
+        }
+      } catch (error) {
+        console.error("Failed to load chat history", error);
+      } finally {
+        setLoadingHistory(false);
+      }
+    };
+
+    loadHistory();
+  }, []);
+
 
   const lastHint = useMemo(() => {
     const text = (input || "").toLowerCase();
@@ -67,10 +90,25 @@ export default function Chatbot() {
     }
   };
 
+  const clearHistory = async () => {
+    try {
+      await clearChatHistoryRequest();
+      setMessages([defaultMessage]);
+    } catch (error) {
+      console.error("Failed to clear chat history", error);
+    }
+  };
+
   return (
     <div className="rounded-2xl border border-slate-200 bg-slate-50">
       {/* Messages */}
       <div className="max-h-96 space-y-3 overflow-auto p-4">
+         {loadingHistory ? (
+          <div className="rounded-2xl bg-white px-4 py-2 text-sm text-slate-700 shadow-sm">
+            Loading previous chats...
+          </div>
+        ) : null}
+
         {messages.map((m) => (
           <div
             key={m.id}
@@ -112,6 +150,14 @@ export default function Chatbot() {
             <div className="mt-1 text-xs text-slate-500">{lastHint}</div>
           </div>
 
+          <button
+            type="button"
+            onClick={clearHistory}
+            className="shrink-0 rounded-xl border border-slate-200 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
+          >
+            Clear
+          </button>
+          
           <button
             type="submit"
             disabled={loading}

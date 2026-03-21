@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
       colors: {
         agri: {
           50: '#f3faf5',
@@ -30,10 +33,14 @@ export default {
         }
       },
       boxShadow: {
-        soft: '0 10px 30px rgba(15, 23, 42, 0.10)'
+        soft: '0 10px 30px rgba(15, 23, 42, 0.10)',
+        premium: '0 20px 40px -10px rgba(15, 23, 42, 0.15)',
+        'card-hover': '0 10px 40px -10px rgba(47, 140, 82, 0.15)'
       }
     }
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography')
+  ]
 };
 

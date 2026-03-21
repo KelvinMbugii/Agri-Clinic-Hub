@@ -20,3 +20,8 @@ Thumbs.db
 .vscode/
 .idea/
 
+# AI knowledge pipeline generated data
+data/extracted/
+data/structured/
+data/raw/
+data/reports/

@@ -1,16 +1,34 @@
 const fs = require("fs");
 const AiLog = require("../models/AiLog");
-const { detectDisease, getModelStatus, chatWithKnowledge } = require("../services/aiService");
+const AiChat = require("../models/AiChat");
+const {
+  detectDisease,
+  getModelStatus,
+  chatWithKnowledge,
+} = require("../services/aiService");
 const { detectIntent } = require("../services/intentService");
 
-// IMAGE DISEASE DETECTION
+// ================= IMAGE DISEASE DETECTION =================
 const detectDiseaseFromImage = async (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ message: "Please upload an image" });
+    if (!req.file) {
+      return res.status(400).json({ message: "Please upload an image" });
+    }
 
     const imageBuffer = fs.readFileSync(req.file.path);
     const aiResult = await detectDisease(imageBuffer);
 
+    // Handle failure / low confidence
+    if (!aiResult.detectedDisease) {
+      fs.unlinkSync(req.file.path);
+
+      return res.status(400).json({
+        success: false,
+        message: aiResult.message || "Could not detect disease",
+      });
+    }
+
+    // Save ONLY stable data (no AI-generated insights)
     const aiLog = await AiLog.create({
       user: req.user._id,
       imageUrl: `/uploads/${req.file.filename}`,
@@ -25,77 +43,219 @@ const detectDiseaseFromImage = async (req, res) => {
 
     fs.unlinkSync(req.file.path);
 
-    res.json({
+    return res.json({
       success: true,
-      detection: { ...aiResult, imageUrl: aiLog.imageUrl },
+      detection: {
+        ...aiResult, // includes aiInsights if available
+        imageUrl: aiLog.imageUrl,
+      },
       logId: aiLog._id,
     });
   } catch (error) {
-    if (req.file && fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
+    if (req.file && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+
     console.error("AI Detection Error:", error);
-    res.status(500).json({ message: "Failed to process image", error: error.message });
+
+    res.status(500).json({
+      message: "Failed to process image",
+      error: error.message,
+    });
   }
 };
 
-// CHAT (text)
+// ================= CHAT SYSTEM =================
+const DEFAULT_WELCOME_MESSAGE =
+  "Hi! I am your Agri-Clinic AI assistant. Ask me about crop diseases, fertilizers, weather timing, or farm practices.";
+
+const getOrCreateChat = async (userId) => {
+  let chat = await AiChat.findOne({ user: userId });
+
+  if (!chat) {
+    chat = await AiChat.create({
+      user: userId,
+      messages: [
+        {
+          sender: "system",
+          text: DEFAULT_WELCOME_MESSAGE,
+          timestamp: new Date(),
+        },
+      ],
+    });
+  }
+
+  return chat;
+};
+
+// ================= CHAT HANDLER =================
 const chatAi = async (req, res) => {
   try {
     const { message, lastDetection } = req.body || {};
-    if (!message || typeof message !== "string") return res.status(400).json({ message: "Please provide a message" });
 
-    //const intent = detectIntent(message);
-    console.log("Incoming message:", message);
-    const intent = detectIntent(message);
-    console.log("Detected intent:", intent);
+    if (!message || typeof message !== "string") {
+      return res.status(400).json({ message: "Please provide a message" });
+    }
 
-   let reply;
+    const trimmedMessage = message.trim();
+    if (!trimmedMessage) {
+      return res.status(400).json({ message: "Please provide a message" });
+    }
 
-   switch (intent){
-    case "disease":
-      reply = await chatWithKnowledge(message, lastDetection);
-      break;
+    const intent = detectIntent(trimmedMessage);
+    const chat = await getOrCreateChat(req.user._id);
+    const chatHistory = Array.isArray(chat.messages) ? chat.messages.slice(-20) : [];
 
-    case "weather":
-      reply = "Weather advisory feature coming next phase";
-      break;
-    case "booking":
-      reply = "To book an agricultural officer, go to the bookings section.";
-      break;
+    let reply;
 
-    default:
-      reply = await chatWithKnowledge(message, lastDetection);
-   }
+    switch (intent) {
+      case "disease":
+        reply = await chatWithKnowledge(trimmedMessage, { lastDetection, chatHistory });
+        break;
 
-   res.json({ success:true, intent, reply});
+      case "weather":
+        reply = "Weather advisory feature coming next phase";
+        break;
+
+      case "booking":
+        reply = "To book an agricultural officer, go to the bookings section.";
+        break;
+
+      default:
+        reply = await chatWithKnowledge(trimmedMessage, { lastDetection, chatHistory });
+    }
+
+    chat.messages.push({
+      sender: "user",
+      text: trimmedMessage,
+      intent,
+      timestamp: new Date(),
+    });
+
+    chat.messages.push({
+      sender: "bot",
+      text: reply,
+      intent,
+      timestamp: new Date(),
+    });
+
+    // Limit chat size
+    if (chat.messages.length > 200) {
+      chat.messages = chat.messages.slice(-200);
+    }
+
+    await chat.save();
+
+    res.json({
+      success: true,
+      intent,
+      reply,
+    });
   } catch (error) {
     console.error("AI Chat Error:", error);
-    res.status(500).json({ message: "Failed to process chat message", error: error.message });
+
+    res.status(500).json({
+      message: "Failed to process chat message",
+      error: error.message,
+    });
   }
 };
 
-// ADMIN LOGS & STATUS
+// ================= CHAT HISTORY =================
+const getChatHistory = async (req, res) => {
+  try {
+    const chat = await getOrCreateChat(req.user._id);
+
+    const messages = chat.messages.slice(-100).map((message, index) => ({
+      id: `${chat._id}-${index}-${new Date(message.timestamp).getTime()}`,
+      from: message.sender === "user" ? "user" : "bot",
+      text: message.text,
+      ts: new Date(message.timestamp).getTime(),
+    }));
+
+    res.json({ success: true, messages });
+  } catch (error) {
+    console.error("Get Chat History Error:", error);
+
+    res.status(500).json({
+      message: "Failed to load chat history",
+      error: error.message,
+    });
+  }
+};
+
+// ================= CLEAR CHAT =================
+const clearChatHistory = async (req, res) => {
+  try {
+    await AiChat.findOneAndUpdate(
+      { user: req.user._id },
+      {
+        user: req.user._id,
+        messages: [
+          {
+            sender: "system",
+            text: DEFAULT_WELCOME_MESSAGE,
+            timestamp: new Date(),
+          },
+        ],
+      },
+      { upsert: true, new: true, setDefaultsOnInsert: true },
+    );
+
+    res.json({ success: true, message: "Chat history cleared" });
+  } catch (error) {
+    console.error("Clear Chat History Error:", error);
+
+    res.status(500).json({
+      message: "Failed to clear chat history",
+      error: error.message,
+    });
+  }
+};
+
+// ================= ADMIN =================
 const getAiLogs = async (req, res) => {
   try {
-    const logs = await AiLog.find().populate("user", "name email role").sort({ createdAt: -1 });
-    res.json({ success: true, count: logs.length, logs });
+    const logs = await AiLog.find()
+      .populate("user", "name email role")
+      .sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      count: logs.length,
+      logs,
+    });
   } catch (error) {
     console.error("Get AI Logs Error:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
+
+    res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
   }
 };
 
 const getAiStatus = async (req, res) => {
   try {
-    res.json({ success: true, model: getModelStatus() });
+    res.json({
+      success: true,
+      model: getModelStatus(),
+    });
   } catch (error) {
     console.error("Get AI Status Error:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
+
+    res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
   }
 };
 
 module.exports = {
   detectDiseaseFromImage,
   chatAi,
+  getChatHistory,
+  clearChatHistory,
   getAiLogs,
   getAiStatus,
 };

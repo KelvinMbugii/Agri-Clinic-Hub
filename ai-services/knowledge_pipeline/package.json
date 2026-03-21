@@ -1,17 +1,26 @@
 {
   "name": "knowledge_pipeline",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "extract": "node scripts/extractPdf.js",
+    "clean": "node scripts/cleanText.js",
+    "transform:json": "node scripts/transformToJson.js",
+    "transform:docs": "node scripts/buildKnowledgeBase.js",
+    "seed": "node scripts/seedToMongo.js",
+    "pipeline": "npm run extract && npm run clean && npm run transform:json && npm run transform:docs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.30.0",
   "dependencies": {
+    "compromise": "^14.15.0",
     "dotenv": "^17.3.1",
+    "install": "^0.13.0",
     "mongodb": "^7.1.0",
     "mongoose": "^9.2.1",
     "pdf-parse": "^2.4.5"

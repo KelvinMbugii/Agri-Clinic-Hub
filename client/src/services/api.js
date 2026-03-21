@@ -42,6 +42,16 @@ export async function chatRequest(payload) {
   return res.data;
 }
 
+export async function getChatHistoryRequest() {
+  const res = await api.get('/api/ai/chat/history');
+  return res.data;
+}
+
+export async function clearChatHistoryRequest() {
+  const res = await api.delete('/api/ai/chat/history');
+  return res.data;
+}
+
 // Farmer
 export async function detectDiseaseRequest(file) {
   const formData = new FormData();
@@ -111,8 +121,25 @@ export async function getAiLogsRequest() {
 
 // Weather
 export async function getWeatherRequest(location) {
-  axios.get(`/weather?location=${encodedURIComponent(location)}`);
+  const normalizedLocation = location.trim().replace(/ /g, '+');
+
+  if(!normalizedLocation){
+    throw new Error('Location is required');
+  }
+ const res = await api.get('/api/weather', {
+    params: { location: normalizedLocation }
+  });
+  return res.data;
 }
 
-export const getForecastRequest = (location) =>
-  axios.get(`/weather/forecast?location=${encodeURIComponent(location)}`);
+export async function getForecastRequest(location){
+  const normalizedLocation = location?.trim();
+  if(!normalizedLocation){
+    throw new Error('Location is required');
+  }
+
+  const res = await api.get('/api/weather/forecast', {
+    params: { location:normalizedLocation }
+  });
+  return res.data;
+}

@@ -17,6 +17,7 @@ export default function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [location, setLocation] = useState();
   const [password, setPassword] = useState('');
   const [selectedRole, setSelectedRole] = useState('farmer');
   const [loading, setLoading] = useState(false);
@@ -32,7 +33,7 @@ export default function Signup() {
     setError('');
     setLoading(true);
     try {
-      const user = await signup({ name, email, phone, password, role: selectedRole });
+      const user = await signup({ name, email, phone, password, role: selectedRole, Location:location });
       navigate(roleHome(user?.role), { replace: true });
     } catch (err) {
       const msg =
@@ -123,6 +124,18 @@ export default function Signup() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+254..."
+                required
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium text-slate-700">
+                Location
+              </label>
+              <input
+                className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-agri-500"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                placeholder="Your country or region"
                 required
               />
             </div>

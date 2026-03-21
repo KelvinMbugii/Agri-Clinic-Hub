@@ -11,6 +11,7 @@ export default function ResetPassword() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -113,7 +114,7 @@ export default function ResetPassword() {
             </label>
             <input
               className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 pr-10 text-sm outline-none ring-0 focus:border-agri-500"
-              type={showPassword ? "text" : "password"}
+              type={showConfirmPassword ? "text" : "password"}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="••••••••"
@@ -121,9 +122,9 @@ export default function ResetPassword() {
             />
             <span
               className="absolute right-3 bottom-1 -translate-y-1/2 cursor-pointer text-slate-400 hover:text-slate-600"
-              onClick={() => setShowPassword(!showPassword)}
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </span>
           </div>
 

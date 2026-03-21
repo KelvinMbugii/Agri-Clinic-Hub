@@ -2,32 +2,43 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import Chatbot from './Chatbot.jsx';
+import { 
+  Home, CloudRain, ScanLine, Bot, CalendarDays, 
+  BookOpen, Settings, Menu, X, MessageSquare, Sprout, LogOut
+} from 'lucide-react';
 
 const navigation = [
-  { to: '/farmer/dashboard', label: 'Home' },
-  { to: '/farmer/weather', label: 'Weather & Alerts' },
-  { to: '/farmer/disease-detection', label: 'Disease Detection' },
-  { to: '/farmer/ai-assistant', label: 'AI Assistant' },
-  { to: '/farmer/consultations', label: 'Consultations' },
-  { to: '/farmer/articles', label: 'Articles & Guides' },
-  { to: '/farmer/settings', label: 'Settings' }
+  { to: '/farmer/dashboard', label: 'Home', icon: Home },
+  { to: '/farmer/weather', label: 'Weather & Alerts', icon: CloudRain },
+  { to: '/farmer/disease-detection', label: 'Disease Detection', icon: ScanLine },
+  { to: '/farmer/ai-assistant', label: 'AI Assistant', icon: Bot },
+  { to: '/farmer/consultations', label: 'Consultations', icon: CalendarDays },
+  { to: '/farmer/articles', label: 'Articles & Guides', icon: BookOpen },
+  { to: '/farmer/settings', label: 'Settings', icon: Settings }
 ];
 
 function NavItems({ onNavigate }) {
   return (
-    <nav className="space-y-1">
+    <nav className="space-y-1.5">
       {navigation.map((item) => (
         <NavLink
           key={item.to}
           to={item.to}
           onClick={onNavigate}
           className={({ isActive }) =>
-            `block rounded-xl px-3 py-2 text-sm font-medium transition ${
-              isActive ? 'bg-agri-700 text-white' : 'text-slate-700 hover:bg-slate-100'
+            `flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+              isActive 
+                ? 'bg-agri-50 text-agri-700 shadow-sm border-l-4 border-agri-600' 
+                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-4 border-transparent'
             }`
           }
         >
-          {item.label}
+          {({ isActive }) => (
+            <>
+              <item.icon className={`preset-icon h-5 w-5 ${isActive ? 'text-agri-600' : 'text-slate-400'}`} />
+              {item.label}
+            </>
+          )}
         </NavLink>
       ))}
     </nav>
@@ -60,14 +71,14 @@ export default function FarmerLayout({ title, subtitle, children }) {
           role="presentation"
         />
         <aside
-          className={`absolute left-0 top-0 h-full w-72 bg-white p-5 shadow-xl transition-transform ${
+          className={`absolute left-0 top-0 h-full w-[85vw] max-w-72 bg-white p-5 shadow-xl transition-transform ${
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="grid h-9 w-9 place-items-center rounded-xl bg-agri-700 text-sm font-semibold text-white">
-                AC
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-agri-600 to-agri-500 text-white shadow-md">
+                <Sprout className="h-6 w-6" />
               </div>
               <div>
                 <div className="text-sm font-semibold">Agri-Clinic Hub</div>
@@ -76,9 +87,10 @@ export default function FarmerLayout({ title, subtitle, children }) {
             </div>
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="rounded-lg border border-slate-200 px-2 py-1 text-xs font-medium text-slate-600"
+              className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"
+              aria-label="Close menu"
             >
-              Close
+              <X className="h-5 w-5" />
             </button>
           </div>
           <div className="mt-5">
@@ -91,8 +103,8 @@ export default function FarmerLayout({ title, subtitle, children }) {
         <aside className="hidden w-72 shrink-0 border-r border-slate-200 bg-white lg:block">
           <div className="flex h-full flex-col gap-6 p-6">
             <div className="flex items-center gap-3">
-              <div className="grid h-10 w-10 place-items-center rounded-2xl bg-agri-700 text-sm font-semibold text-white">
-                AC
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-agri-600 to-agri-500 text-white shadow-md">
+                <Sprout className="h-6 w-6" />
               </div>
               <div>
                 <div className="text-sm font-semibold text-slate-900">Agri-Clinic Hub</div>
@@ -115,18 +127,18 @@ export default function FarmerLayout({ title, subtitle, children }) {
         </aside>
 
         <div className="flex min-h-dvh flex-1 flex-col">
-          <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/80 backdrop-blur">
-            <div className="flex items-center justify-between gap-4 px-4 py-4 lg:px-8">
+          <header className="sticky top-0 z-20 border-b border-slate-200/60 bg-white/70 backdrop-blur-lg">
+            <div className="flex items-center justify-between gap-3 px-4 py-3 lg:px-8 lg:py-4">
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setIsMenuOpen(true)}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 lg:hidden"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 lg:hidden hover:bg-slate-50 transition-colors"
                   aria-label="Open menu"
                 >
-                  ☰
+                  <Menu className="h-5 w-5" />
                 </button>
                 <div>
-                  <div className="text-lg font-semibold text-slate-900">{title}</div>
+                  <div className="text-base font-semibold text-slate-900 sm:text-lg">{title}</div>
                   {subtitle ? <div className="text-xs text-slate-500">{subtitle}</div> : null}
                 </div>
               </div>
@@ -137,8 +149,9 @@ export default function FarmerLayout({ title, subtitle, children }) {
                 </div>
                 <button
                   onClick={onLogout}
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                  className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
                 >
+                  <LogOut className="h-4 w-4" />
                   Logout
                 </button>
               </div>
@@ -152,10 +165,11 @@ export default function FarmerLayout({ title, subtitle, children }) {
       <button
         type="button"
         onClick={() => setIsChatOpen(true)}
-        className="fixed bottom-6 right-6 z-30 inline-flex items-center gap-2 rounded-full bg-agri-700 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-agri-700/30 hover:bg-agri-800"
+        className="fixed bottom-6 right-6 z-30 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-agri-600 to-agri-500 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-agri-600/30 hover:shadow-premium hover:-translate-y-1 transition-all duration-300"
         aria-label="Open AI assistant"
       >
-        💬 Ask AI
+        <MessageSquare className="h-5 w-5 fill-white/20" />
+        Ask AI
       </button>
 
       <div
@@ -184,9 +198,10 @@ export default function FarmerLayout({ title, subtitle, children }) {
             </div>
             <button
               onClick={() => setIsChatOpen(false)}
-              className="rounded-lg border border-slate-200 px-2 py-1 text-xs font-medium text-slate-600"
+              className="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"
+              aria-label="Close AI assistant"
             >
-              Close
+              <X className="h-5 w-5" />
             </button>
           </div>
 

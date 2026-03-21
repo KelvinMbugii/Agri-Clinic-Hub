@@ -72,8 +72,8 @@ export function AuthProvider({ children }) {
     return data.user;
   };
 
-  const signup = async ({ name, email, phone, password, role: nextRole }) => {
-    const data = await signupRequest({ name, email, phone, password, role: nextRole });
+  const signup = async ({ name, email, phone, password, role: nextRole, Location }) => {
+    const data = await signupRequest({ name, email, phone, password, role: nextRole, Location });
     if (!data?.token || !data?.user) {
       throw new Error('Unexpected signup response');
     }
