@@ -5,7 +5,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "extract": "node scripts/extractPdf.js",
+    "clean": "node scripts/cleanText.js",
+    "transform:json": "node scripts/transformToJson.js",
+    "transform:docs": "node scripts/buildKnowledgeBase.js",
+    "seed": "node scripts/seedToMongo.js",
+    "pipeline": "npm run extract && npm run clean && npm run transform:json && npm run transform:docs"
   },
   "keywords": [],
   "author": "",

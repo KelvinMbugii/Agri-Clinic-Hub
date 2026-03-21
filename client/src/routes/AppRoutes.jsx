@@ -16,6 +16,7 @@ import OfficerDashboard from '../dashboards/OfficerDashboard.jsx';
 import OfficerBookings from '../pages/officer/Bookings.jsx';  
 import OfficerConsultations from '../pages/officer/Consultation.jsx';
 import OfficerArticles from '../pages/officer/Articles.jsx';
+import OfficerSettings from '../pages/officer/OfficerSettings.jsx';
 import AdminDashboard from '../dashboards/AdminDashboard.jsx';
 import AdminAiLogsPage from '../pages/admin/AiLogs.jsx';
 import AdminOfficersPage from '../pages/admin/Officers.jsx';
@@ -61,7 +62,7 @@ export default function AppRoutes() {
         <Route path="/officer/booking" element={<OfficerBookings />} />
         <Route path="/officer/consultation" element={<OfficerConsultations />} />
         <Route path="/officer/articles" element={<OfficerArticles />} />
-      
+        <Route path="/officer/settings" element={<OfficerSettings />} />
       </Route>
 
       {/* Admin */}

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import FarmerLayout from '../../components/FarmerLayout.jsx';
-import { chatRequest, clearChatHistoryRequest, getChatHistoryRequest } from '../../services/api.js';
+import { chatRequest, getChatHistoryRequest, clearChatHistoryRequest } from '../../services/api.js';
 
 function makeId() {
   return `m_${Math.random().toString(16).slice(2)}_${Date.now()}`;
@@ -23,21 +24,50 @@ export default function AiAssistant() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const loadHistory = async () => {
+    let isMounted = true;
+
+    (async () => {
       try {
         const data = await getChatHistoryRequest();
+        if (!isMounted) return;
+
         if (Array.isArray(data?.messages) && data.messages.length > 0) {
-          setMessages(data.messages);
+          const restored = data.messages.map((item) => ({
+            id: item.id,
+            from: item.from,
+            text: item.text,
+            ts: item.ts,
+          }));
+          setMessages(restored);
         }
       } catch (err) {
         console.error('Failed to load chat history', err);
       } finally {
-        setLoadingHistory(false);
+        if (isMounted) setLoadingHistory(false);
       }
-    };
+    })();
 
-    loadHistory();
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
+  // useEffect(() => {
+  //   const loadHistory = async () => {
+  //     try {
+  //       const data = await getChatHistoryRequest();
+  //       if (Array.isArray(data?.messages) && data.messages.length > 0) {
+  //         setMessages(data.messages);
+  //       }
+  //     } catch (err) {
+  //       console.error('Failed to load chat history', err);
+  //     } finally {
+  //       setLoadingHistory(false);
+  //     }
+  //   };
+
+  //   loadHistory();
+  // }, []);
 
   // Load detection from localStorage or location state when coming from Disease Detection
   useEffect(() => {
@@ -228,13 +258,17 @@ export default function AiAssistant() {
                   }`}
                 >
                   <div
-                    className={`max-w-[85%] rounded-2xl px-3 py-2 ${
+                    className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3 py-2 ${
                       m.from === 'user'
                         ? 'bg-agri-700 text-white'
-                        : 'bg-white text-slate-800 shadow-sm'
+                        : 'bg-white text-slate-800 shadow-sm prose prose-sm max-w-none prose-p:leading-relaxed prose-pre:p-0'
                     }`}
                   >
-                    {m.text}
+                    {m.from === 'bot' ? (
+                      <ReactMarkdown>{m.text}</ReactMarkdown>
+                    ) : (
+                      m.text
+                    )}
                   </div>
                 </div>
               ))}

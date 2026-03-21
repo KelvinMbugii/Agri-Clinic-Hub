@@ -2,40 +2,20 @@ const fs = require("fs");
 const path = require("path");
 const { MongoClient } = require("mongodb");
 
-// -----------------------------
-// Directories
-// -----------------------------
 const structuredDir = path.join(__dirname, "../data/structured");
-const reportsDir = path.join(__dirname, "../data/reports");
 
 console.log("Structured directory:", structuredDir);
-console.log("Reports directory:", reportsDir);
 
-// Get all JSON files in structuredDir
+// Get JSON files
 const files = fs.readdirSync(structuredDir).filter((f) => f.endsWith(".json"));
-console.log("Structured JSON files found:", files);
+console.log("JSON files found:", files);
 
-// -----------------------------
 // MongoDB config
-// -----------------------------
-const uri = "mongodb://localhost:27017";
-const dbName = "agri-clinic-hub-test";
+const uri = process.env.MONGO_URI || "mongodb://localhost:27017";
+const dbName = process.env.MONGO_DB || "agri-clinic-hub-test";
 const collectionName = "diseases";
+const batchSize = Number(process.env.SEED_BATCH_SIZE || 200);
 
-// -----------------------------
-// Generate modelName if missing
-// -----------------------------
-function generateModelName(file, disease) {
-  const base = disease ? disease.replace(/\s+/g, "_") : "unknown";
-  const name = `${base}_${path.basename(file, ".json")}`
-    .toLowerCase()
-    .replace(/[^a-z0-9_]/g, "_");
-  return name;
-}
-
-// -----------------------------
-// Seed function
-// -----------------------------
 async function seed() {
   const client = new MongoClient(uri);
 
@@ -46,43 +26,38 @@ async function seed() {
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
 
-    for (const file of files) {
-      const data = JSON.parse(fs.readFileSync(path.join(structuredDir, file), "utf-8"));
+    // Read all JSON files
+    const records = files.map((file) =>
+      JSON.parse(fs.readFileSync(path.join(structuredDir, file), "utf-8")),
+    );
 
-      // Ensure modelName exists
-      if (!data.modelName) {
-        data.modelName = generateModelName(file, data.disease);
-        console.warn(`⚠ modelName missing in ${file}, generated: ${data.modelName}`);
-      }
+    let inserted = 0;
 
-      // -----------------------------
-      // Attach report content if exists
-      // -----------------------------
-      const reportFileName = file.replace(".json", "_report.txt");
-      const reportPath = path.join(reportsDir, reportFileName);
+    for (let i = 0; i < records.length; i += batchSize) {
+      const batch = records.slice(i, i + batchSize);
 
-      if (fs.existsSync(reportPath)) {
-        const reportContent = fs.readFileSync(reportPath, "utf-8");
-        data.report = reportContent; // add report field
-        console.log(`📄 Report attached for ${data.modelName}`);
-      }
+      const ops = batch.map((doc) => ({
+        updateOne: {
+          filter: { modelName: doc.modelName },
+          update: { $set: doc },
+          upsert: true,
+        },
+      }));
 
-      // Upsert to avoid duplicate key errors
-      await collection.updateOne(
-        { modelName: data.modelName },
-        { $set: data },
-        { upsert: true }
-      );
+      if (!ops.length) continue;
 
-      console.log("Inserted/Updated:", data.modelName);
+      await collection.bulkWrite(ops, { ordered: false });
+      inserted += ops.length;
     }
+
+    console.log(`Seed complete. Upserted documents: ${inserted}`);
   } catch (err) {
-    console.error(err);
+    console.error("Seed failed:", err);
+    process.exitCode = 1;
   } finally {
     await client.close();
-    console.log("MongoDB connection closed");
+    console.log("Connection closed");
   }
 }
 
-// Run seeding
 seed();
