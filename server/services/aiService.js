@@ -223,12 +223,12 @@
 const axios = require("axios");
 const FormData = require("form-data");
 const Disease = require("../models/Diseases");
-const OpenAI = require("openai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { enhanceWithRAG } = require("./aiEnhancerService");
 const { querySimilarDiseases } = require("./embeddingService");
 
 const AI_SERVICE_URL = "http://localhost:8000/predict";
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 /**
  * Normalize disease names for flexible matching
@@ -415,13 +415,12 @@ const chatWithKnowledge = async (
     diseaseInfo = await findDiseaseRecord(lastDetection.detectedDisease);
   }
 
-  if (!diseaseInfo) {
-    try {
-      diseaseInfo = await findDiseaseByEmbedding(combinedQuery);
-    } catch (err) {
-      // Non-fatal: embeddings might not be initialized yet.
-      console.warn("Embedding disease lookup failed:", err.message);
-    }
+  // Unified RAG Vector Retrieval
+  let pineconeMatches = [];
+  try {
+    pineconeMatches = await querySimilarDiseases(combinedQuery, 3);
+  } catch (err) {
+    console.warn("Unified RAG embedding lookup failed:", err.message);
   }
 
   // Helper to sanitize database strings
@@ -512,9 +511,9 @@ const chatWithKnowledge = async (
     return lines.join("\n").trim();
   };
 
-  if (!diseaseInfo) {
+  if (!diseaseInfo && (!pineconeMatches || pineconeMatches.length === 0)) {
     return [
-      "I could not confidently match that to a known disease.",
+      "I could not confidently match that to a known disease or document guideline.",
       "Please tell me: crop name, growth stage, and the top 3 visible symptoms (leaf spots, yellowing, wilting, mold, etc.).",
       lastDetection?.detectedDisease
         ? `If you meant your last scan (${lastDetection.detectedDisease}), ask: “What should I do next?”`
@@ -527,7 +526,11 @@ const chatWithKnowledge = async (
       .map((m) => `${m.sender === "user" ? "User" : "Assistant"}: ${m.text}`)
       .join("\n");
 
-    const knowledgeForPrompt = `
+    let knowledgeForPrompt = "";
+
+    if (diseaseInfo) {
+      knowledgeForPrompt += `
+[STRUCTURED DB MATCH]
 Disease: ${cleanStr(diseaseInfo.displayName)}
 Crop: ${cleanStr(diseaseInfo.crop)}
 Type: ${cleanStr(diseaseInfo.type)}
@@ -538,7 +541,20 @@ Treatments (organic): ${cleanArray(diseaseInfo.treatment?.organic).join("; ")}
 Treatments (chemical): ${cleanArray(diseaseInfo.treatment?.chemical).join("; ")}
 Treatments (cultural): ${cleanArray(diseaseInfo.treatment?.cultural).join("; ")}
 Prevention: ${cleanArray(diseaseInfo.prevention).join("; ")}
-`.trim();
+\n`.trim();
+    }
+
+    if (pineconeMatches && pineconeMatches.length > 0) {
+      knowledgeForPrompt += "\n\n[RELEVANT SEMANTIC DOCUMENT CHUNKS]\n";
+      pineconeMatches.forEach((match, idx) => {
+        if (match.metadata.type === "document") {
+          knowledgeForPrompt += `--- SOURCE DOCUMENT: ${match.metadata.sourceDocument || 'Unknown'} ---\n${match.metadata.snippet}\n\n`;
+        } else if (match.metadata.type === "disease_schema" && !diseaseInfo) {
+          // Only inject schema RAG if we didn't already text-match perfectly
+          knowledgeForPrompt += `--- ENCYCLOPEDIA RECORD: ${match.metadata.displayName || 'Unknown'} (${match.metadata.crop || 'Unknown'}) ---\n${match.metadata.snippet}\n\n`;
+        }
+      });
+    }
 
     const systemPrompt = `
 You are a helpful agricultural AI assistant for farmers.
@@ -562,17 +578,14 @@ Knowledge you can use:
 ${knowledgeForPrompt}
 `.trim();
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      temperature: 0.3,
-      max_tokens: 650,
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt },
-      ],
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const completion = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: userPrompt }] }],
+      systemInstruction: systemPrompt,
+      generationConfig: { temperature: 0.3, maxOutputTokens: 650 }
     });
 
-    return completion.choices?.[0]?.message?.content?.trim() || formatDisease();
+    return completion.response.text().trim() || formatDisease();
   } catch (err) {
     console.error("Chat LLM error:", err.message);
     return formatDisease();

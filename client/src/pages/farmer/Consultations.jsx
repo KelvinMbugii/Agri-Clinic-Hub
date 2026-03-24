@@ -126,23 +126,43 @@ export default function Consultations() {
           {activeTab === 'Upcoming' ? renderBookings(upcoming) : null}
           {activeTab === 'Past' ? renderBookings(past) : null}
 
-          {activeTab === 'Consultation Room' ? (
-            <div className="grid gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
-                <h3 className="text-sm font-semibold text-slate-900">Video call</h3>
-                <p className="mt-1 text-sm text-slate-600">
-                  Join with Google Meet when your officer starts the session.
-                </p>
-                <button
-                  type="button"
-                  className="mt-4 w-full rounded-xl bg-agri-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-agri-800"
-                >
-                  Join Google Meet
-                </button>
-                <div className="mt-4 text-xs text-slate-500">
-                  Meeting link will appear here before your scheduled time.
+          {(() => {
+            if (activeTab !== 'Consultation Room') return null;
+            const nextOnlineBooking = upcoming.find(b => b.status === 'approved' && b.consultationType === 'online');
+            
+            return (
+              <div className="grid gap-6 lg:grid-cols-2">
+                <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                  <h3 className="text-sm font-semibold text-slate-900">Video call</h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    Join with Google Meet when your officer starts the session.
+                  </p>
+                  
+                  {nextOnlineBooking ? (
+                    nextOnlineBooking.meetingLink ? (
+                      <a
+                        href={nextOnlineBooking.meetingLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-4 block w-full rounded-xl bg-agri-700 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-agri-800"
+                      >
+                        Join Google Meet
+                      </a>
+                    ) : (
+                      <button disabled className="mt-4 w-full rounded-xl bg-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-500 cursor-not-allowed">
+                        Waiting for officer to provide link...
+                      </button>
+                    )
+                  ) : (
+                    <div className="mt-4 text-sm text-slate-500">
+                      No upcoming online consultations approved.
+                    </div>
+                  )}
+
+                  <div className="mt-4 text-xs text-slate-500">
+                    Meeting link will appear here before your scheduled time.
+                  </div>
                 </div>
-              </div>
 
               <div className="rounded-2xl border border-slate-100 bg-white p-4">
                 <h3 className="text-sm font-semibold text-slate-900">Consultation notes</h3>
@@ -155,7 +175,8 @@ export default function Consultations() {
                 </div>
               </div>
             </div>
-          ) : null}
+          );
+          })()}
         </div>
       </div>
     </FarmerLayout>

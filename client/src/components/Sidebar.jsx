@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { 
   Home, CalendarDays, MessageSquare, 
-  FileText, Settings, Users
+  FileText, Settings, Users, Database
 } from 'lucide-react';
 
 const linksByRole = {
@@ -17,6 +17,7 @@ const linksByRole = {
   admin: [{ to: '/admin/dashboard', label: 'Dashboard', icon: Home },
       { to: '/admin/officers', label: 'Officers Management', icon: Users },
       { to: '/admin/articles', label: 'Articles Management', icon: FileText },
+      { to: '/admin/ai-pipeline', label: 'AI Knowledge', icon: Database },
       { to: '/admin/settings', label: 'Settings', icon: Settings },
       ],
 };

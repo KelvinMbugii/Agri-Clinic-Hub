@@ -70,10 +70,10 @@ const toLines = (value) => {
   };
 
   const recommendedLines = [
-    result?.description,
-    ...toLines(result?.organicTreatment),
-    ...toLines(result?.chemicalTreatment),
-    ...toLines(result?.prevention)
+    result?.aiInsights?.description || result?.description,
+    ...toLines(result?.aiInsights?.organicTreatment || result?.organicTreatment),
+    ...toLines(result?.aiInsights?.chemicalTreatment || result?.chemicalTreatment),
+    ...toLines(result?.aiInsights?.prevention || result?.prevention)
   ].filter(Boolean);
 
   return (

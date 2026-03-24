@@ -24,6 +24,10 @@ const bookingSchema = new mongoose.Schema({
     enum: ['online', 'physical'],
     required: [true, 'Consultation type is required']
   },
+  meetingLink: {
+    type: String,
+    default: ''
+  },
   status: {
     type: String,
     enum: ['pending', 'approved', 'rejected', 'completed'],

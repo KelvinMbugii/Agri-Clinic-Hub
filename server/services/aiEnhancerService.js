@@ -1,10 +1,10 @@
-const OpenAI = require("openai");
-const { querySimilarDiseases } = require("./embeddingService");
-const redis = require("../utils/redisClient");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { safeParseAI } = require("../utils/aiParser");
 const Disease = require("../models/Diseases");
+const { querySimilarDiseases } = require("./embeddingService");
+const redis = require("../utils/redisClient");
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 async function enhanceWithRAG(data) {
   const safeCrop = String(data.crop || "unknown").replace(/\s+/g, "_").slice(0, 60);
@@ -12,7 +12,7 @@ async function enhanceWithRAG(data) {
   const safeDisease = String(data.detectedDisease || "unknown").replace(/\s+/g, "_").slice(0, 80);
   const cacheKey = `rag:${safeDisease}:${safeCrop}:${safeSeverity}`;
   const cached = await redis.get(cacheKey);
-  if (cached) return JSON.parse(cached);
+  if (cached) return typeof cached === "string" ? JSON.parse(cached) : cached;
 
   // Step 1: Retrieve top 5 similar diseases from embeddings (if available)
   let similar = [];
@@ -30,7 +30,7 @@ async function enhanceWithRAG(data) {
     const msg = String(err?.message || err || "");
     if (msg.includes("429") || msg.toLowerCase().includes("quota")) {
       // Avoid hammering the embeddings endpoint repeatedly.
-      await redis.set(ragSkipKey, "1", "EX", 60 * 60);
+      await redis.set(ragSkipKey, "1", { ex: 60 * 60 });
     }
   }
   }
@@ -157,11 +157,18 @@ async function enhanceWithRAG(data) {
 
   const prompt = `
 You are an agricultural AI assistant. Use the following disease context to provide:
-- extra advice
-- warnings
-- best practices
+- A brief description of the issue.
+- Organic treatment steps.
+- Chemical treatment steps.
+- Prevention methods.
 
-Return ONLY valid JSON.
+Return ONLY valid JSON with exactly these keys:
+{
+  "description": "Short explanation",
+  "organicTreatment": ["step 1", "step 2"],
+  "chemicalTreatment": ["step 1", "step 2"],
+  "prevention": ["step 1", "step 2"]
+}
 
 Context:
 ${contextText}
@@ -175,18 +182,16 @@ Prevention: ${(data.prevention || []).join("\n")}
 
   for (let i = 0; i < 2; i++) {
     try {
-      const response = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        temperature: 0.2,
-        messages: [
-          { role: "system", content: "Return only valid JSON." },
-          { role: "user", content: prompt },
-        ],
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+      const completion = await model.generateContent({
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        systemInstruction: "Return only valid JSON.",
+        generationConfig: { temperature: 0.2, responseMimeType: "application/json" }
       });
-
-      const parsed = safeParseAI(response.choices[0].message.content);
+      
+      const parsed = safeParseAI(completion.response.text());
       if (parsed) {
-        await redis.set(cacheKey, JSON.stringify(parsed), "EX", 86400);
+        await redis.set(cacheKey, JSON.stringify(parsed), { ex: 86400 });
         return parsed;
       }
     } catch (err) {

@@ -69,6 +69,13 @@ export default function ArticlesGuides() {
                   key={article._id}
                   className="rounded-2xl border border-slate-100 bg-slate-50 p-4"
                 >
+                  {article.image && (
+                    <img
+                      src={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/uploads/${article.image}`}
+                      alt={article.title}
+                      className="mb-3 h-40 w-full rounded-xl object-cover"
+                    />
+                  )}
                   <div className="text-sm font-semibold text-slate-900">{article.title}</div>
                   <div className="mt-2 line-clamp-2 text-sm text-slate-700">
                     {article.content}

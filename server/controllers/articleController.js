@@ -35,7 +35,8 @@ const createArticle = async (req, res) => {
     const article = await Article.create({
       title,
       content,
-      author: req.user._id
+      author: req.user._id,
+      image: req.file ? req.file.filename : null
     });
 
     await article.populate('author', 'name email');
@@ -71,6 +72,7 @@ const updateArticle = async (req, res) => {
     // Update fields
     if (title) article.title = title;
     if (content) article.content = content;
+    if (req.file) article.image = req.file.filename;
     await article.save();
 
     await article.populate('author', 'name email');

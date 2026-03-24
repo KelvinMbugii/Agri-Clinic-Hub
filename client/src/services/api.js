@@ -83,18 +83,22 @@ export async function getAssignedBookingsRequest() {
   return res.data;
 }
 
-export async function updateBookingStatusRequest(id, status) {
-  const res = await api.patch(`/api/bookings/${id}/status`, { status });
+export async function updateBookingStatusRequest(id, status, meetingLink) {
+  const payload = { status };
+  if (meetingLink !== undefined) payload.meetingLink = meetingLink;
+  const res = await api.patch(`/api/bookings/${id}/status`, payload);
   return res.data;
 }
 
 export async function createArticleRequest(payload) {
-  const res = await api.post('/api/articles', payload);
+  const headers = payload instanceof FormData ? { 'Content-Type': 'multipart/form-data' } : {};
+  const res = await api.post('/api/articles', payload, { headers });
   return res.data;
 }
 
 export async function updateArticleRequest(id, payload) {
-  const res = await api.put(`/api/articles/${id}`, payload);
+  const headers = payload instanceof FormData ? { 'Content-Type': 'multipart/form-data' } : {};
+  const res = await api.put(`/api/articles/${id}`, payload, { headers });
   return res.data;
 }
 
@@ -109,6 +113,11 @@ export async function getUsersRequest() {
   return res.data;
 }
 
+export async function getOfficersRequest() {
+  const res = await api.get('/api/users/officers');
+  return res.data;
+}
+
 export async function verifyOfficerRequest(id) {
   const res = await api.patch(`/api/users/${id}/verify`);
   return res.data;
@@ -116,6 +125,31 @@ export async function verifyOfficerRequest(id) {
 
 export async function getAiLogsRequest() {
   const res = await api.get('/api/ai/logs');
+  return res.data;
+}
+
+export async function addDiseaseKnowledgeRequest(payload) {
+  const res = await api.post('/api/ai/knowledge', payload);
+  return res.data;
+}
+
+export async function retrainAiModelRequest() {
+  const res = await api.post('/api/ai/retrain');
+  return res.data;
+}
+
+export async function extractKnowledgeRequest(payload) {
+  const res = await api.post('/api/ai/extract-knowledge', payload);
+  return res.data;
+}
+
+export async function uploadKnowledgeDocumentRequest(file, extractData = true) {
+  const formData = new FormData();
+  formData.append('document', file);
+  formData.append('extractData', extractData);
+  const res = await api.post('/api/ai/upload-knowledge', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
   return res.data;
 }
 
