@@ -33,11 +33,30 @@ export default function Consultations() {
   }, []);
 
   const { upcoming, past } = useMemo(() => {
-    const now = new Date();
-    const validBookings = bookings.filter((booking) => booking?.date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const validBookings = bookings
+      .filter((booking) => booking?.date)
+      .sort((a, b) => {
+        const dateDiff = new Date(a.date) - new Date(b.date);
+        if (dateDiff !== 0) return dateDiff;
+        return (a.time || '').localeCompare(b.time || '');
+      });
+    
     return {
-      upcoming: validBookings.filter((booking) => new Date(booking.date) >= now),
-      past: validBookings.filter((booking) => new Date(booking.date) < now)
+      upcoming: validBookings.filter((booking) => {
+        const bDate = new Date(booking.date);
+        bDate.setHours(0, 0, 0, 0);
+        // Upcoming if date is today or later AND not completed/rejected
+        return bDate >= today && !['completed', 'rejected'].includes(booking.status);
+      }),
+      past: validBookings.filter((booking) => {
+        const bDate = new Date(booking.date);
+        bDate.setHours(0, 0, 0, 0);
+        // Past if date is before today OR it's completed/rejected
+        return bDate < today || ['completed', 'rejected'].includes(booking.status);
+      })
     };
   }, [bookings]);
 

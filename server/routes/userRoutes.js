@@ -5,7 +5,8 @@ const roleMiddleware = require('../middleware/roleMiddleware');
 const {
   getUsers,
   verifyOfficer,
-  getOfficers
+  getOfficers,
+  deleteUser
 } = require('../controllers/userController');
 
 // @route   GET /api/users
@@ -22,5 +23,10 @@ router.get('/officers', authMiddleware, roleMiddleware('farmer', 'admin'), getOf
 // @desc    Verify officer
 // @access  Private (Admin)
 router.patch('/:id/verify', authMiddleware, roleMiddleware('admin'), verifyOfficer);
+
+// @route   DELETE /api/users/:id
+// @desc    Delete user
+// @access  Private (Admin)
+router.delete('/:id', authMiddleware, roleMiddleware('admin'), deleteUser);
 
 module.exports = router;

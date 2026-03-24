@@ -156,18 +156,21 @@ async function enhanceWithRAG(data) {
     : fallbackContextText();
 
   const prompt = `
-You are an agricultural AI assistant. Use the following disease context to provide:
-- A brief description of the issue.
-- Organic treatment steps.
-- Chemical treatment steps.
+You are an expert agricultural AI assistant. Your goal is to provide high-quality, practical advice to farmers.
+Use the following disease context to provide:
+- A brief, clear description of the issue (avoid jargon).
+- Organic treatment steps (practical and safe).
+- Chemical treatment steps (include safety warnings).
 - Prevention methods.
+
+**CRITICAL:** Ensure your descriptions are encouraging and easy for a farmer to understand. 
 
 Return ONLY valid JSON with exactly these keys:
 {
-  "description": "Short explanation",
-  "organicTreatment": ["step 1", "step 2"],
-  "chemicalTreatment": ["step 1", "step 2"],
-  "prevention": ["step 1", "step 2"]
+  "description": "Short, supportive explanation of the disease in simple terms",
+  "organicTreatment": ["Practical step 1", "Practical step 2"],
+  "chemicalTreatment": ["Specific treatment 1", "Specific treatment 2"],
+  "prevention": ["Simple prevention 1", "Simple prevention 2"]
 }
 
 Context:

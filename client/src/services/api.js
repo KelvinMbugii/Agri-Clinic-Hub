@@ -107,6 +107,11 @@ export async function deleteArticleRequest(id) {
   return res.data;
 }
 
+export async function deleteUserRequest(id) {
+  const res = await api.delete(`/api/users/${id}`);
+  return res.data;
+}
+
 // Admin
 export async function getUsersRequest() {
   const res = await api.get('/api/users');
@@ -154,26 +159,40 @@ export async function uploadKnowledgeDocumentRequest(file, extractData = true) {
 }
 
 // Weather
-export async function getWeatherRequest(location) {
-  const normalizedLocation = location.trim().replace(/ /g, '+');
-
-  if(!normalizedLocation){
-    throw new Error('Location is required');
+export async function getWeatherRequest(params) {
+  const queryParams = {};
+  
+  if (typeof params === 'string') {
+    queryParams.location = params.trim().replace(/ /g, '+');
+  } else {
+    if (params.location) queryParams.location = params.location.trim().replace(/ /g, '+');
+    if (params.lat) queryParams.lat = params.lat;
+    if (params.lon) queryParams.lon = params.lon;
   }
- const res = await api.get('/api/weather', {
-    params: { location: normalizedLocation }
-  });
+
+  if (!queryParams.location && (!queryParams.lat || !queryParams.lon)) {
+    throw new Error('Location or coordinates are required');
+  }
+
+  const res = await api.get('/api/weather', { params: queryParams });
   return res.data;
 }
 
-export async function getForecastRequest(location){
-  const normalizedLocation = location?.trim();
-  if(!normalizedLocation){
-    throw new Error('Location is required');
+export async function getForecastRequest(params) {
+  const queryParams = {};
+  
+  if (typeof params === 'string') {
+    queryParams.location = params.trim();
+  } else {
+    if (params.location) queryParams.location = params.location.trim();
+    if (params.lat) queryParams.lat = params.lat;
+    if (params.lon) queryParams.lon = params.lon;
   }
 
-  const res = await api.get('/api/weather/forecast', {
-    params: { location:normalizedLocation }
-  });
+  if (!queryParams.location && (!queryParams.lat || !queryParams.lon)) {
+    throw new Error('Location or coordinates are required');
+  }
+
+  const res = await api.get('/api/weather/forecast', { params: queryParams });
   return res.data;
 }

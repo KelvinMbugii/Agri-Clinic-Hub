@@ -19,6 +19,10 @@ const articleSchema = new mongoose.Schema({
     type: String,
     default: null
   },
+  topic: {
+    type: String,
+    default: 'General'
+  },
   createdAt: {
     type: Date,
     default: Date.now

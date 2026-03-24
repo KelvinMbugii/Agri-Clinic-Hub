@@ -8,7 +8,8 @@ export default function Articles() {
     const [loading, setLoading] = useState({articles: true, saving: false});
     const [error, setError] = useState({articles: '', saving: ''});
     const [title, setTitle] = useState('');     
-    const [content, setContent] = useState('');     
+    const [content, setContent] = useState('');
+    const [topic, setTopic] = useState('General');
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState('');
     const [editingId, setEditingId] = useState(null);
@@ -35,6 +36,7 @@ export default function Articles() {
         setEditingId(article._id);
         setTitle(article.title || '');
         setContent(article.content || '');
+        setTopic(article.topic || 'General');
         setImage(null);
         setImagePreview(article.image ? `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/uploads/${article.image}` : '');
         setError((s) => ({ ...s, saving: '' }));
@@ -44,6 +46,7 @@ export default function Articles() {
         setEditingId(null);
         setTitle('');
         setContent('');
+        setTopic('General');
         setImage(null);
         setImagePreview('');
     };
@@ -64,6 +67,7 @@ export default function Articles() {
             const formData = new FormData();
             formData.append('title', title);
             formData.append('content', content);
+            formData.append('topic', topic);
             if (image) {
                 formData.append('image', image);
             }
@@ -130,6 +134,20 @@ export default function Articles() {
                   onChange={(e) => setContent(e.target.value)}
                   required
                 />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-slate-700">Topic</label>
+                <select
+                  className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-agri-500"
+                  value={topic}
+                  onChange={(e) => setTopic(e.target.value)}
+                >
+                  <option value="General">General</option>
+                  <option value="Seasonal planning">Seasonal planning</option>
+                  <option value="Pest prevention">Pest prevention</option>
+                  <option value="Soil health">Soil health</option>
+                  <option value="Market tips">Market tips</option>
+                </select>
               </div>
               <div>
                 <label className="text-sm font-medium text-slate-700">Photo</label>
@@ -211,8 +229,13 @@ export default function Articles() {
                         <div>
                           <div className="text-sm font-semibold text-slate-900">{a.title}</div>
                           <div className="mt-1 line-clamp-2 text-sm text-slate-700">{a.content}</div>
-                          <div className="mt-2 text-xs text-slate-500">
-                            {a.createdAt ? new Date(a.createdAt).toLocaleDateString() : ''}
+                          <div className="mt-2 flex items-center gap-2">
+                            <span className="rounded-full bg-agri-50 px-2 py-0.5 text-[10px] font-medium text-agri-700">
+                              {a.topic || 'General'}
+                            </span>
+                            <span className="text-xs text-slate-500">
+                              {a.createdAt ? new Date(a.createdAt).toLocaleDateString() : ''}
+                            </span>
                           </div>
                         </div>
                       </div>

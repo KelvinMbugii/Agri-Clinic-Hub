@@ -4,22 +4,28 @@ const axios = require("axios");
 // @route   GET /api/weather
 // @access  Public
 exports.getWeather = async (req, res) => {
-  const { location } = req.query;
+  const { location, lat, lon } = req.query;
 
-  if (!location) {
-    return res.status(400).json({ message: "Location is required" });
+  if (!location && (!lat || !lon)) {
+    return res.status(400).json({ message: "Location or coordinates are required" });
   }
 
   try {
+    const params = {
+      units: "metric",
+      appid: process.env.OPENWEATHER_API_KEY,
+    };
+
+    if (lat && lon) {
+      params.lat = lat;
+      params.lon = lon;
+    } else {
+      params.q = location;
+    }
+
     const response = await axios.get(
       "https://api.openweathermap.org/data/2.5/weather",
-      {
-        params: {
-          q: location,
-          units: "metric",
-          appid: process.env.OPENWEATHER_API_KEY,
-        },
-      }
+      { params }
     );
 
     res.status(200).json(response.data);
@@ -39,22 +45,28 @@ exports.getWeather = async (req, res) => {
 // @route   GET /api/weather/forecast
 // @access  Public
 exports.getForecast = async (req, res) => {
-  const { location } = req.query;
+  const { location, lat, lon } = req.query;
 
-  if (!location) {
-    return res.status(400).json({ message: 'Location is required' });
+  if (!location && (!lat || !lon)) {
+    return res.status(400).json({ message: 'Location or coordinates are required' });
   }
 
   try {
+    const params = {
+      units: 'metric',
+      appid: process.env.OPENWEATHER_API_KEY
+    };
+
+    if (lat && lon) {
+      params.lat = lat;
+      params.lon = lon;
+    } else {
+      params.q = location;
+    }
+
     const response = await axios.get(
       'https://api.openweathermap.org/data/2.5/forecast',
-      {
-        params: {
-          q: location,
-          units: 'metric',
-          appid: process.env.OPENWEATHER_API_KEY
-        }
-      }
+      { params }
     );
 
     res.status(200).json(response.data);

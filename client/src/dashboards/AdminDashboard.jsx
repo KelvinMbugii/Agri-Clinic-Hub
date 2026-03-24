@@ -1,13 +1,23 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAiLogsRequest, getUsersRequest, verifyOfficerRequest } from '../services/api.js';
+import { 
+  getAiLogsRequest, 
+  getUsersRequest, 
+  verifyOfficerRequest,
+  deleteUserRequest 
+} from '../services/api.js';
 import Sidebar from '../components/Sidebar.jsx';
+import { Trash2, AlertCircle, CheckCircle } from 'lucide-react';
+
+import { useAuth } from '../context/AuthContext.jsx';
 
 export default function AdminDashboard() {
+  const { user: currentUser } = useAuth();
   const [users, setUsers] = useState([]);
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState({ users: true, logs: true });
   const [error, setError] = useState({ users: '', logs: '' });
+  const [deleting, setDeleting] = useState(null);
 
   const refreshUsers = async () => {
     setLoading((s) => ({ ...s, users: true }));
@@ -71,6 +81,25 @@ export default function AdminDashboard() {
         ...s,
         users: err?.response?.data?.message || 'Failed to verify officer'
       }));
+    }
+  };
+
+  const deleteUser = async (id) => {
+    if (!window.confirm("Are you sure you want to permanentely delete this user? This action cannot be undone.")) {
+      return;
+    }
+
+    setDeleting(id);
+    try {
+      await deleteUserRequest(id);
+      await refreshUsers();
+    } catch (err) {
+      setError((s) => ({
+        ...s,
+        users: err?.response?.data?.message || 'Failed to delete user'
+      }));
+    } finally {
+      setDeleting(null);
     }
   };
 
@@ -197,16 +226,26 @@ export default function AdminDashboard() {
                           )}
                         </td>
                         <td className="py-3">
-                          {u.role === "officer" && !u.isVerified ? (
-                            <button
-                              onClick={() => verifyOfficer(u._id)}
-                              className="rounded-lg bg-agri-700 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-agri-800"
-                            >
-                              Verify
-                            </button>
-                          ) : (
-                            <span className="text-xs text-slate-500">—</span>
-                          )}
+                          <div className="flex items-center gap-2">
+                            {u.role === "officer" && !u.isVerified && (
+                              <button
+                                onClick={() => verifyOfficer(u._id)}
+                                className="rounded-lg bg-agri-700 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-agri-800 transition-colors"
+                              >
+                                Verify
+                              </button>
+                            )}
+                            {u._id !== currentUser?.id && (
+                              <button
+                                onClick={() => deleteUser(u._id)}
+                                disabled={deleting === u._id}
+                                className="group rounded-lg border border-slate-200 bg-white p-2 text-slate-400 hover:border-red-200 hover:bg-red-50 hover:text-red-600 transition-all disabled:opacity-50 shadow-sm"
+                                title="Delete User"
+                              >
+                                <Trash2 className={`h-4 w-4 ${deleting === u._id ? 'animate-pulse' : ''}`} />
+                              </button>
+                            )}
+                          </div>
                         </td>
                       </tr>
                     ))}
