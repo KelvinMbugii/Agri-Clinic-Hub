@@ -11,6 +11,7 @@ const {
   clearChatHistory,
   getAiLogs,
   getAiStatus,
+  deepScan,
 } = require("../controllers/aiController");
 
 const {
@@ -72,6 +73,7 @@ router.delete( "/chat/history", authMiddleware, roleMiddleware("farmer", "office
 
 router.get( "/logs", authMiddleware, roleMiddleware("admin"), getAiLogs);
 router.get( "/status", authMiddleware, roleMiddleware("admin"), getAiStatus);
+router.get( "/deep-scan", authMiddleware, roleMiddleware("admin"), deepScan);
 
 // AI Data Management (Admin explicitly)
 router.post("/knowledge", authMiddleware, roleMiddleware("admin"), addDiseaseKnowledge);

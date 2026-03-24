@@ -133,6 +133,16 @@ export async function getAiLogsRequest() {
   return res.data;
 }
 
+export async function getAiStatusRequest() {
+  const res = await api.get('/api/ai/status');
+  return res.data;
+}
+
+export async function deepScanRequest() {
+  const res = await api.get('/api/ai/deep-scan');
+  return res.data;
+}
+
 export async function addDiseaseKnowledgeRequest(payload) {
   const res = await api.post('/api/ai/knowledge', payload);
   return res.data;

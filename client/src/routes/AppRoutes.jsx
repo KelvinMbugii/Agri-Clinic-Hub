@@ -23,6 +23,7 @@ import AdminOfficersPage from '../pages/admin/Officers.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import AdminSettingsPage from '../pages/admin/Settings.jsx';
 import AiKnowledgePipeline from '../pages/admin/AiKnowledgePipeline.jsx';
+import AdminHealth from '../pages/admin/Health.jsx';
 
 function roleHome(role) {
   if (role === 'farmer') return '/farmer/dashboard';
@@ -73,6 +74,7 @@ export default function AppRoutes() {
         <Route path="/admin/articles" element={<AdminAiLogsPage />}/>
         <Route path="/admin/ai-pipeline" element={<AiKnowledgePipeline />} />
         <Route path="/admin/settings" element={<AdminSettingsPage />}/>
+        <Route path="/admin/health" element={<AdminHealth />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
