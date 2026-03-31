@@ -212,22 +212,15 @@
 //   }
 
 //   return lines.join("\n");
-// };
-
-// module.exports = {
-//   detectDisease,
-//   getModelStatus,
-//   chatWithKnowledge,
-// };
-
 const axios = require("axios");
 const FormData = require("form-data");
 const Disease = require("../models/Diseases");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { enhanceWithRAG } = require("./aiEnhancerService");
 const { querySimilarDiseases } = require("./embeddingService");
+const { cleanTreatmentArray, summarizeTreatmentsForPrompt } = require("../utils/treatmentUtils");
 
-const AI_SERVICE_URL = "http://localhost:8000/predict";
+const AI_SERVICE_URL = process.env.AI_CV_SERVICE_URL || "http://localhost:8000/predict";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 /**
@@ -269,6 +262,7 @@ const findDiseaseRecord = async (diseaseName) => {
   });
 };
 
+
 /**
  * Detect disease from image and enrich with MongoDB + AI insights
  */
@@ -290,27 +284,34 @@ const detectDisease = async (imageBuffer) => {
       return { detectedDisease: null, confidenceScore: 0, source: "fallback" };
     }
 
-    // 3️⃣ Low confidence guard
-    if ((confidence || 0) < 0.7) {
+    // 3️⃣ Confidence guard (Reverted Gemini Rescue)
+    const normalizedConfidence = confidence > 1 ? confidence / 100 : confidence;
+    if (normalizedConfidence < 0.70) {
       return {
         detectedDisease: aiDiseaseName,
-        confidenceScore: Math.round(confidence || 0),
+        confidenceScore: Math.round(normalizedConfidence * 100),
         message: "Low confidence. Please upload a clearer image.",
         source: "python-fastapi",
       };
     }
 
+    const finalResult = {
+      detectedDisease: aiDiseaseName,
+      confidenceScore: Math.round(normalizedConfidence * 100),
+      source: "python-fastapi",
+    };
+
+    const { detectedDisease: finalDiseaseName } = finalResult;
+
     // 4️⃣ Fetch disease info from MongoDB
-    const diseaseInfo = await findDiseaseRecord(aiDiseaseName);
+    const diseaseInfo = await findDiseaseRecord(finalDiseaseName);
 
     // 5️⃣ If no DB match, return basic response + RAG AI enhancement
     if (!diseaseInfo) {
       const baseResponse = {
-        detectedDisease: aiDiseaseName,
-        confidenceScore: Math.round(confidence || 0),
+        ...finalResult,
         severity: "unknown",
         crop: "unknown",
-        source: "python-fastapi",
       };
 
       const aiEnhancement = await enhanceWithRAG(baseResponse);
@@ -320,22 +321,19 @@ const detectDisease = async (imageBuffer) => {
 
     // 6️⃣ Build base response from DB
     const baseResponse = {
+      ...finalResult,
       detectedDisease: diseaseInfo.displayName,
-      confidenceScore: Math.round(confidence || 0),
       description: diseaseInfo.description,
-      organicTreatment: diseaseInfo.treatment?.organic || [],
-      chemicalTreatment: diseaseInfo.treatment?.chemical || [],
-      prevention: diseaseInfo.prevention || [],
+      organicTreatment: cleanTreatmentArray(diseaseInfo.treatment?.organic || []),
+      chemicalTreatment: cleanTreatmentArray(diseaseInfo.treatment?.chemical || []),
+      prevention: cleanTreatmentArray(diseaseInfo.prevention || []),
       severity: diseaseInfo.severity,
       crop: diseaseInfo.crop,
-      source: "python-fastapi",
     };
 
-    // 7️⃣ Skip AI if DB data already sufficient
-    const hasEnoughData =
-      baseResponse.organicTreatment.length && baseResponse.prevention.length;
-
-    if (hasEnoughData) return baseResponse;
+    // 7️⃣ Prepare base response for enhancement
+    // We used to skip AI if data was "enough", but "enough" might be technical junk.
+    // Now we always proceed to AI enhancement for the best farmer-friendly tone.
 
     // 8️⃣ AI Enhancement Layer using RAG
     const aiEnhancement = await enhanceWithRAG(baseResponse);
@@ -344,7 +342,6 @@ const detectDisease = async (imageBuffer) => {
     return { ...baseResponse, aiInsights: aiEnhancement || {} };
   } catch (err) {
     console.error("AI Detection Error:", err.response?.data || err.message);
-
     return { detectedDisease: null, confidenceScore: 0, source: "fallback" };
   }
 };
@@ -361,10 +358,7 @@ const getModelStatus = () => ({
  * Text-based disease search (chat fallback)
  */
 const findDiseaseByTextSearch = async (message) => {
-  const results = await Disease.find(
-    { $text: { $search: message } },
-    { score: { $meta: "textScore" } },
-  )
+  const results = await Disease.find({ $text: { $search: message } }, { score: { $meta: "textScore" } })
     .sort({ score: { $meta: "textScore" } })
     .limit(1);
 
@@ -372,32 +366,9 @@ const findDiseaseByTextSearch = async (message) => {
 };
 
 /**
- * Find a disease by embedding similarity (Pinecone) then fetch from Mongo.
- * Requires that embeddings have been ingested into the vector index.
- */
-const findDiseaseByEmbedding = async (query) => {
-  const matches = await querySimilarDiseases(query, 3);
-  if (!matches || matches.length === 0) return null;
-
-  // Pinecone match.id should be the vector id we used on upsert.
-  // We embed vectors per disease record, so `id` may include chunk suffix.
-  const candidateId = matches[0]?.id;
-  if (!candidateId) return null;
-
-  // If your vector ids are like `${diseaseId}::chunk-0`, strip the suffix.
-  const diseaseId = String(candidateId).split("::")[0].split("-chunk-")[0];
-  if (!diseaseId) return null;
-
-  return Disease.findById(diseaseId);
-};
-
-/**
  * Chat-based knowledge response
  */
-const chatWithKnowledge = async (
-  message,
-  { lastDetection = {}, chatHistory = [] } = {}
-) => {
+const chatWithKnowledge = async (message, { lastDetection = {}, chatHistory = [] } = {}) => {
   const recentTurns = Array.isArray(chatHistory) ? chatHistory.slice(-10) : [];
   const recentUserText = recentTurns
     .filter((m) => m?.sender === "user" && typeof m.text === "string")
@@ -405,9 +376,7 @@ const chatWithKnowledge = async (
     .slice(-6)
     .join("\n");
 
-  const combinedQuery = [recentUserText, message, lastDetection?.detectedDisease]
-    .filter(Boolean)
-    .join("\n");
+  const combinedQuery = [recentUserText, message, lastDetection?.detectedDisease].filter(Boolean).join("\n");
 
   let diseaseInfo = await findDiseaseByTextSearch(message);
 
@@ -425,42 +394,21 @@ const chatWithKnowledge = async (
 
   // Helper to sanitize database strings
   const cleanStr = (val) => (val && val !== "undefined" && val !== "null" ? val : "Unknown");
-  
-  // Helper to sanitize arrays, remove duplicates, and filter out scraper garbage
-  const cleanArray = (arr) => {
-    if (!Array.isArray(arr)) return [];
-    
-    // Garbage phrases that appear in bulk from scraping
-    const garbagePhrases = [
-      "vegetable disease and symptoms", 
-      "cultural controls chemical",
-      "best efforts at prevention",
-      "common diseases (see mu extension",
-      "by following disease prevention",
-      "the following table describes some of the common diseases"
-    ];
-
-    const uniqueArr = [...new Set(arr)];
-    return uniqueArr
-      .filter(v => v && typeof v === "string" && v.toLowerCase() !== "undefined" && v.toLowerCase() !== "null" && v.trim().length > 3)
-      .filter(v => !garbagePhrases.some(g => v.toLowerCase().includes(g)))
-      .map(v => v.trim());
-  };
 
   // Fallback: deterministic explanation if LLM fails.
   const formatDisease = () => {
+    if (!diseaseInfo) {
+      return "I found some general farming guidelines for your query. Please tell me more about the crop and symptoms you are seeing.";
+    }
+
     const lines = [];
     const displayName = cleanStr(diseaseInfo.displayName);
     const crop = cleanStr(diseaseInfo.crop);
     const type = cleanStr(diseaseInfo.type);
     const severity = cleanStr(diseaseInfo.severity);
 
-    if (displayName === "Unknown") {
-      lines.push(`I found some general farming guidelines for your query in our database.`);
-    } else {
-      lines.push(`Here is what I found regarding **${displayName}**.`);
-    }
-    
+    lines.push(`Here is what I found regarding **${displayName}**.`);
+
     lines.push("");
 
     const details = [];
@@ -473,58 +421,46 @@ const chatWithKnowledge = async (
       lines.push("");
     }
 
-    const symptoms = cleanArray(diseaseInfo.symptoms);
+    const symptoms = cleanTreatmentArray(diseaseInfo.symptoms);
     if (symptoms.length) {
       lines.push("**Key Symptoms:**");
-      lines.push(...symptoms.map((s) => `- ${s}`));
+      lines.push(...symptoms.slice(0, 6).map((s) => `- ${s}`));
       lines.push("");
     }
 
-    const cultural = cleanArray(diseaseInfo.treatment?.cultural);
-    const chemical = cleanArray(diseaseInfo.treatment?.chemical);
-    const organic = cleanArray(diseaseInfo.treatment?.organic);
+    const cultural = cleanTreatmentArray(diseaseInfo.treatment?.cultural);
+    const chemical = cleanTreatmentArray(diseaseInfo.treatment?.chemical);
+    const organic = cleanTreatmentArray(diseaseInfo.treatment?.organic);
 
     if (organic.length || chemical.length || cultural.length) {
       lines.push("**Recommended Treatments:**");
-      if (organic.length) {
-        lines.push("- *Organic:* " + organic.join(", "));
-      }
-      if (chemical.length) {
-        lines.push("- *Chemical:* " + chemical.join(", "));
-      }
-      if (cultural.length) {
-        lines.push("- *Cultural:* " + cultural.join(", "));
-      }
+      if (organic.length) lines.push("- *Organic:* " + organic.slice(0, 3).join(", "));
+      if (chemical.length) lines.push("- *Chemical:* " + chemical.slice(0, 2).join(", "));
+      if (cultural.length) lines.push("- *Cultural:* " + cultural.slice(0, 3).join(", "));
       lines.push("");
     }
 
-    const prevention = cleanArray(diseaseInfo.prevention);
+    const prevention = cleanTreatmentArray(diseaseInfo.prevention);
     if (prevention.length) {
       lines.push("**Prevention Tips:**");
-      lines.push(...prevention.map((p) => `- ${p}`));
+      lines.push(...prevention.slice(0, 5).map((p) => `- ${p}`));
       lines.push("");
     }
-    
-    // Add a professional sign-off if we are falling back
-    lines.push("*Note: This is an automated summary. If your crop looks severely infected, consider consulting a local agricultural officer.*");
 
+    lines.push("*Note: This is an automated summary. For severe cases, please consult a local agricultural officer.*");
     return lines.join("\n").trim();
   };
 
   if (!diseaseInfo && (!pineconeMatches || pineconeMatches.length === 0)) {
     return [
-      "I could not confidently match that to a known disease or document guideline.",
-      "Please tell me: crop name, growth stage, and the top 3 visible symptoms (leaf spots, yellowing, wilting, mold, etc.).",
-      lastDetection?.detectedDisease
-        ? `If you meant your last scan (${lastDetection.detectedDisease}), ask: “What should I do next?”`
-        : "If you have an image, upload it for better accuracy.",
+      "I could not confidently match that to a known disease or guideline.",
+      "Please tell me the crop name and the main symptoms you're seeing.",
+      lastDetection?.detectedDisease ? `If you meant your last scan (${lastDetection.detectedDisease}), try asking: "How do I treat this?"` : "",
     ].join("\n");
   }
 
   try {
-    const historyForPrompt = recentTurns
-      .map((m) => `${m.sender === "user" ? "User" : "Assistant"}: ${m.text}`)
-      .join("\n");
+    const historyForPrompt = recentTurns.map((m) => `${m.sender === "user" ? "User" : "Assistant"}: ${m.text}`).join("\n");
 
     let knowledgeForPrompt = "";
 
@@ -533,69 +469,72 @@ const chatWithKnowledge = async (
 [STRUCTURED DB MATCH]
 Disease: ${cleanStr(diseaseInfo.displayName)}
 Crop: ${cleanStr(diseaseInfo.crop)}
-Type: ${cleanStr(diseaseInfo.type)}
-Severity: ${cleanStr(diseaseInfo.severity)}
-Description: ${cleanStr(diseaseInfo.description)}
-Symptoms: ${cleanArray(diseaseInfo.symptoms).join("; ")}
-Treatments (organic): ${cleanArray(diseaseInfo.treatment?.organic).join("; ")}
-Treatments (chemical): ${cleanArray(diseaseInfo.treatment?.chemical).join("; ")}
-Treatments (cultural): ${cleanArray(diseaseInfo.treatment?.cultural).join("; ")}
-Prevention: ${cleanArray(diseaseInfo.prevention).join("; ")}
+Symptoms: ${cleanTreatmentArray(diseaseInfo.symptoms).join("; ")}
+Organic Treatments: ${summarizeTreatmentsForPrompt(diseaseInfo.treatment?.organic, 5)}
+Chemical Treatments: ${summarizeTreatmentsForPrompt(diseaseInfo.treatment?.chemical, 5)}
+Cultural Treatments: ${summarizeTreatmentsForPrompt(diseaseInfo.treatment?.cultural, 5)}
+Prevention: ${summarizeTreatmentsForPrompt(diseaseInfo.prevention, 5)}
 \n`.trim();
     }
 
     if (pineconeMatches && pineconeMatches.length > 0) {
       knowledgeForPrompt += "\n\n[RELEVANT SEMANTIC DOCUMENT CHUNKS]\n";
-      pineconeMatches.forEach((match, idx) => {
+      pineconeMatches.forEach((match) => {
         if (match.metadata.type === "document") {
-          knowledgeForPrompt += `--- SOURCE DOCUMENT: ${match.metadata.sourceDocument || 'Unknown'} ---\n${match.metadata.snippet}\n\n`;
+          knowledgeForPrompt += `--- SOURCE DOCUMENT: ${match.metadata.sourceDocument || "Unknown"} ---\n${match.metadata.snippet}\n\n`;
         } else if (match.metadata.type === "disease_schema" && !diseaseInfo) {
-          // Only inject schema RAG if we didn't already text-match perfectly
-          knowledgeForPrompt += `--- ENCYCLOPEDIA RECORD: ${match.metadata.displayName || 'Unknown'} (${match.metadata.crop || 'Unknown'}) ---\n${match.metadata.snippet}\n\n`;
+          knowledgeForPrompt += `--- ENCYCLOPEDIA RECORD: ${match.metadata.displayName || "Unknown"} ---\n${match.metadata.snippet}\n\n`;
         }
       });
     }
 
     const systemPrompt = `
-You are a warm, professional, and highly knowledgeable Agricultural Extension Officer. 
+You are a warm, professional Agricultural Extension Officer. 
+Your goal is to provide practical, actionable, and safe advice to farmers.
 
 ### **Core Instructions:**
-1. **Directness:** **DO NOT** repeat greetings like "Hello again" or "Thanks for reaching out" if you have already greeted the user in the conversation history. Get straight to the facts.
-2. **Knowledge Priority:** 
-   - First, use the provided "[STRUCTURED DB MATCH]" and "[RELEVANT SEMANTIC DOCUMENT CHUNKS]".
-   - If those are empty or don't answer the question, use your **general agricultural knowledge** to provide a helpful, safe response. In this case, clarify that these are general agricultural best practices.
-3. **Format:** Use bold headers and bullet points. Structure your advice into:
-   - **🔍 Analysis:** What the problem is.
-   - **✅ Action Plan:** Practical steps to take.
-   - **🛡 Prevention:** Future protection.
-4. **Safety:** Always include safety warnings for chemical handling.
-5. **Tone:** Professional, expert, and brief. No fluff.
+1. **Directness:** Get straight to the facts. No fluff.
+2. **Knowledge Priority:** Use the provided DB matches and document chunks. If they contain long technical lists, **summarize them** into 2-3 practical steps.
+3. **Format:** Use bold headers. Structure advice into:
+   - **🔍 Analysis:** Simple explanation of the problem.
+   - **✅ Action Plan:** Practical steps (prioritize organic/cultural if effective).
+   - **🛡 Prevention:** How to stop it from coming back.
+4. **Safety:** Mention protective gear for chemical use and following product labels.
+5. **Tone:** Supporting and expert. Avoid overwhelming the farmer with jargon.
 
-**CRITICAL:** Provide a substantive answer. Do not just say you are here to help; actually provide the information requested.
+**CRITICAL:** Provide a substantive, helpful answer based on the knowledge provided.
 `.trim();
 
     const userPrompt = `
-Conversation history (most recent first):
+Conversation history:
 ${historyForPrompt || "(none)"}
 
-Last scan context (if any):
+Last scan context:
 ${lastDetection?.detectedDisease ? JSON.stringify(lastDetection) : "(none)"}
 
 User question:
 ${message}
 
-Knowledge you can use:
+Knowledge for use:
 ${knowledgeForPrompt}
 `.trim();
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+    
+    // Merge system instruction into prompt for better compatibility across SDK versions
+    const fullPrompt = `${systemPrompt}\n\n${userPrompt}`;
+
     const completion = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: userPrompt }] }],
-      systemInstruction: systemPrompt,
-      generationConfig: { temperature: 0.3, maxOutputTokens: 650 }
+      contents: [{ role: "user", parts: [{ text: fullPrompt }] }],
+      generationConfig: { temperature: 0.25, maxOutputTokens: 800 },
     });
 
-    return completion.response.text().trim() || formatDisease();
+    const aiText = completion.response.text().trim();
+    if (!aiText) {
+      console.warn("Gemini returned empty response, falling back.");
+      return formatDisease();
+    }
+    return aiText;
   } catch (err) {
     console.error("Chat LLM error:", err.message);
     return formatDisease();

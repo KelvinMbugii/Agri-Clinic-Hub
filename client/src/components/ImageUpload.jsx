@@ -153,9 +153,9 @@ const toLines = (value) => {
         ) : (
           <div className="mt-3 space-y-4">
             <div className="rounded-2xl bg-agri-50 p-4">
-              <div className="text-xs font-medium text-agri-800">Detected disease</div>
+              <div className="text-xs font-medium text-agri-800">Detected status</div>
               <div className="mt-1 text-lg font-semibold text-slate-900">
-                {result.detectedDisease}
+                {result.detectedDisease || "No clear disease detected"}
               </div>
             </div>
             <div className="rounded-2xl bg-amber-50 p-4">
@@ -164,18 +164,80 @@ const toLines = (value) => {
                 {result.confidenceScore}%
               </div>
             </div>
-            <div className="rounded-2xl bg-slate-50 p-4">
-            <div className="text-xs font-medium text-slate-700">Recommended action</div>
-              <div className="mt-2 text-sm text-slate-700">
-               {recommendedLines.map((line, i) => <div key={i}>{line}
-                </div>)}
+
+            {/* Warning Message (if any) */}
+            {result.message ? (
+              <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+                <div className="font-semibold text-amber-900 mb-1">⚠️ System Notice</div>
+                {result.message}
               </div>
-             </div>
+            ) : null}
+
+            <div className="space-y-4">
+              {result.aiInsights?.description || result.description ? (
+                <div className="rounded-2xl border border-agri-100 bg-white p-4 shadow-sm">
+                  <div className="text-xs font-semibold uppercase tracking-wider text-agri-600">🖨️ Analysis Overview</div>
+                  <div className="mt-2 text-sm leading-relaxed text-slate-700">
+                    {result.aiInsights?.description || result.description}
+                  </div>
+                </div>
+              ) : null}
+
+              <div className="grid gap-3 sm:grid-cols-1">
+                {/* Organic Treatments */}
+                {(result.aiInsights?.organicTreatment?.length || result.organicTreatment?.length) ? (
+                  <div className="rounded-2xl border border-green-100 bg-green-50/30 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-green-800">
+                      <span>🌿</span> Organic Treatments
+                    </div>
+                    <ul className="mt-2 space-y-1.5">
+                      {toLines(result.aiInsights?.organicTreatment || result.organicTreatment).map((line, i) => (
+                        <li key={i} className="flex gap-2 text-xs text-slate-700">
+                          <span className="text-green-500">•</span> {line}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                {/* Chemical Treatments */}
+                {(result.aiInsights?.chemicalTreatment?.length || result.chemicalTreatment?.length) ? (
+                  <div className="rounded-2xl border border-amber-100 bg-amber-50/30 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-amber-800">
+                      <span>💊</span> Chemical Solutions
+                    </div>
+                    <ul className="mt-2 space-y-1.5">
+                      {toLines(result.aiInsights?.chemicalTreatment || result.chemicalTreatment).map((line, i) => (
+                        <li key={i} className="flex gap-2 text-xs text-slate-700">
+                          <span className="text-amber-500">•</span> {line}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                {/* Prevention */}
+                {(result.aiInsights?.prevention?.length || result.prevention?.length) ? (
+                  <div className="rounded-2xl border border-blue-100 bg-blue-50/30 p-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-blue-800">
+                      <span>🛡️</span> Prevention Plan
+                    </div>
+                    <ul className="mt-2 space-y-1.5">
+                      {toLines(result.aiInsights?.prevention || result.prevention).map((line, i) => (
+                        <li key={i} className="flex gap-2 text-xs text-slate-700">
+                          <span className="text-blue-400">•</span> {line}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+            </div>
 
             <button
               type="button"
               onClick={() => onAskAi && onAskAi(result)}
-              className="w-full rounded-xl bg-agri-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-agri-800"
+              className="mt-4 w-full rounded-xl bg-agri-700 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-agri-800 hover:shadow-md active:scale-[0.98]"
             >
               💬 Ask AI Assistant about this result
             </button>

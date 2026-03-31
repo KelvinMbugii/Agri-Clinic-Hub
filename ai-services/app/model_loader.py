@@ -17,5 +17,6 @@ tfsmlayer = TFSMLayer(MODEL_PATH, call_endpoint="serving_default")
 
 # Wrap in Sequential model
 model = Sequential([tfsmlayer])
+model.build((None, 224, 224, 3))
 
 print("Model loaded successfully!")

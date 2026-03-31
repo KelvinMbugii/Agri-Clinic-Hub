@@ -19,7 +19,7 @@ DEFAULT_CLASS_NAMES = [
     "Tomato__Target_Spot", 
     "Tomato__Tomato_YellowLeaf__Curl_Virus", 
     "Tomato__Tomato_mosaic_virus", 
-    "Tomato_healthy",
+    "Tomato_healthy", 
 ]
 
 # Attempt to get class names from the model if possible
@@ -37,11 +37,16 @@ async def predict_image(file):
     image = Image.open(io.BytesIO(contents)).convert("RGB")
     image = image.resize((224, 224))
     image_array = np.array(image) / 255.0
-    image_array = np.expand_dims(image_array, axis=0)
+    image_array = np.expand_dims(image_array, axis=0).astype(np.float32)
 
     # TFSMLayer outputs a dict: extract tensor
     predictions_dict = model(image_array)
-    predictions_tensor = list(predictions_dict.values())[0]
+    
+    # Handle both Keras 3 dict output and raw tensor output
+    if isinstance(predictions_dict, dict):
+        predictions_tensor = list(predictions_dict.values())[0]
+    else:
+        predictions_tensor = predictions_dict
 
     # Convert tensor to numpy
     predictions = predictions_tensor.numpy()
@@ -49,6 +54,13 @@ async def predict_image(file):
     # Find class
     index = int(np.argmax(predictions[0]))
     confidence = float(np.max(predictions[0]))
+
+    # If confidence is extremely low, mark as unknown
+    if confidence < 0.25:
+        return {
+            "disease": None,
+            "confidence": float(confidence)
+        }
 
     # Safety check in case number of classes differs
     if index >= len(class_names):
@@ -58,5 +70,5 @@ async def predict_image(file):
 
     return {
         "disease": disease_name,
-        "confidence": round(confidence * 100, 2)
+        "confidence": float(confidence)
     }
