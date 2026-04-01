@@ -20,3 +20,8 @@ Thumbs.db
 .vscode/
 .idea/
 
+# tests
+**/*.test.js
+**/*.test.jsx
+**/*.spec.js
+**/*.spec.jsx

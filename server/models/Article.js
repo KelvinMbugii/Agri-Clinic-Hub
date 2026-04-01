@@ -15,6 +15,14 @@ const articleSchema = new mongoose.Schema({
     ref: 'User',
     required: [true, 'Author is required']
   },
+  image: {
+    type: String,
+    default: null
+  },
+  topic: {
+    type: String,
+    default: 'General'
+  },
   createdAt: {
     type: Date,
     default: Date.now

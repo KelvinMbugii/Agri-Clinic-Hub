@@ -10,9 +10,12 @@ import {
   getForecastRequest,
   getWeatherRequest,
 } from "../services/api.js";
+import { useAuth } from "../context/AuthContext.jsx";
 
 export default function FarmerDashboard() {
-  const farmerLocation = "Nairobi";
+  const { user } = useAuth();
+  const [locationName, setLocationName] = useState(user?.Location || "Detecting...");
+  const [locationCoords, setLocationCoords] = useState({ lat: null, lon: null });
 
   const [articles, setArticles] = useState([]);
   const [weather, setWeather] = useState(null);
@@ -27,6 +30,29 @@ export default function FarmerDashboard() {
     articles: "",
     weather: "",
   });
+
+  useEffect(() => {
+    const detectLocation = async () => {
+      if (user?.Location) {
+        setLocationName(user.Location);
+        return;
+      }
+
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        if (data.city) {
+          setLocationName(`${data.city}, ${data.country_name}`);
+          setLocationCoords({ lat: data.latitude, lon: data.longitude });
+        }
+      } catch (err) {
+        console.error("Dashboard location detection failed:", err);
+        setLocationName("Nairobi, Kenya");
+        setLocationCoords({ lat: -1.286389, lon: 36.817223 });
+      }
+    };
+    detectLocation();
+  }, [user?.Location]);
 
   useEffect(() => {
     let cancelled = false;
@@ -58,13 +84,20 @@ export default function FarmerDashboard() {
     let cancelled = false;
 
     const fetchWeather = async () => {
+      // Don't fetch if we are still detecting location
+      if (locationName === "Detecting..." && !locationCoords.lat) return;
+
       setLoading((s) => ({ ...s, weather: true }));
       setError((s) => ({ ...s, weather: "" }));
 
       try {
+        const weatherParams = user?.Location 
+          ? { location: user.Location } 
+          : (locationCoords.lat ? { lat: locationCoords.lat, lon: locationCoords.lon } : { location: locationName });
+
         const [currentWeather, forecastData] = await Promise.all([
-          getWeatherRequest(farmerLocation),
-          getForecastRequest(farmerLocation),
+          getWeatherRequest(weatherParams),
+          getForecastRequest(weatherParams),
         ]);
 
         if (!cancelled) {
@@ -92,7 +125,7 @@ export default function FarmerDashboard() {
 
     fetchWeather();
     return () => (cancelled = true);
-  }, [farmerLocation]);
+  }, [locationName, locationCoords.lat, locationCoords.lon, user?.Location]);
 
   const featuredArticles = useMemo(() => articles.slice(0, 3), [articles]);
 
@@ -159,7 +192,7 @@ export default function FarmerDashboard() {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-xl font-bold text-slate-900 tracking-tight">Weather Analytics</h2>
-              <p className="text-sm font-medium text-slate-500 mt-1">Current conditions and 7-day forecast for {farmerLocation}.</p>
+              <p className="text-sm font-medium text-slate-500 mt-1">Current conditions and 5-day forecast for {locationName}.</p>
             </div>
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-500 shadow-sm">
               <CloudSun className="h-7 w-7" />

@@ -1,24 +1,18 @@
-const OpenAI = require("openai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { Pinecone } = require("@pinecone-database/pinecone");
 const { z } = require("zod");
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const embeddingModel = genAI.getGenerativeModel({ model: "gemini-embedding-001" });
 
-// Pinecone SDK v7 uses a different client API than older versions.
-// We only need an API key here; the SDK will pick controller host from env (if set).
 const pinecone = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY,
-  controllerHostUrl: process.env.PINECONE_CONTROLLER_HOST,
 });
 
 const VECTOR_INDEX = process.env.PINECONE_INDEX_NAME || "disease-embeddings";
-const PINECONE_NAMESPACE = process.env.PINECONE_NAMESPACE || ""; // empty string => default namespace
+const PINECONE_NAMESPACE = process.env.PINECONE_NAMESPACE || ""; 
 
-const EMBEDDING_MODEL = "text-embedding-3-small";
-// Pinecone index stats showed dimension=1024. Your embedding generator must match that dimension.
-const EMBEDDING_DIMENSION = Number(
-  process.env.PINECONE_INDEX_DIMENSION || 1024
-);
+const EMBEDDING_DIMENSION = 1024; // Explicitly map to user's immutable Pinecone Index
 const CHUNK_CHAR_LIMIT = 2000;
 const SNIPPET_CHAR_LIMIT = 650;
 
@@ -27,7 +21,6 @@ function chunkText(text = "", maxChars = CHUNK_CHAR_LIMIT) {
   if (!normalized) return [];
   if (normalized.length <= maxChars) return [normalized];
 
-  // Split on sentence-ish boundaries where possible.
   const parts = normalized.split(/(?<=[.!?])\s+/);
   const chunks = [];
   let current = "";
@@ -65,50 +58,63 @@ function buildDiseaseEmbeddingText(disease = {}) {
   return pieces.join("\n");
 }
 
-// Validate embeddings structure
 const embeddingSchema = z.object({
   id: z.string(),
   vector: z.array(z.number()).length(EMBEDDING_DIMENSION),
   metadata: z.object({
-    displayName: z.string(),
-    crop: z.string(),
-    diseaseId: z.string(),
+    displayName: z.string().optional(),
+    crop: z.string().optional(),
+    diseaseId: z.string().optional(),
+    type: z.string().default("disease_schema"),
+    sourceDocument: z.string().optional(),
     snippet: z.string(),
-  }),
+  }).passthrough(),
 });
 
 async function embedText(text) {
-  const response = await openai.embeddings.create({
-    model: EMBEDDING_MODEL,
-    input: text,
-    dimensions: EMBEDDING_DIMENSION,
-  });
-  return response.data[0].embedding;
+  const result = await embeddingModel.embedContent(text);
+  let vector = result.embedding.values;
+  
+  if (vector.length < EMBEDDING_DIMENSION) {
+    const padding = new Array(EMBEDDING_DIMENSION - vector.length).fill(0);
+    vector = vector.concat(padding);
+  } else if (vector.length > EMBEDDING_DIMENSION) {
+    vector = vector.slice(0, EMBEDDING_DIMENSION);
+  }
+  
+  return vector;
 }
 
 async function embedTexts(texts, { batchSize = 64 } = {}) {
   const results = [];
-
+  
   for (let i = 0; i < texts.length; i += batchSize) {
     const batch = texts.slice(i, i + batchSize);
-    const response = await openai.embeddings.create({
-      model: EMBEDDING_MODEL,
-      input: batch,
-      dimensions: EMBEDDING_DIMENSION,
+    
+    // Construct requests format for batchEmbedContents
+    const reqs = batch.map(t => ({
+      content: { role: "user", parts: [{ text: t }] }
+    }));
+    
+    const result = await embeddingModel.batchEmbedContents({ requests: reqs });
+    
+    const paddedVectors = result.embeddings.map(e => {
+      let vector = e.values;
+      if (vector.length < EMBEDDING_DIMENSION) {
+        vector = vector.concat(new Array(EMBEDDING_DIMENSION - vector.length).fill(0));
+      } else if (vector.length > EMBEDDING_DIMENSION) {
+        vector = vector.slice(0, EMBEDDING_DIMENSION);
+      }
+      return vector;
     });
-
-    // OpenAI returns embeddings with indices; keep ordering stable.
-    const ordered = response.data.sort((a, b) => a.index - b.index);
-    results.push(...ordered.map((d) => d.embedding));
+    
+    results.push(...paddedVectors);
   }
-
+  
   return results;
 }
 
-async function upsertDiseaseEmbedding(
-  disease,
-  { chunkCharLimit = CHUNK_CHAR_LIMIT, snippetCharLimit = SNIPPET_CHAR_LIMIT } = {}
-) {
+async function upsertDiseaseEmbedding(disease, { chunkCharLimit = CHUNK_CHAR_LIMIT, snippetCharLimit = SNIPPET_CHAR_LIMIT } = {}) {
   const diseaseId = disease._id.toString();
   const displayName = disease.displayName;
   const crop = disease.crop;
@@ -118,7 +124,6 @@ async function upsertDiseaseEmbedding(
 
   const index = pinecone.index({ name: VECTOR_INDEX });
 
-  // Embed chunk texts in batches for efficiency.
   const embeddings = await embedTexts(chunks);
 
   const records = embeddings.map((vector, idx) => {
@@ -128,7 +133,7 @@ async function upsertDiseaseEmbedding(
     const parsed = embeddingSchema.parse({
       id: `${diseaseId}::chunk-${idx}`,
       vector,
-      metadata: { displayName, crop, diseaseId, snippet },
+      metadata: { displayName, crop, diseaseId, type: "disease_schema", snippet },
     });
 
     return {
@@ -137,6 +142,11 @@ async function upsertDiseaseEmbedding(
       metadata: parsed.metadata,
     };
   });
+
+  if (records.length === 0) {
+    console.warn(`Skipping Pinecone upsert for Disease ${diseaseId}: no text chunks generated.`);
+    return;
+  }
 
   await index.upsert({
     records,
@@ -158,4 +168,31 @@ async function querySimilarDiseases(query, topK = 5) {
   return result.matches || [];
 }
 
-module.exports = { embedText, upsertDiseaseEmbedding, querySimilarDiseases };
+async function upsertKnowledgeFragmentEmbedding(fragment) {
+  const fragmentId = fragment._id.toString();
+  const index = pinecone.index({ name: VECTOR_INDEX });
+
+  const vector = await embedText(fragment.textChunk);
+  const snippet = fragment.textChunk.slice(0, SNIPPET_CHAR_LIMIT);
+  
+  const parsed = embeddingSchema.parse({
+    id: `frag::${fragmentId}`,
+    vector,
+    metadata: { 
+      type: fragment.type, 
+      snippet, 
+      sourceDocument: fragment.sourceDocument || "Admin Upload" 
+    },
+  });
+
+  if (!parsed.vector || parsed.vector.length === 0) return;
+
+  await index.upsert({
+    records: [
+      { id: parsed.id, values: parsed.vector, metadata: parsed.metadata }
+    ],
+    namespace: PINECONE_NAMESPACE || undefined,
+  });
+}
+
+module.exports = { embedText, chunkText, upsertDiseaseEmbedding, upsertKnowledgeFragmentEmbedding, querySimilarDiseases };

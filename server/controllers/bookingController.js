@@ -95,7 +95,7 @@ const getAssignedBookings = async (req, res) => {
 const updateBookingStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body;
+    const { status, meetingLink } = req.body;
 
     // Validation
     if (!['pending', 'approved', 'rejected', 'completed'].includes(status)) {
@@ -114,6 +114,9 @@ const updateBookingStatus = async (req, res) => {
 
     // Update status
     booking.status = status;
+    if (meetingLink !== undefined) {
+      booking.meetingLink = meetingLink;
+    }
     await booking.save();
 
     // Populate references

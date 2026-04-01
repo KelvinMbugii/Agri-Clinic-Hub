@@ -1,14 +1,23 @@
-import { useState } from 'react';
-import { createBookingRequest, getMyBookingsRequest } from '../services/api.js';
+import { useState, useEffect } from 'react';
+import { createBookingRequest, getMyBookingsRequest, getOfficersRequest } from '../services/api.js';
 
 export default function BookingForm({ onBooked }) {
   const [officerId, setOfficerId] = useState('');
+  const [officers, setOfficers] = useState([]);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [consultationType, setConsultationType] = useState('online');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  useEffect(() => {
+    let cancelled = false;
+    getOfficersRequest().then(data => {
+      if (!cancelled) setOfficers(data?.officers || []);
+    }).catch(err => console.error("Failed to fetch officers", err));
+    return () => { cancelled = true; };
+  }, []);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -58,14 +67,18 @@ export default function BookingForm({ onBooked }) {
       ) : null}
 
       <div>
-        <label className="text-sm font-medium text-slate-700">Officer ID</label>
-        <input
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-agri-500"
+        <label className="text-sm font-medium text-slate-700">Officer</label>
+        <select
+          className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-agri-500"
           value={officerId}
           onChange={(e) => setOfficerId(e.target.value)}
-          placeholder="Paste the officer’s user ID"
           required
-        />
+        >
+          <option value="" disabled>Select an officer</option>
+          {officers.map(off => (
+            <option key={off._id} value={off._id}>{off.name}</option>
+          ))}
+        </select>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">

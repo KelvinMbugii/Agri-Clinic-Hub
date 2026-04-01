@@ -7,6 +7,7 @@ import {
 
 export default function OfficerBookings() {
   const [bookings, setBookings] = useState([]);
+  const [meetingLinks, setMeetingLinks] = useState({});
   const [loading, setLoading] = useState({ bookings: true, saving: false });
   const [error, setError] = useState({ bookings: "", saving: "" });
 
@@ -34,12 +35,12 @@ export default function OfficerBookings() {
 
   const bookingItems = useMemo(() => bookings, [bookings]);
 
-  const setStatus = async (bookingId, status) => {
+  const setStatus = async (bookingId, status, meetingLink = undefined) => {
     setLoading((s) => ({ ...s, saving: true }));
     setError((s) => ({ ...s, bookings: "" }));
 
     try {
-      await updateBookingStatusRequest(bookingId, status);
+      await updateBookingStatusRequest(bookingId, status, meetingLink);
       await refreshBookings();
     } catch (err) {
       setError((s) => ({
@@ -119,6 +120,24 @@ export default function OfficerBookings() {
                         Complete
                       </button>
                     </div>
+                    {b.status === 'approved' && b.consultationType === 'online' && (
+                      <div className="mt-3 flex items-center gap-2">
+                        <input
+                          type="url"
+                          placeholder="Paste Google Meet Link"
+                          className="flex-1 rounded-lg border border-slate-200 px-3 py-1.5 text-sm outline-none focus:border-agri-500"
+                          value={meetingLinks[b._id] !== undefined ? meetingLinks[b._id] : (b.meetingLink || '')}
+                          onChange={(e) => setMeetingLinks({ ...meetingLinks, [b._id]: e.target.value })}
+                        />
+                        <button
+                          onClick={() => setStatus(b._id, 'approved', meetingLinks[b._id])}
+                          disabled={loading.saving}
+                          className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 disabled:opacity-60"
+                        >
+                          Save Link
+                        </button>
+                      </div>
+                    )}
                   </article>
                 ))}
               </div>
@@ -181,6 +200,24 @@ export default function OfficerBookings() {
                               Complete
                             </button>
                           </div>
+                          {b.status === 'approved' && b.consultationType === 'online' && (
+                            <div className="mt-3 flex items-center gap-2 max-w-sm">
+                              <input
+                                type="url"
+                                placeholder="Paste Google Meet Link"
+                                className="flex-1 rounded-lg border border-slate-200 px-3 py-1.5 text-sm outline-none focus:border-agri-500"
+                                value={meetingLinks[b._id] !== undefined ? meetingLinks[b._id] : (b.meetingLink || '')}
+                                onChange={(e) => setMeetingLinks({ ...meetingLinks, [b._id]: e.target.value })}
+                              />
+                              <button
+                                onClick={() => setStatus(b._id, 'approved', meetingLinks[b._id])}
+                                disabled={loading.saving}
+                                className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 disabled:opacity-60 shrink-0"
+                              >
+                                Save Link
+                              </button>
+                            </div>
+                          )}
                         </td>
                       </tr>
                     ))}

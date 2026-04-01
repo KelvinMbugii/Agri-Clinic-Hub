@@ -1,206 +1,60 @@
-# Agri-Clinic-Hub
+# 🌿 Agri-Clinic Hub - Deployment Guide
 
-# 🌾 Agri-Clinic Hub – Complete System Design
+Welcome to the **Agri-Clinic Hub**, an enterprise-grade AI solution for agricultural disease detection and management. Follow these steps to deploy the application to local or production environments.
 
----
-
-## 1️⃣ System Architecture Diagram (Textual Representation)
-
-```
- ┌──────────────────┐
- │   Web / Mobile   │
- │   Client (React) │
- └────────┬─────────┘
-          │ HTTPS (REST / JWT)
- ┌────────▼─────────┐
- │  Backend API     │
- │  Node + Express  │
- └────────┬─────────┘
-          │
- ┌────────▼─────────┐n │ MongoDB Database │
- └────────┬─────────┘
-          │
- ┌────────▼─────────┐
- │ AI Services      │
- │ (Disease Detect) │
- └────────┬─────────┘
-          │
- ┌────────▼─────────┐
- │ SMS API Service  │
- │ (Reminders)     │
- └──────────────────┘
-```
-
-**Explanation:**
-
-* React frontend handles dashboards & chatbot UI
-* Express backend manages auth, bookings, consultations
-* MongoDB stores users, consultations, articles, AI logs
-* AI service handles image-based disease detection
-* SMS API sends reminders & booking updates
+## 🏗 Project Architecture
+- **Frontend:** React (Vite) + Tailwind CSS
+- **Backend:** Node.js (Express) + MongoDB
+- **AI Engine:** Google Gemini (LLM) + Pinecone (Vector RAG) + Redis (Session Cache)
+- **Computer Vision:** Python-based Disease Prediction Service
 
 ---
 
-## 3️⃣ User Flow Diagrams (Step-by-Step)
-
-### Farmer Flow
-
-1. Signup → Select **Farmer** role
-2. Login → Redirect to Farmer Dashboard
-3. Upload crop/animal image → AI diagnosis
-4. View recommendations
-5. Book consultation
-6. Receive SMS confirmation
-7. Attend consultation
-
-### Agricultural Officer Flow
-
-1. Signup → Select **Officer** role
-2. Admin verification
-3. Login → Officer Dashboard
-4. Manage bookings
-5. Conduct consultation
-6. Publish agricultural articles
-
-### Admin Flow
-
-1. Login → Admin Dashboard
-2. Verify officers
-3. Monitor AI predictions
-4. Moderate content
-5. View analytics
+## 🛠 Prerequisites
+- Node.js v18+ & npm/pnpm
+- MongoDB (Local or Atlas)
+- Redis (Local or Upstash)
+- Python 3.9+ (for the CV service)
 
 ---
 
-## 4️⃣ MERN Project Folder Structure
+## 🚀 Deployment Steps
 
-### Backend (Node + Express)
+### 1. Backend Setup (`/server`)
+1.  **Configure Environment:**
+    - Copy `.env.example` to `.env`
+    - Populate `GEMINI_API_KEY`, `PINECONE_API_KEY`, and `MONGODB_URI`.
+    - Set `REDIS_URL` or `UPSTASH_REDIS_REST_URL`.
+2.  **Install Dependencies:** `npm install`
+3.  **Start Server:** `npm start` (Standard) or `npm run dev` (Development)
 
-```
-server/
-├── controllers/
-│   ├── authController.js
-│   ├── bookingController.js
-│   ├── aiController.js
-│   └── articleController.js
-├── models/
-│   ├── User.js
-│   ├── Booking.js
-│   ├── Article.js
-│   └── AiLog.js
-├── routes/
-│   ├── authRoutes.js
-│   ├── bookingRoutes.js
-│   ├── aiRoutes.js
-│   └── articleRoutes.js
-├── middleware/
-│   ├── authMiddleware.js
-│   └── roleMiddleware.js
-├── services/
-│   ├── smsService.js
-│   └── aiService.js
-├── config/
-│   └── db.js
-├── app.js
-└── server.js
-```
+### 2. Frontend Setup (`/client`)
+1.  **Configure Environment:**
+    - Set `VITE_API_BASE_URL` in `.env` if different from `http://localhost:5000`.
+2.  **Install Dependencies:** `npm install`
+3.  **Build for Production:** `npm run build`
+4.  **Preview:** `npm run preview`
 
-### Frontend (React)
+### 3. AI Service (Python)
+To run the image-based disease detection model:
+1. Navigate to the `ai-services` directory.
+2. Activate the virtual environment and run the FastAPI server:
+   ```bash
+   uvicorn app.main:app --host 0.0.0.0 --port 8000
+   ```
 
-```
-client/
-├── src/
-│   ├── components/
-│   │   ├── Chatbot.jsx
-│   │   ├── BookingForm.jsx
-│   │   └── Navbar.jsx
-│   ├── dashboards/
-│   │   ├── FarmerDashboard.jsx
-│   │   ├── OfficerDashboard.jsx
-│   │   └── AdminDashboard.jsx
-│   ├── pages/
-│   │   ├── Login.jsx
-│   │   └── Signup.jsx
-│   ├── context/
-│   │   └── AuthContext.jsx
-│   ├── routes/
-│   │   └── ProtectedRoute.jsx
-│   └── App.jsx
-```
+### 4. AI Knowledge Ingestion
+- Use the **Admin Dashboard** to upload PDFs or raw knowledge snippets.
+- Ensure the Pinecone index is active with **3072 dimensions** (for Gemini embeddings).
 
 ---
 
-## 5️⃣ AI Workflow Design
-
-```
-Image Upload → Preprocessing → Disease Model →
-Confidence Score → Recommendation Engine →
-Chatbot Response → Store AI Log
-```
-
-**Details:**
-
-* CNN or external API for disease detection
-* Confidence threshold (e.g. <60% → recommend officer)
-* Logs stored for admin review
+## 🛡 Security & Best Practices
+- **Secrets:** Never commit the `.env` file. Use the `.env.example` as a template.
+- **Tone:** The AI Assistant is pre-configured to act as a **Professional Agricultural Extension Officer**.
+- **Safety:** Always include the provided safety warnings for any chemical treatments mentioned in the AI responses.
 
 ---
 
- 6️⃣ README Installation Guide
-
-### Tech Stack
-
-* Frontend: React, Tailwind CSS
-* Backend: Node.js, Express.js
-* Database: MongoDB
-* AI: Image-based disease detection
-* APIs: SMS Notifications
-
-### Features
-
-* Role-based dashboards
-* AI disease detection chatbot
-* Consultation booking & management
-* SMS reminders
-* Agricultural news publishing
-
-### Installation
-
-```
-git clone https://github.com/your-repo/agri-clinic-hub
-cd server && npm install
-cd client && npm install
-```
-
----
-
-## 7️⃣ Role-Based Authentication Logic
-
-### Backend Middleware (Concept)
-
-* JWT authentication
-* Role authorization
-
-```
-User logs in → JWT issued →
-Role checked → Redirected to dashboard
-```
-
-### Frontend Routing Logic
-
-* Farmer → /farmer/dashboard
-* Officer → /officer/dashboard
-* Admin → /admin/dashboard
-
----
-
-## ✅ Result
-
-This structure makes Agri-Clinic Hub:
-
-* Scalable
-* Secure
-* AI-driven
-* Production-ready
-
----
+## 📞 Support
+For technical issues regarding the RAG pipeline or Pinecone integration, consult the Internal Knowledge Base (KIs).

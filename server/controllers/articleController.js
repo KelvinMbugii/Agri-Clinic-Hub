@@ -25,7 +25,7 @@ const getArticles = async (req, res) => {
 // @access  Private (Officer)
 const createArticle = async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content, topic } = req.body;
 
     // Validation
     if (!title || !content) {
@@ -35,7 +35,9 @@ const createArticle = async (req, res) => {
     const article = await Article.create({
       title,
       content,
-      author: req.user._id
+      topic: topic || 'General',
+      author: req.user._id,
+      image: req.file ? req.file.filename : null
     });
 
     await article.populate('author', 'name email');
@@ -56,7 +58,7 @@ const createArticle = async (req, res) => {
 const updateArticle = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, content } = req.body;
+    const { title, content, topic } = req.body;
 
     const article = await Article.findById(id);
     if (!article) {
@@ -71,6 +73,8 @@ const updateArticle = async (req, res) => {
     // Update fields
     if (title) article.title = title;
     if (content) article.content = content;
+    if (topic) article.topic = topic;
+    if (req.file) article.image = req.file.filename;
     await article.save();
 
     await article.populate('author', 'name email');

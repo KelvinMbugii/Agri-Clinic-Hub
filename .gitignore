@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+dist/
+build/
+
+# Python Virtual Environments
+venv/
+venv310/
+.venv/
+env/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project Specific
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Tests
+**/test*.js
+**/test*.jsx
+**/*.test.*
+**/*.spec.*
+**/__tests__/
+**/tests/

@@ -53,7 +53,56 @@ const verifyOfficer = async (req, res) => {
   }
 };
 
+// @desc    Get all officers
+// @route   GET /api/users/officers
+// @access  Private (Farmer/Admin)
+const getOfficers = async (req, res) => {
+  try {
+    const officers = await User.find({ role: 'officer' }).select('-password').sort({ name: 1 });
+
+    res.json({
+      success: true,
+      count: officers.length,
+      officers
+    });
+  } catch (error) {
+    console.error('Get Officers Error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+// @access  Private (Admin)
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Prevent self-deletion
+    if (id === req.user._id.toString()) {
+      return res.status(400).json({ message: 'You cannot delete your own account' });
+    }
+
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    await User.findByIdAndDelete(id);
+
+    res.json({
+      success: true,
+      message: 'User deleted successfully'
+    });
+  } catch (error) {
+    console.error('Delete User Error:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
 module.exports = {
   getUsers,
-  verifyOfficer
+  verifyOfficer,
+  getOfficers,
+  deleteUser
 };
