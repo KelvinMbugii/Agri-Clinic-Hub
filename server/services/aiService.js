@@ -277,29 +277,33 @@ const detectDisease = async (imageBuffer) => {
       timeout: 30000,
     });
 
-    const { disease: aiDiseaseName, confidence } = response.data || {};
+    const { 
+      disease: aiDiseaseName, 
+      confidence, 
+      alternative_diagnoses, 
+      is_uncertain 
+    } = response.data || {};
 
     // 2️⃣ Handle missing detection
     if (!aiDiseaseName) {
       return { detectedDisease: null, confidenceScore: 0, source: "fallback" };
     }
 
-    // 3️⃣ Confidence guard (Reverted Gemini Rescue)
+    // 3️⃣ Confidence normalization
     const normalizedConfidence = confidence > 1 ? confidence / 100 : confidence;
-    if (normalizedConfidence < 0.70) {
-      return {
-        detectedDisease: aiDiseaseName,
-        confidenceScore: Math.round(normalizedConfidence * 100),
-        message: "Low confidence. Please upload a clearer image.",
-        source: "python-fastapi",
-      };
-    }
-
+    
     const finalResult = {
       detectedDisease: aiDiseaseName,
       confidenceScore: Math.round(normalizedConfidence * 100),
+      alternative_diagnoses: alternative_diagnoses || [],
+      is_uncertain: is_uncertain || (normalizedConfidence < 0.70),
       source: "python-fastapi",
     };
+
+    // Add a system notice if uncertain
+    if (finalResult.is_uncertain) {
+      finalResult.message = "The model is seeing multiple possibilities. Please check the alternative diagnoses below.";
+    }
 
     const { detectedDisease: finalDiseaseName } = finalResult;
 
@@ -489,20 +493,25 @@ Prevention: ${summarizeTreatmentsForPrompt(diseaseInfo.prevention, 5)}
     }
 
     const systemPrompt = `
-You are a warm, professional Agricultural Extension Officer. 
-Your goal is to provide practical, actionable, and safe advice to farmers.
+You are a warm, supportive, and expert Agricultural Extension Officer named "Agri-Clinic Assistant". 
+You are having a real-time conversation with a farmer. 
 
-### **Core Instructions:**
-1. **Directness:** Get straight to the facts. No fluff.
-2. **Knowledge Priority:** Use the provided DB matches and document chunks. If they contain long technical lists, **summarize them** into 2-3 practical steps.
-3. **Format:** Use bold headers. Structure advice into:
-   - **🔍 Analysis:** Simple explanation of the problem.
-   - **✅ Action Plan:** Practical steps (prioritize organic/cultural if effective).
-   - **🛡 Prevention:** How to stop it from coming back.
-4. **Safety:** Mention protective gear for chemical use and following product labels.
-5. **Tone:** Supporting and expert. Avoid overwhelming the farmer with jargon.
+### **Your Persona:**
+- **Human-Like:** Respond naturally to greetings, thanks, and small talk. (e.g., "Hi! Glad to help. How's the weather on your farm today?").
+- **Expert Advisor:** You are knowledgeable but humble. You prioritize the farmer's livelihood.
+- **Tone:** Encouraging, professional, and jargon-free. Summarize long technical lists into action steps.
 
-**CRITICAL:** Provide a substantive, helpful answer based on the knowledge provided.
+### **Diagnostic Logic (CRITICAL):**
+If a "Last Scan Context" is provided:
+1. **Uncertainty Awareness:** Check if "is_uncertain" is true or if there are "alternative_diagnoses".
+2. **Top-K Handling:** If the scan shows multiple possibilities (e.g. 60% Septoria, 35% Healthy), acknowledge this: *"My initial scan showed Septoria, but there are signs it could just be a healthy leaf with some light spots. Let's make sure—is the underside of the leaf yellow?"*
+
+### **Instruction Priority:**
+- **RAG Grounding:** Use ONLY the provided knowledge from the DB and Document Chunks for technical advice.
+- **Safety:** Always mention protective gear for chemicals.
+- **Format:** Use bold headers (**Action Plan**, **Prevention**, etc.). Keep paragraphs short for readability on mobile.
+
+If you don't know something based on the provided context, gracefully admit it and suggest they scan a clearer image or consult a human officer.
 `.trim();
 
     const userPrompt = `

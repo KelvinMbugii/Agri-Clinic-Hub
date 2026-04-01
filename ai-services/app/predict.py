@@ -1,74 +1,62 @@
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageOps
 import io
+import os
+import json
 from app.model_loader import model
 
-# Default fallback class names
-DEFAULT_CLASS_NAMES = [
-    "Pepper__bell___Bacterial_spot", 
-    "Pepper__bell___healthy", 
-    "Potato___Early_blight", 
-    "Potato___Late_blight", 
-    "Potato___healthy", 
-    "Tomato_Bacterial_spot", 
-    "Tomato_Early_blight", 
-    "Tomato_Late_blight", 
-    "Tomato_Leaf_Mold", 
-    "Tomato_Septoria_leaf_spot", 
-    "Tomato_Spider_mites_Two_spotted_spider_mite", 
-    "Tomato__Target_Spot", 
-    "Tomato__Tomato_YellowLeaf__Curl_Virus", 
-    "Tomato__Tomato_mosaic_virus", 
-    "Tomato_healthy", 
-]
-
-# Attempt to get class names from the model if possible
+# Load labels from external JSON
+LABELS_PATH = os.path.join(os.path.dirname(__file__), "labels.json")
 try:
-    # If your model has a `.classes` attribute or similar, use that
-    # Otherwise, infer from output size
-    num_classes = model.output_shape[-1]  # shape like (None, 5)
-    class_names = DEFAULT_CLASS_NAMES[:num_classes]  # truncate or use fallback
+    with open(LABELS_PATH, "r") as f:
+        class_names = json.load(f)
 except Exception as e:
-    print("Warning: Could not infer class names from model. Using fallback.")
-    class_names = DEFAULT_CLASS_NAMES
+    print(f"Warning: Could not load labels from {LABELS_PATH}. Falling back to default.")
+    class_names = [f"Class_{i}" for i in range(15)]
+
+def smart_resize(image, target_size=(224, 224)):
+    """Resize image maintaining aspect ratio with padding (no squishing)"""
+    image.thumbnail(target_size, Image.Resampling.LANCZOS)
+    delta_w = target_size[0] - image.size[0]
+    delta_h = target_size[1] - image.size[1]
+    padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
+    return ImageOps.expand(image, padding)
 
 async def predict_image(file):
     contents = await file.read()
     image = Image.open(io.BytesIO(contents)).convert("RGB")
-    image = image.resize((224, 224))
+    
+    # 1. Improved Preprocessing: Preserve Aspect Ratio
+    image = smart_resize(image, (224, 224))
+    
+    # 2. Normalization
     image_array = np.array(image) / 255.0
     image_array = np.expand_dims(image_array, axis=0).astype(np.float32)
 
-    # TFSMLayer outputs a dict: extract tensor
+    # 3. Model Inference (TFSMLayer outputs a dict)
     predictions_dict = model(image_array)
-    
-    # Handle both Keras 3 dict output and raw tensor output
     if isinstance(predictions_dict, dict):
         predictions_tensor = list(predictions_dict.values())[0]
     else:
         predictions_tensor = predictions_dict
 
-    # Convert tensor to numpy
-    predictions = predictions_tensor.numpy()
+    # 4. Multi-class Probability Extraction (Top-K)
+    probs = predictions_tensor.numpy()[0]
+    top_indices = np.argsort(probs)[-3:][::-1]  # Get top 3 indices sorted descending
+    
+    results = []
+    for idx in top_indices:
+        results.append({
+            "label": class_names[idx] if idx < len(class_names) else f"Class_{idx}",
+            "confidence": float(probs[idx]),
+            "index": int(idx)
+        })
 
-    # Find class
-    index = int(np.argmax(predictions[0]))
-    confidence = float(np.max(predictions[0]))
-
-    # If confidence is extremely low, mark as unknown
-    if confidence < 0.25:
-        return {
-            "disease": None,
-            "confidence": float(confidence)
-        }
-
-    # Safety check in case number of classes differs
-    if index >= len(class_names):
-        disease_name = f"Class_{index}"
-    else:
-        disease_name = class_names[index]
-
+    # 5. Return Enhanced Result
     return {
-        "disease": disease_name,
-        "confidence": float(confidence)
+        "success": True,
+        "disease": results[0]["label"],
+        "confidence": results[0]["confidence"],
+        "alternative_diagnoses": results, # Full Top-3 list
+        "is_uncertain": float(results[0]["confidence"]) < 0.70
     }

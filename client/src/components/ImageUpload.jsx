@@ -153,17 +153,34 @@ const toLines = (value) => {
         ) : (
           <div className="mt-3 space-y-4">
             <div className="rounded-2xl bg-agri-50 p-4">
-              <div className="text-xs font-medium text-agri-800">Detected status</div>
+              <div className="text-xs font-medium text-agri-800">Primary Detection</div>
               <div className="mt-1 text-lg font-semibold text-slate-900">
                 {result.detectedDisease || "No clear disease detected"}
               </div>
             </div>
-            <div className="rounded-2xl bg-amber-50 p-4">
-              <div className="text-xs font-medium text-amber-900">Confidence</div>
-              <div className="mt-1 text-lg font-semibold text-slate-900">
-                {result.confidenceScore}%
+
+            {/* Confidence Breakdown */}
+            {result.alternative_diagnoses?.length > 0 && (
+              <div className="rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
+                <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">📊 Probability Distribution</div>
+                <div className="mt-3 space-y-3">
+                  {result.alternative_diagnoses.map((alt, idx) => (
+                    <div key={idx} className="space-y-1">
+                      <div className="flex justify-between text-xs text-slate-700">
+                        <span className={idx === 0 ? "font-semibold" : ""}>{alt.label}</span>
+                        <span className="font-medium text-slate-500">{(alt.confidence * 100).toFixed(1)}%</span>
+                      </div>
+                      <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                        <div 
+                          className={`h-full rounded-full transition-all duration-500 ${idx === 0 ? "bg-agri-600" : "bg-slate-300"}`}
+                          style={{ width: `${alt.confidence * 100}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Warning Message (if any) */}
             {result.message ? (

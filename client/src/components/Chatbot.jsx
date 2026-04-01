@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import {
   chatRequest,
   clearChatHistoryRequest,
@@ -15,8 +16,7 @@ function makeId() {
 const defaultMessage = {
   id: "m1",
   from: "bot",
-  text:
-    "Hi! I can help with crop diseases, prevention, treatments, and best farming practices. What are you experiencing?",
+  text: "Hi! I am your Agri-Clinic AI assistant. Ask me about your latest scan, crop treatments, or any farming question.",
 };
 
 export default function Chatbot() {
@@ -24,14 +24,33 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingHistory, setLoadingHistory] = useState(true);
+  const [lastDetection, setLastDetection] = useState(null);
 
+  // 1. Sync Context (load last scan)
+  useEffect(() => {
+    const stored = localStorage.getItem('ach_lastDetection');
+    if (stored) {
+      try {
+        setLastDetection(JSON.parse(stored));
+      } catch (err) {
+        console.warn("Failed to parse last scan in widget:", err);
+      }
+    }
+  }, []);
 
+  // 2. Load History
   useEffect(() => {
     const loadHistory = async () => {
       try {
         const res = await getChatHistoryRequest();
         if (Array.isArray(res?.messages) && res.messages.length > 0) {
-          setMessages(res.messages);
+          const restored = res.messages.map(m => ({
+            id: m.id || makeId(),
+            from: m.from || (m.sender === "user" ? "user" : "bot"),
+            text: m.text,
+            ts: m.ts || Date.now()
+          }));
+          setMessages(restored);
         }
       } catch (error) {
         console.error("Failed to load chat history", error);
@@ -43,35 +62,28 @@ export default function Chatbot() {
     loadHistory();
   }, []);
 
-
-  const lastHint = useMemo(() => {
-    const text = (input || "").toLowerCase();
-    if (text.includes("maize"))
-      return "Try describing symptoms like mold, discoloration, or leaf spots.";
-    if (text.includes("tomato"))
-      return "Try asking about tomato blight or yellowing leaves.";
-    if (text.includes("soil"))
-      return "Try asking about soil pH or fertilizer recommendations.";
-    return "Example: 'I found moldy maize grains in storage'";
-  }, [input]);
-
   const send = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const trimmed = input.trim();
     if (!trimmed || loading) return;
 
-    const userMsg = { id: makeId(), from: "user", text: trimmed };
+    const userMsg = { id: makeId(), from: "user", text: trimmed, ts: Date.now() };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
     setLoading(true);
 
     try {
-      const res = await chatRequest({ message: trimmed });
+      // 3. Unified Payload (pass last scan context)
+      const res = await chatRequest({ 
+        message: trimmed,
+        lastDetection: lastDetection // Crucial context passing
+      });
 
       const botMsg = {
         id: makeId(),
         from: "bot",
         text: res.reply || "I couldn't generate a response.",
+        ts: Date.now()
       };
 
       setMessages((prev) => [...prev, botMsg]);
@@ -83,6 +95,7 @@ export default function Chatbot() {
           id: makeId(),
           from: "bot",
           text: "⚠ Unable to connect to AI service. Please try again.",
+          ts: Date.now()
         },
       ]);
     } finally {
@@ -100,70 +113,84 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-slate-50">
+    <div className="flex flex-col h-full max-h-[500px] border border-slate-200 bg-slate-50 rounded-2xl overflow-hidden">
+      {/* Context Banner */}
+      {lastDetection && (
+        <div className="bg-agri-50 border-b border-agri-100 px-4 py-2 flex justify-between items-center group">
+          <div className="text-[10px] uppercase font-bold tracking-wider text-agri-700">
+            Scanning: {lastDetection.detectedDisease}
+          </div>
+          <div className="text-[10px] text-slate-400 group-hover:text-slate-600">
+            {lastDetection.confidenceScore}% Certain
+          </div>
+        </div>
+      )}
+
       {/* Messages */}
-      <div className="max-h-96 space-y-3 overflow-auto p-4">
+      <div className="flex-1 space-y-4 overflow-auto p-4 scrollbar-thin scrollbar-thumb-slate-200">
          {loadingHistory ? (
-          <div className="rounded-2xl bg-white px-4 py-2 text-sm text-slate-700 shadow-sm">
-            Loading previous chats...
+          <div className="rounded-2xl bg-white px-4 py-2 text-xs text-slate-500 shadow-sm animate-pulse">
+            Resuming conversation...
           </div>
         ) : null}
 
         {messages.map((m) => (
           <div
             key={m.id}
-            className={`flex ${
-              m.from === "user" ? "justify-end" : "justify-start"
-            }`}
+            className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`max-w-[85%] whitespace-pre-line rounded-2xl px-4 py-2 text-sm ${
+              className={`max-w-[90%] rounded-2xl px-4 py-2 text-sm leading-relaxed ${
                 m.from === "user"
-                  ? "bg-agri-700 text-white"
-                  : "bg-white text-slate-800 shadow-sm"
+                  ? "bg-agri-700 text-white shadow-md shadow-agri-600/20"
+                  : "bg-white text-slate-800 shadow-sm border border-slate-100 prose prose-sm max-w-none"
               }`}
             >
-              {m.text}
+              {m.from === "bot" ? (
+                <ReactMarkdown>{m.text}</ReactMarkdown>
+              ) : (
+                m.text
+              )}
             </div>
           </div>
         ))}
 
         {loading && (
           <div className="flex justify-start">
-            <div className="rounded-2xl bg-white px-4 py-2 text-sm shadow-sm">
-              Thinking...
+            <div className="rounded-2xl bg-white px-4 py-2 text-xs shadow-sm italic text-slate-500 border border-slate-100 flex items-center gap-2">
+              <div className="w-1.5 h-1.5 bg-agri-500 rounded-full animate-bounce"></div>
+              Agri-Clinic Assistant is thinking...
             </div>
           </div>
         )}
       </div>
 
-      {/* Input */}
+      {/* Input Section */}
       <div className="border-t border-slate-200 bg-white p-3">
         <form className="flex items-center gap-2" onSubmit={send}>
           <div className="flex-1">
             <input
-              className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-agri-500"
+              className="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-agri-500 transition-colors"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Describe the symptoms..."
+              placeholder={lastDetection ? `Ask about your ${lastDetection.detectedDisease}...` : "Describe the symptoms..."}
             />
-            <div className="mt-1 text-xs text-slate-500">{lastHint}</div>
           </div>
 
           <button
             type="button"
             onClick={clearHistory}
-            className="shrink-0 rounded-xl border border-slate-200 px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
+            className="shrink-0 rounded-xl border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-50 transition-colors"
           >
-            Clear
+            Reset
           </button>
           
           <button
             type="submit"
             disabled={loading}
-            className="shrink-0 rounded-xl bg-agri-700 px-4 py-2 text-sm font-medium text-white hover:bg-agri-800 disabled:opacity-50"
+            className="shrink-0 h-9 w-9 flex items-center justify-center rounded-xl bg-agri-700 text-white hover:bg-agri-800 disabled:opacity-50 transition-all shadow-md active:scale-95"
           >
-            {loading ? "..." : "Send"}
+            {loading ? "..." : "→"}
           </button>
         </form>
       </div>

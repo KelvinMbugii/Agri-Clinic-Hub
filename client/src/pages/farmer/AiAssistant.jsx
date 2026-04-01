@@ -185,8 +185,16 @@ export default function AiAssistant() {
                   Latest scan result
                 </div>
                 <div className="mt-1 text-sm font-semibold text-slate-900">
-                  {lastDetection.detectedDisease} ({lastDetection.confidenceScore}% confidence)
+                  {lastDetection.detectedDisease} 
+                  <span className="ml-2 text-xs font-normal text-slate-500">
+                    ({lastDetection.confidenceScore}% confidence)
+                  </span>
                 </div>
+                {lastDetection.alternative_diagnoses?.length > 1 && (
+                  <div className="mt-1 text-xs text-agri-600">
+                    Alternative possibilities: {lastDetection.alternative_diagnoses.slice(1, 3).map(d => d.label).join(", ")}
+                  </div>
+                )}
                 <div className="mt-1 text-xs text-slate-600">
                   I can answer questions about this detection. Or{' '}
                   <Link

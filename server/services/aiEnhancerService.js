@@ -124,6 +124,8 @@ Context for reference:
 ${contextText}
 
 Detected Disease: ${data.detectedDisease}
+Alternative Diagnoses: ${JSON.stringify(data.alternative_diagnoses || [])}
+Uncertainty Flag: ${data.is_uncertain ? "Yes - Provide a more nuanced, tentative diagnosis" : "No"}
 Crop: ${data.crop}
 Severity: ${data.severity}
 Existing Treatments in DB: ${summarizeTreatmentsForPrompt((data.organicTreatment || []).concat(data.chemicalTreatment || []), 10)}
